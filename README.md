@@ -1,6 +1,10 @@
 # Server Atekos Room
 
-Este proyecto esta creado para tener un api propia para mi proyectos de domotica
+Este proyecto esta creado para tener un api propia para mi proyectos de domotica.
+
+Este es la api que uso para encender la luz de mi habitación ya que el interruptor esta en un lugar poco inaccesible, con una macro en mi celular al presionar un icono en la pantalla le mando una petición para cambiar el estado una variable. El bombillo esta conectado a un modulo relay con un esp8266 genérico que esta constantemente esta consultando el estado de la misma variable para encender o apagar la luz.
+
+<!-- link del código de la esp8266:  -->
 
 ## Instalación
 
@@ -42,4 +46,3 @@ Debemos de tener el apk de gcp e iniciar session y tener un proyecto activo.
 Recuerda tener el archivo `app.yaml` para la configuración.
 
 Con `$ gcloud beta app deploy` puedes desplegar ( es el predeterminado en el script `npm run dev`)
-

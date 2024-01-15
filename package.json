@@ -1,5 +1,5 @@
 {
-  "name": "server-atekos",
+  "name": "server-atekos-room",
   "version": "1.0.0",
   "description": "El servidor principal para mis proyectos de domitica, robotica, electronica. Para tener mi propio servicios personalizado",
   "main": "src/server.js",
@@ -18,5 +18,22 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PedroPab/serverAtekosRoom.git"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "domotica",
+    "iot",
+    "node"
+  ],
+  "author": "Pedro Montes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PedroPab/serverAtekosRoom/issues"
+  },
+  "homepage": "https://github.com/PedroPab/serverAtekosRoom#readme"
 }
