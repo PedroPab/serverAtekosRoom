@@ -120,3 +120,28 @@ export const stateOff = async (req, res, next) => {
     next(error)
   }
 }
+
+export const stateOffOn = async (req, res, next) => {
+  try {
+    const id = req.params.id
+
+    let room = await findRoom(id)
+
+    let status = 202
+
+    if (!room) {
+      //si no hay un elemento  o un room , lo creamos
+      room = await createRoom(id)
+      status = 201
+    }
+
+    let rta = await updateRoom(id, { state: !room.state })
+
+
+    res.data = rta; // Guarda los datos en res.data
+    res.rtaStatus = status
+    next()
+  } catch (error) {
+    next(error)
+  }
+}

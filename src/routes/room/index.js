@@ -12,6 +12,7 @@ router.get('/:id', controllers.getRoom, responseMiddleware);
 //cambiar los parmetros
 router.post('/on/:id', controllers.stateOn, responseMiddleware);
 router.post('/off/:id', controllers.stateOff, responseMiddleware);
+router.post('/off-on/:id', controllers.stateOffOn, responseMiddleware);
 // router.put('/:id', controllers.putRoom, responseMiddleware);
 
 export default router;
