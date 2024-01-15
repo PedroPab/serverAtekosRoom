@@ -1,65 +1,41 @@
-# Mi API Server
+# Server Atekos Room
 
-This is a simple API server built with Node.js, Express, dotenv, and ES6.
+Este proyecto esta creado para tener un api propia para mi proyectos de domotica
 
-## Project Structure
+## Instalación
 
-```
-mi-api-server
-├── src
-│   ├── server.js
-│   ├── app.js
-│   ├── routes
-│   │   └── index.js
-│   ├── controllers
-│   │   └── index.js
-│   └── config
-│       └── index.js
-├── .env
-├── package.json
-├── .babelrc
-└── README.md
-```
-
-## Setup
-
-1. Clone the repository
-2. Install dependencies with `npm install`
-3. Create a `.env` file in the root directory and add your environment variables
-4. Start the server with `npm start`
-
-## Files
-
-- `src/server.js`: Entry point of the application. It imports the express app from `app.js` and starts the server.
-- `src/app.js`: Creates an instance of the express app, sets up middleware, and imports routes from the `routes` directory.
-- `src/routes/index.js`: Exports a function that sets up the routes for the application. It imports controllers from the `controllers` directory to handle these routes.
-- `src/controllers/index.js`: Exports functions that handle the routes of the application. Each function corresponds to a specific route.
-- `src/config/index.js`: Exports the configuration for the application. It uses the `dotenv` package to load environment variables from the `.env` file.
-- `.env`: Contains environment variables for the application. It is not included in the version control system.
-- `package.json`: Configuration file for npm. It lists the dependencies and scripts for the project.
-- `.babelrc`: Configuration file for Babel. It specifies how to transpile the code to ES5.
+1. `$ git clone git@github.com:PedroPab/serverAtekosRoom.git`
+2. `$ npm i`
+3. `$ npm run dev`
 
 ## Environment Variables
 
-The `.env` file should contain the following environment variables:
+Deben de haber dos archivos `.env`. Uno llamado `.env.development` que contiene las variables de desarrollo, y el otro llamado `.env.production` con las variables de producción.
 
-- `PORT`: The port on which the server will run.
-- `DB_URL`: The URL of your MongoDB database.
+Según la variable `NODE_ENV`, que puede ser `production` o `development` se escogerá uno archivo de configuración.
+
+El archivo `.env.` debe contener las siguientes variables de entorno:
+
+- `PORT`: Puerto del servidor.
+- `NODE_ENV`: Es nuestro modo de entorno.
 
 ## Scripts
 
-- `npm start`: Starts the server in development mode.
+- `npm start`: Iniciar el servidor en modo de producción.
+- `npm dev`: Iniciar el servidor en modo de desarrollo.
+- `npm deploy`: Deploy con el servicio de google cloud app engine.
+- `npm log`: Ver los logs en producción.
 - `npm test`: Runs the test suite.
 
-## Dependencies
+## Deploy
 
-- `express`: Web server framework.
-- `dotenv`: Loads environment variables from a `.env` file.
-- `babel`: Transpiles ES6 code to ES5.
+### App Engine
 
-## Dev Dependencies
+Debemos de tener el apk de gcp e iniciar session y tener un proyecto activo.
 
-- `nodemon`: Automatically restarts the server when files change.
-- `eslint`: Lints JavaScript code.
-- `mocha`: Runs tests.
-- `chai`: Assertion library for tests.
+Recuerda tener el archivo `app.yaml` para la configuración.
+
+```bash
+gcloud beta app deploy
+```
+

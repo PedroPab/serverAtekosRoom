@@ -1,12 +1,12 @@
 {
   "name": "server-atekos",
   "version": "1.0.0",
-  "description": "El servidor principal para mis proyectos de domitica, robotica, electronica. Para tener mi propio servicios personalisados",
+  "description": "El servidor principal para mis proyectos de domitica, robotica, electronica. Para tener mi propio servicios personalizado",
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
+    "start": "set NODE_ENV=production ; node src/server.js",
+    "dev": "set NODE_ENV=development ; nodemon src/server.js",
     "deploy": "gcloud beta app deploy --no-cache",
     "log": "gcloud app logs tail -s default"
   },
