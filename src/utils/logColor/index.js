@@ -5,6 +5,7 @@ import chalk from "chalk";
  * @param {String} message 
  */
 const logInfo = (message) => {
+  message = JSON.stringify(message, null, 2)
   console.log(chalk.blue.bgWhite.bold(message));
 }
 /**
@@ -12,6 +13,7 @@ const logInfo = (message) => {
  * @param {String} message 
  */
 const logError = (message) => {
+  message = JSON.stringify(message, null, 2)
   console.log(chalk.red.bold(message));
 }
 /**
@@ -19,6 +21,7 @@ const logError = (message) => {
  * @param {String} message 
  */
 const logSuccess = (message) => {
+  message = JSON.stringify(message, null, 2)
   console.log(chalk.green.bold(message));
 }
 /**
@@ -26,6 +29,7 @@ const logSuccess = (message) => {
  * @param {String} message 
  */
 const logDebugeer = (message) => {
+  message = JSON.stringify(message, null, 2)
   console.log(chalk.greenBright.bold(message));
 }
 

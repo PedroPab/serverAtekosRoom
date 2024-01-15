@@ -52,6 +52,38 @@ export const getRoom = async (req, res, next) => {
   }
 }
 
+
+/**
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {Function} next
+ */
+export const getParamRoom = async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const param = req.params.param
+
+    //el identificador de cada room es room-id ( room-4857sd57 )
+    let rta = await findRoom(id)
+
+    let status = 200
+
+    if (!rta) {
+      //si no hay un elemento  o un room , lo creamos
+      const room = await createRoom(id)
+      rta = room
+      status = 201
+    }
+
+    res.data = rta[param]; // Guarda los datos en res.data
+    res.rtaStatus = status
+
+    next()
+  } catch (error) {
+    next(error)
+  }
+}
+
 /**
  * @param {import('express').Request} req
  * @param {import('express').Response} res
