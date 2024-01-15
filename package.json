@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "deploy": "gcloud beta app deploy --no-cache",
+    "log": "gcloud app logs tail -s default"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",

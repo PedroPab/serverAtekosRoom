@@ -1,0 +1,14 @@
+runtime: nodejs18 # especifica la versión de Node.js
+
+instance_class: F1 # especifica la clase de instancia
+
+automatic_scaling: # especifica la configuración de escalado automático
+  min_instances: 1
+  max_instances: 1
+
+env_variables: # especifica las variables de entorno
+  NODE_ENV: "production"
+
+handlers: # especifica los manejadores de URL
+- url: /.*
+  script: auto
