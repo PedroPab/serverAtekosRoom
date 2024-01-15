@@ -7,7 +7,7 @@ const router = express.Router();
 // Define your routes here
 router.get('/', controllers.getRooms, responseMiddleware);
 //recojer informacion de una room en especifico
-router.get('/:id/:param', controllers.getParamRoom, responseMiddleware);
+router.get('/param/:id/:param', controllers.getParamRoom, responseMiddleware);
 router.get('/:id', controllers.getRoom, responseMiddleware);
 //cambiar los parmetros
 router.post('/on/:id', controllers.stateOn, responseMiddleware);
