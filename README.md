@@ -4,9 +4,15 @@ Este proyecto esta creado para tener un api propia para mi proyectos de domotica
 
 ## Instalación
 
-1. `$ git clone git@github.com:PedroPab/serverAtekosRoom.git`
-2. `$ npm i`
-3. `$ npm run dev`
+Esta probado en sistema Linux Ubuntu.
+
+```bash
+git clone git@github.com:PedroPab/serverAtekosRoom.git
+cd serverAtekosRoom
+npm i
+npm run dev
+
+```
 
 ## Environment Variables
 
@@ -35,7 +41,5 @@ Debemos de tener el apk de gcp e iniciar session y tener un proyecto activo.
 
 Recuerda tener el archivo `app.yaml` para la configuración.
 
-```bash
-gcloud beta app deploy
-```
+Con `$ gcloud beta app deploy` puedes desplegar ( es el predeterminado en el script `npm run dev`)
 
