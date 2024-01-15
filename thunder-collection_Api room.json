@@ -1,0 +1,93 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Api room",
+    "dateExported": "2024-01-15T22:37:51.569Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "30b8fac5-48b7-47a5-be76-f03dedd5f87a",
+            "colId": "3a0aa2a1-79f7-4340-8c5e-f0077fdfd9fe",
+            "containerId": "",
+            "name": "find rooms",
+            "url": "{{HOST}}:{{PORT}}/room",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-01-15T03:33:19.322Z",
+            "modified": "2024-01-15T04:17:59.346Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e5993440-bf6f-40d0-b891-46b472b1b123",
+            "colId": "3a0aa2a1-79f7-4340-8c5e-f0077fdfd9fe",
+            "containerId": "",
+            "name": "find room ",
+            "url": "{{HOST}}:{{PORT}}/room/1",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-01-15T05:45:09.373Z",
+            "modified": "2024-01-15T06:29:01.345Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "65b856ec-ae52-4ce3-a581-68a3d0782386",
+            "colId": "3a0aa2a1-79f7-4340-8c5e-f0077fdfd9fe",
+            "containerId": "",
+            "name": "find room  param",
+            "url": "{{HOST}}:{{PORT}}/room/param/1/state",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-01-15T17:38:01.204Z",
+            "modified": "2024-01-15T19:32:00.240Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "249573bd-3334-4bc1-b3f8-2ebbdaf81e1f",
+            "colId": "3a0aa2a1-79f7-4340-8c5e-f0077fdfd9fe",
+            "containerId": "",
+            "name": "room state on",
+            "url": "{{HOST}}:{{PORT}}/room/on/1",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-01-15T05:45:39.357Z",
+            "modified": "2024-01-15T06:30:28.231Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e9e60a36-5a7b-4d56-b155-b30fbbb2c38d",
+            "colId": "3a0aa2a1-79f7-4340-8c5e-f0077fdfd9fe",
+            "containerId": "",
+            "name": "room state off",
+            "url": "{{HOST}}:{{PORT}}/room/off-on/1",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2024-01-15T06:31:31.598Z",
+            "modified": "2024-01-15T20:20:22.682Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b4620e82-4057-4ecd-b3e9-0ca6147829f3",
+            "colId": "3a0aa2a1-79f7-4340-8c5e-f0077fdfd9fe",
+            "containerId": "",
+            "name": "room state off-on",
+            "url": "{{HOST}}:{{PORT}}/room/off-on/1",
+            "method": "POST",
+            "sortNum": 45000,
+            "created": "2024-01-15T20:20:04.586Z",
+            "modified": "2024-01-15T20:23:09.661Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
