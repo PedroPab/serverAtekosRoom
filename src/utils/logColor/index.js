@@ -29,9 +29,11 @@ const logDebugeer = (message) => {
   console.log(chalk.greenBright.bold(message));
 }
 
-export {
+const Logs = {
   logInfo,
   logError,
   logSuccess,
   logDebugeer,
 }
+
+export default Logs

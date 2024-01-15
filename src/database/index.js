@@ -5,9 +5,14 @@ import Database from "./localDatabase/index.js"
 class StorebaseService {
   constructor() {
     //aqui cambiamos la clase que se encarfa de las consultas de la base de datos (por si las combiamos)
-    const Store = new Database()
+    this.Store = new Database()
   }
-  // Método para guardar un valor en la base de datos
+  /**
+   * Método para guardar un valor en la base de datos
+   * @param {String} key 
+   * @param {*} value 
+   * @returns
+   */
   async setValue(key, value) {
     try {
       const rta = await this.Store.setValue(key, value)
@@ -16,8 +21,11 @@ class StorebaseService {
       throw error
     }
   }
-
-  // Método para obtener un valor de la base de datos
+  /**
+   * Método para obtener un valor de la base de datos
+   * @param {String} key 
+   * @returns
+   */
   async getValue(key) {
     try {
       const rta = await this.Store.getValue(key)
@@ -27,7 +35,11 @@ class StorebaseService {
     }
   }
 
-  // Método para eliminar un valor de la base de datos
+  /**
+   * Método para eliminar un valor de la base de datos
+  * @param {String} key 
+  * @returns
+  */
   async deleteValue(key) {
     try {
       const rta = await this.Store.deleteValue(key);

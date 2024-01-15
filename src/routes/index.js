@@ -3,7 +3,7 @@ import * as controllers from '../controllers/index.js';
 
 const router = express.Router();
 
-// Define your routes here
+//mostramos todos las rooms que hay registradoss
 router.get('/', controllers.getHome);
 
 export default router;
