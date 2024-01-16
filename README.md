@@ -9,7 +9,7 @@
 Probado en Linux Ubuntu. Sigue estos pasos para empezar:
 
 ```bash
-git clone git@github.com:PedroPab/AtekosRoom.git
+git clone git@github.com:PedroPab/serverAtekosRoom.git
 cd serverAtekosRoom
 npm i
 npm run dev
