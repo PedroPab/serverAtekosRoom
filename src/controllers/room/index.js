@@ -62,7 +62,7 @@ export const getParamRoom = async (req, res, next) => {
   try {
     const id = req.params.id
     const param = req.params.param
-
+    Logs.logInfo(`se pide el parámet22ro de ${param} del room ${id}`)
     //el identificador de cada room es room-id ( room-4857sd57 )
     let rta = await findRoom(id)
 
@@ -92,6 +92,7 @@ export const getParamRoom = async (req, res, next) => {
 export const stateOn = async (req, res, next) => {
   try {
     const id = req.params.id
+    console.log("🚀 ~ stateOn ~ id:", id)
 
     let rta = await updateRoom(id, { state: true })
 
