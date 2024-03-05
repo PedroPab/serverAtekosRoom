@@ -7,6 +7,7 @@ import setupWebsocketServer from './websocket/index.js';
 
 const server = http.createServer(app);
 
+//iniciamos el servidor de WebSocket
 setupWebsocketServer(server);
 
 const PORT = ENV.PORT
