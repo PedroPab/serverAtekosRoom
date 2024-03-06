@@ -1,6 +1,8 @@
 import { Room } from "../../class/room/index.js";
 import StorebaseService from "../../database/index.js";
 import { COLLECTIONS } from "../../utils/collectiosNames/index.js";
+import Logs from "../../utils/logColor/index.js";
+import { socketEventIdRoom } from "../../websocket/events/rooms.js";
 const Data = new StorebaseService()
 
 async function createRoom(id) {
@@ -34,6 +36,14 @@ async function updateRoom(id, dataUpdate) {
 
     //guardamos el  room mnodificado  la base de datos
     const save = await Data.setValue(`${COLLECTIONS.room}-${id}`, room)
+
+    // nos conectamos con el servicio de websocket para mostrar el cambio del estado al id que este suscrito a ella o que ella
+    //por el momento le mandaremos el mensaje al mismo id del socket
+    try {
+      socketEventIdRoom(id, room)
+    } catch (error) {
+      Logs.logError(error)
+    }
 
     return room
   } catch (error) {

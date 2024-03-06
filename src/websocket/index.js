@@ -31,6 +31,13 @@ export default function setupWebSocket(server) {
             subscriptions[msg.event] = [userId];
           }
           break;
+        case 'message':
+          // Enviar el mensaje a todos los clientes suscritos al evento especificado
+          if (subscriptions[msg.event]) {
+            subscriptions[msg.event].forEach(subscriber => {
+              clients[subscriber].send(JSON.stringify(msg));
+            });
+          }
         default:
           Logs.logInfo(msg)
           break;
