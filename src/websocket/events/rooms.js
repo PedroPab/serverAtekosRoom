@@ -5,7 +5,6 @@ export const socketEventIdRoom = (idSocket, data) => {
   try {
     //becamos el ws según el id
     const ws = clients[idSocket]
-g
     if (!ws) {
       // el socket esta desconectado
       throw `el socket ${idSocket} esta desconectado`
