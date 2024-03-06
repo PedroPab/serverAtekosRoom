@@ -54,4 +54,6 @@ export default function setupWebSocket(server) {
     });
   });
 
+  return wss;
+
 }

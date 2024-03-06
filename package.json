@@ -5,8 +5,8 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "set NODE_ENV=production ; node src/server.js",
-    "dev": "set NODE_ENV=development ; nodemon src/server.js",
+    "start": "export NODE_ENV=production ; node src/server.js",
+    "dev": "export NODE_ENV=development ; nodemon src/server.js",
     "deploy": "gcloud beta app deploy --no-cache",
     "log": "gcloud app logs tail -s default"
   },

@@ -13,7 +13,7 @@ network:
   session_affinity: true # Importante para aplicaciones WebSocket
 
 
-handlers: # especifica los manejadores de URL
-- url: /.*
-  script: auto
-  secure: always
+# handlers: # especifica los manejadores de URL
+# - url: /.*
+#   script: auto
+#   secure: always
