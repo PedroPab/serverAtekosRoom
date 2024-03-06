@@ -5,11 +5,14 @@ export const socketEventIdRoom = (idSocket, data) => {
   try {
     //becamos el ws según el id
     const ws = clients[idSocket]
+g
     if (!ws) {
       // el socket esta desconectado
       throw `el socket ${idSocket} esta desconectado`
     }
-    ws.send(JSON.stringify({ type: `update`, data }));
+    const rta = { type: `update`, data }
+    Logs.logInfo(`mandamos esta info al socket ${idSocket}: ${JSON.stringify(rta)}`)
+    ws.send(JSON.stringify(rta));
     return
   } catch (error) {
     throw error

@@ -45,6 +45,7 @@ export default function setupWebSocket(server) {
     });
 
     ws.on('close', () => {
+      Logs.logError(`se desconecto el websocket ${ws._socket.remoteAddress}, con el id ${userId}`)
       // Limpiar al cliente de todas las suscripciones y la lista de clientes
       Object.keys(subscriptions).forEach(event => {
         subscriptions[event] = subscriptions[event].filter(subscriber => subscriber !== userId);

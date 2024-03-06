@@ -43,6 +43,7 @@ async function updateRoom(id, dataUpdate) {
       socketEventIdRoom(id, room)
     } catch (error) {
       Logs.logError(error)
+      Logs.logError(`Haaaa, ayuda`)
     }
 
     return room
