@@ -1,6 +1,7 @@
 import express from 'express';
 import routes from './routes/index.js';
 import routesRoom from './routes/room/index.js';
+import routesImg from './routes/img/index.js';
 import { errorBoomHandler, errorHandler } from './middlewares/errorHandler/index.js';
 
 const app = express();
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 
 app.use('/', routes);
 app.use('/room', routesRoom);
+app.use('/img', routesImg);
 
 
 //middlewares para errores
