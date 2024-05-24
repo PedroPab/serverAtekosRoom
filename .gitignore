@@ -171,3 +171,4 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node,linux,appengine,firebase
 /uploads
+/public/img/*
