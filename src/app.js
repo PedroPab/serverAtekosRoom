@@ -17,6 +17,9 @@ app.use((req, res, next) => {
   next();
 })
 
+//hacer publica la carpeta public
+app.use(express.static('public'));
+
 app.use('/', routes);
 app.use('/room', routesRoom);
 app.use('/img', routesImg);
