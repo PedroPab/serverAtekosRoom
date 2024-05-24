@@ -3,6 +3,12 @@ import express from 'express';
 import { uploadPhoto } from '../../controllers/img/uploadPhoto.js';
 import upload from '../../controllers/img/multer.js';
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const router = express.Router();
 
@@ -11,8 +17,12 @@ router.get('/', upload.single('photo'), uploadPhoto);
 
 //visualizar la imagen
 router.get('/id/:id', (req, res) => {
+  1
   try {
-    res.sendFile(`public/img/${req.params.id}`, { root: '.' });
+    const filePath = path.resolve(__dirname, `../../../public/img/${req.params.id}`);
+
+    // res.sendFile(`public/img/${req.params.id}`, { root: '.' });
+    res.sendFile(filePath);
 
   } catch (error) {
     console.log(error);
