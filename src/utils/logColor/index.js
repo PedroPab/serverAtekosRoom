@@ -28,7 +28,7 @@ const logSuccess = (message) => {
  * Una funcion  para tener un estandar de  un log de success en codigo
  * @param {String} message 
  */
-const logDebugeer = (message) => {
+const logDebugger = (message) => {
   message = JSON.stringify(message, null, 2)
   console.log(chalk.greenBright.bold(message));
 }
@@ -37,7 +37,7 @@ const Logs = {
   logInfo,
   logError,
   logSuccess,
-  logDebugeer,
+  logDebugger,
 }
 
 export default Logs
