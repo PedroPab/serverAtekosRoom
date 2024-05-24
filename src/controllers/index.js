@@ -1,5 +1,7 @@
 export const getHome = (req, res) => {
-  res.send('Welcome to the Home Page!');
+  const body = req.body;
+  console.log(body)
+  res.json(body)
 };
 
 export const getAbout = (req, res) => {

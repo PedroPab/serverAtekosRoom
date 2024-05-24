@@ -7,6 +7,15 @@ const app = express();
 
 app.use(express.json());
 
+//mostrar un log de todos datos que llegan al servidor
+app.use((req, res) => {
+  console.log('Request received');
+  console.log('Method: ', req.method);
+  console.log('URL: ', req.url);
+  console.log('Headers: ', req.headers);
+  console.log('Body: ', req.body);
+})
+
 app.use('/', routes);
 app.use('/room', routesRoom);
 

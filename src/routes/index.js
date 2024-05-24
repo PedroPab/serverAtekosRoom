@@ -5,5 +5,6 @@ const router = express.Router();
 
 //mostramos todos las rooms que hay registradoss
 router.get('/', controllers.getHome);
+router.post('/', controllers.getHome);
 
 export default router;
