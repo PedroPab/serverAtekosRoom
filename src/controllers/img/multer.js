@@ -9,11 +9,14 @@ const __dirname = path.dirname(__filename);
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadPath = path.join('public/img');
-    if (!fs.existsSync(uploadPath)) {
-      fs.mkdirSync(uploadPath);
-    }
-    cb(null, uploadPath);
+    // const uploadPath = path.join('public/img');
+    const uploadPath = path.join(__dirname, '../../../public', 'img');
+    fs.mkdir(uploadPath, { recursive: true }, (err) => {
+      if (err) {
+        return cb(err);
+      }
+      cb(null, uploadPath);
+    });
   },
   filename: function (req, file, cb) {
     //el nombre sera según el la hora y fecha en texto  en la que se subió la foto
