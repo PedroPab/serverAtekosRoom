@@ -10,8 +10,6 @@ const __dirname = path.dirname(__filename);
 // Ruta donde se encuentran tus imágenes
 const imagesPath = path.join(__dirname, './../../../public/img');
 const outputPath = path.join(__dirname, './../../../public/vid');
-const fps = 4; // Número de frames por segundo
-
 
 const getImagesFromFolder = (folderPath) => {
   try {
@@ -58,13 +56,20 @@ const createVideoFromImages = (images, output, fps, nameVideoOutput) => {
     .on('end', function (stdout, stderr) {
       console.log('Transcoding succeeded!');
     })
-    .run();
+    .run()
 };
 
-// Recoger los nombres de los archivos desde la carpeta
-const images = getImagesFromFolder(imagesPath);
 
-// Crear el video
-//segun la fecha y hora se crea un nombre de video
-const nameVideoOutput = `${new Date().toISOString().replace(/:/g, '-').replace(/\./g, '-')}_video.mp4`;
-createVideoFromImages(images, outputPath, fps, nameVideoOutput);
+const initCreateVideo = () => {
+
+  const fps = 4; // Número de frames por segundo
+  // Recoger los nombres de los archivos desde la carpeta
+  const images = getImagesFromFolder(imagesPath);
+
+  // Crear el video
+  //segun la fecha y hora se crea un nombre de video
+  const nameVideoOutput = `${new Date().toISOString().replace(/:/g, '-').replace(/\./g, '-')}_video.mp4`;
+  createVideoFromImages(images, outputPath, fps, nameVideoOutput);
+}
+
+export default initCreateVideo;

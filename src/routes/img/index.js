@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import initCreateVideo from '../../functions/createVideo/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -64,6 +65,12 @@ router.get('/last', (req, res) => {
     console.log(error);
     res.status(500).send({ message: 'Error al listar las imágenes' });
   }
+})
+
+//crear un video con todas las imagenes
+router.get('/createVideo', (req, res) => {
+  initCreateVideo();
+  res.send('Video creado');
 })
 
 export default router;
