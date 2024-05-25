@@ -1,17 +1,14 @@
 
 import express from 'express';
-import { uploadPhoto } from '../../controllers/img/uploadPhoto.js';
-import upload from '../../controllers/img/multer.js';
+import initCreateVideo from '../../functions/createVideo/index.js';
 import { listFiles } from '../../functions/directoryAndFile/listFiles/index.js';
 import { lastFile } from '../../functions/directoryAndFile/lastFile/index.js';
 
 const router = express.Router();
 
-const dirPhat = './public/img';
-
-router.post('/', upload.single('photo'), uploadPhoto);
-router.get('/', upload.single('photo'), uploadPhoto);
-
+const dirPhat = './public/vid';
+// router.post('/', upload.single('photo'), uploadPhoto);
+// router.get('/', upload.single('photo'), uploadPhoto);
 
 router.get('/id/:id',
   async (req, res) => {
@@ -19,7 +16,7 @@ router.get('/id/:id',
       const nameFile = req.params.id
       res.sendFile(nameFile, { root: dirPhat });
     } catch (error) {
-      res.status(500).send({ message: 'Error al mostrar la imagen' });
+      res.status(500).send({ message: 'Error al mostrar el video' });
     }
   });
 
@@ -30,7 +27,7 @@ router.get('/list',
       const list = await listFiles(dirPhat)
       res.status(200).send(list);
     } catch (error) {
-      res.status(500).send({ message: 'Error al listar las imágenes' });
+      res.status(500).send({ message: 'Error al listar los videos' });
     }
   })
 
@@ -41,8 +38,13 @@ router.get('/last',
       console.log('file', file);
       res.sendFile(file, { root: dirPhat });
     } catch (error) {
-      res.status(500).send({ message: 'Error al listar las imágenes' });
+      res.status(500).send({ message: 'Error al listar los videos' });
     }
   })
+
+router.get('/createVideo', (req, res) => {
+  initCreateVideo();
+  res.send('Video creado');
+})
 
 export default router;

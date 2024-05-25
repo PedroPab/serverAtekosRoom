@@ -2,6 +2,7 @@ import express from 'express';
 import routes from './routes/index.js';
 import routesRoom from './routes/room/index.js';
 import routesImg from './routes/img/index.js';
+import routesVid from './routes/vid/index.js';
 import { errorBoomHandler, errorHandler } from './middlewares/errorHandler/index.js';
 
 import path from 'path';
@@ -29,6 +30,7 @@ app.use(express.static('/public'));
 app.use('/', routes);
 app.use('/room', routesRoom);
 app.use('/img', routesImg);
+app.use('/vid', routesVid);
 
 
 //middlewares para errores
