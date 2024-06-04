@@ -19,6 +19,8 @@ jobs:
           # Railway Token for Deployment
           railway_token: ${{ secrets.RAILWAY_API_TOKEN }}
           # The specific service target
+          service: "my-service-atekos"
+
 
       - name: Log in to Railway
         env:
