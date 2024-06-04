@@ -1,0 +1,30 @@
+name: Deploy to Railway
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Railway
+        env:
+          RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
+        run: |
+          echo "${{ secrets.RAILWAY_API_TOKEN }}" | railway login
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t server-atekos .
+          docker tag server-atekos registry.railway.app/server-atekos:latest
+          docker push registry.railway.app/server-atekos:latest
+
+      - name: Deploy to Railway
+        run: |
+          railway up --detach
