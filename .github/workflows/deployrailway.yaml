@@ -13,6 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+
+      # - name: Railway Deploy
+      #   uses: bervProject/railway-deploy@0.1.2-beta
+      #   with:
+      #     # Railway Token for Deployment
+      #     railway_token: ${{ secrets.RAILWAY_API_TOKEN }}
+      #     # The specific service target
+      #     service: "my-service-atekos"
+
       - name: Log in to Railway
         env:
           RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
