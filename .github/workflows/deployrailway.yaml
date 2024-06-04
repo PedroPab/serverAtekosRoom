@@ -13,14 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-
-      # - name: Railway Deploy
-      #   uses: bervProject/railway-deploy@0.1.2-beta
-      #   with:
-      #     # Railway Token for Deployment
-      #     railway_token: ${{ secrets.RAILWAY_API_TOKEN }}
-      #     # The specific service target
-      #     service: "my-service-atekos"
+      - name: Deploy to Railway
+  # You may pin to the exact commit or the version.
+  # uses: jzeuzs/action-railway@b7bad8e07bcb36d2a21f90f2ee6b2510125a6948
+        uses: jzeuzs/action-railway@v1.1.4
+        with:
+    # The Railway Token
+         railway_token: ${{ secrets.RAILWAY_API_TOKEN }}
+          
 
       - name: Log in to Railway
         env:
