@@ -1,9 +1,9 @@
 import { Room } from "../../class/room/index.js";
-import StorebaseService from "../../database/index.js";
-import { COLLECTIONS } from "../../utils/collectiosNames/index.js";
+import StoreBaseService from "../../database/index.js";
+import { COLLECTIONS } from "../../utils/collectionNames/collectionNames.js";
 import Logs from "../../utils/logColor/index.js";
 import { socketEventIdRoom } from "../../websocket/events/rooms.js";
-const Data = new StorebaseService()
+const Data = new StoreBaseService()
 
 async function createRoom(id) {
   try {
@@ -11,7 +11,7 @@ async function createRoom(id) {
     //guardamos el nuevo room en la base de datos
     const save = await Data.setValue(`${COLLECTIONS.room}-${id}`, room)
 
-    //guardamos la nueva el nuevo id en la lsita de ids de los rooms
+    //guardamos el nuevo id en la lista de ids de los rooms
     let listRooms = await Data.getValue(COLLECTIONS.rooms)
 
     if (!listRooms) listRooms = []

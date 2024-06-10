@@ -1,16 +1,13 @@
 import multer from 'multer';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import fs from 'fs';
+import path from 'path';
+import { __dirname } from '../../../dirname.js';
 
-// Configurar __dirname para ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // const uploadPath = path.join('public/img');
-    const uploadPath = path.join(__dirname, '../../../public', 'img');
+    const uploadPath = path.join(__dirname, 'img');
     fs.mkdir(uploadPath, { recursive: true }, (err) => {
       if (err) {
         return cb(err);

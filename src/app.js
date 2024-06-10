@@ -6,15 +6,13 @@ import routesVid from './routes/vid/index.js';
 import { errorBoomHandler, errorHandler } from './middlewares/errorHandler/index.js';
 
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { __dirname } from '../dirname.js';
 
 const app = express();
 
-app.use('/public/img', express.static(path.join(__dirname, '../public/img')));
+//hacer publica la carpeta public
+app.use(express.static(path.join(__dirname, 'public')));
+
 //mostrar un log de todos datos que llegan al servidor
 app.use((req, res, next) => {
   console.log('Method: ', req.method);
@@ -24,14 +22,10 @@ app.use((req, res, next) => {
   next();
 })
 
-//hacer publica la carpeta public
-app.use(express.static('/public'));
-
 app.use('/', routes);
 app.use('/room', routesRoom);
 app.use('/img', routesImg);
 app.use('/vid', routesVid);
-
 
 //middlewares para errores
 app.use(errorBoomHandler);

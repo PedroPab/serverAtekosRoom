@@ -1,14 +1,17 @@
 {
   "name": "server-atekos-room",
   "version": "1.0.0",
-  "description": "El servidor principal para mis proyectos de domitica, robotica, electronica. Para tener mi propio servicios personalizado",
+  "description": "El servidor principal para mis proyectos de domotica, robótica, electronica. Para tener mi propio servicios personalizado",
   "main": "src/server.js",
   "type": "module",
   "scripts": {
     "start": "export NODE_ENV=production ; node src/server.js",
     "dev": "export NODE_ENV=development ; nodemon src/server.js",
     "deploy": "gcloud beta app deploy --no-cache",
-    "log": "gcloud app logs tail -s default"
+    "log": "gcloud app logs tail -s default",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "open:coverage": "open coverage/lcov-report/index.html"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
@@ -20,7 +23,14 @@
     "ws": "^8.16.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "babel-jest": "^29.7.0",
+    "babel-plugin-transform-import-meta": "^2.2.1",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^7.0.0"
   },
   "repository": {
     "type": "git",

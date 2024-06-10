@@ -1,15 +1,12 @@
 import ffmpeg from 'fluent-ffmpeg';
 import path from 'path';
 import fs from 'fs';
-import { fileURLToPath } from 'url';
+import { __dirname } from '../../../dirname.js';
 
-// Obtener la ruta del directorio actual
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Ruta donde se encuentran tus imágenes
-const imagesPath = path.join(__dirname, './../../../public/img');
-const outputPath = path.join(__dirname, './../../../public/vid');
+const imagesPath = path.join(__dirname, '/public/img');
+const outputPath = path.join(__dirname, '/public/vid');
 
 const getImagesFromFolder = (folderPath) => {
   try {

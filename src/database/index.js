@@ -2,7 +2,7 @@
 import Database from "./localDatabase/index.js"
 
 
-class StorebaseService {
+class StoreBaseService {
   constructor() {
     //aqui cambiamos la clase que se encarfa de las consultas de la base de datos (por si las combiamos)
     this.Store = new Database()
@@ -50,4 +50,4 @@ class StorebaseService {
   }
 }
 
-export default StorebaseService
+export default StoreBaseService
