@@ -9,12 +9,13 @@ describe('Test global app', () => {
     server.close();
   });
   beforeAll(() => {
-    server = app.listen(3000);
+    server = app.listen(3045);
   });
 
   //test para verificar que la app esta corriendo
   it('should return 200', async () => {
     const response = await request(app).get('/');
+    console.log("🚀 ~ it ~ response:", response)
     expect(response.statusCode).toBe(200);
   });
 

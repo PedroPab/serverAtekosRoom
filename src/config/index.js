@@ -6,7 +6,7 @@ import { __dirname } from './../../dirname.js';
 
 const environment = process.env.NODE_ENV || 'development';
 
-const envFile = resolve(__dirname, `/.env.${environment}`);
+const envFile = resolve(__dirname, `.env.${environment}`);
 dotenvConfig({ path: envFile });
 
 console.log(`corriendo en ${environment}`);
