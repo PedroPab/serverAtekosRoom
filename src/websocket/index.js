@@ -7,8 +7,9 @@ export default function setupWebSocket(server) {
 
   const wss = new WebSocketServer({ server });
 
-  wss.on('connection', function connection(ws) {
-    Logs.logInfo(`se conecto un nuevo websocket ${ws._socket.remoteAddress}`)
+  wss.on('connection', function connection(ws, req) {
+    const remoteAddress = req.socket.remoteAddress;
+    Logs.logInfo(`se conecto un nuevo websocket ${remoteAddress}`)
 
     let userId; // Identificador único del cliente
 
@@ -38,6 +39,7 @@ export default function setupWebSocket(server) {
               clients[subscriber].send(JSON.stringify(msg));
             });
           }
+          break;
         default:
           Logs.logInfo(msg)
           break;
@@ -45,7 +47,7 @@ export default function setupWebSocket(server) {
     });
 
     ws.on('close', () => {
-      Logs.logError(`se desconecto el websocket ${ws._socket.remoteAddress}, con el id ${userId}`)
+      Logs.logError(`se desconecto el websocket ${remoteAddress}, con el id ${userId}`)
       // Limpiar al cliente de todas las suscripciones y la lista de clientes
       Object.keys(subscriptions).forEach(event => {
         subscriptions[event] = subscriptions[event].filter(subscriber => subscriber !== userId);

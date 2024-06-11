@@ -1,5 +1,5 @@
 import express from 'express';
-import * as controllers from '../../controllers/index.js';
+import * as controllers from '../../controllers/helloWord/index.js';
 
 const router = express.Router();
 
