@@ -1,5 +1,5 @@
 import express from 'express';
-import routes from './routes/index.js';
+import routes from './routes/helloWord/index.js';
 import routesRoom from './routes/room/index.js';
 import routesImg from './routes/img/index.js';
 import routesVid from './routes/vid/index.js';
@@ -7,6 +7,7 @@ import { errorBoomHandler, errorHandler } from './middlewares/errorHandler/index
 
 import path from 'path';
 import { __dirname } from '../dirname.js';
+import router from './routes/routes.js';
 
 const app = express();
 
@@ -22,10 +23,7 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use('/', routes);
-app.use('/room', routesRoom);
-app.use('/img', routesImg);
-app.use('/vid', routesVid);
+router(app);
 
 //middlewares para errores
 app.use(errorBoomHandler);

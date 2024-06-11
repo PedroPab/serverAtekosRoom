@@ -10,8 +10,16 @@ const router = express.Router();
 const dirPhat = './public/img';
 
 router.post('/', upload.single('photo'), uploadPhoto);
-router.get('/', upload.single('photo'), uploadPhoto);
+// router.get('/', upload.single('photo'), uploadPhoto);
 
+router.get('/',
+  (req, res) => {
+    try {
+      res.status(200).send({ message: 'Ruta de imágenes' });
+    } catch (error) {
+      res.status(500).send({ message: 'Error al mostrar la ruta de imágenes' });
+    }
+  });
 
 router.get('/id/:id',
   async (req, res) => {

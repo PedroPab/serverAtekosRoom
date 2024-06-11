@@ -1,4 +1,4 @@
-import { Room } from "../../class/room/index.js";
+import { Room } from "../../class/Room/Room.js";
 import StoreBaseService from "../../database/index.js";
 import { COLLECTIONS } from "../../utils/collectionNames/collectionNames.js";
 import Logs from "../../utils/logColor/index.js";

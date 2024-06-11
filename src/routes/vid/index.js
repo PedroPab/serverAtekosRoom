@@ -7,8 +7,15 @@ import { lastFile } from '../../functions/directoryAndFile/lastFile/index.js';
 const router = express.Router();
 
 const dirPhat = './public/vid';
-// router.post('/', upload.single('photo'), uploadPhoto);
-// router.get('/', upload.single('photo'), uploadPhoto);
+
+router.get('/',
+  (req, res) => {
+    try {
+      res.status(200).send({ message: 'Ruta de videos' });
+    } catch (error) {
+      res.status(500).send({ message: 'Error al mostrar la ruta de videos' });
+    }
+  });
 
 router.get('/id/:id',
   async (req, res) => {
