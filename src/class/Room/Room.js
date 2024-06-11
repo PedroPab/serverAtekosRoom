@@ -21,8 +21,7 @@ export class Room {
 
   }
   update(data) {
-    //debemos de actualisar solo los parametro que ya esablecidos
-
+    //debemos de actualizar solo los parametros que mandamos
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
         this[key] = data[key];
