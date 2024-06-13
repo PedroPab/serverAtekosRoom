@@ -7,7 +7,7 @@ import { __dirname } from '../../../dirname.js';
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // const uploadPath = path.join('public/img');
-    const uploadPath = path.join(__dirname, 'img');
+    const uploadPath = path.join(__dirname, 'public/img');
     fs.mkdir(uploadPath, { recursive: true }, (err) => {
       if (err) {
         return cb(err);
