@@ -4,7 +4,7 @@ import logsDetails from "./logsDetails/logsDetails.js";
 import setPublicFolder from "./setPublicFolder/setPublicFolder.js";
 
 const middlewares = (app) => {
-  // logsDetails(app);
+  logsDetails(app);
   setPublicFolder(app, 'public');
 }
 
