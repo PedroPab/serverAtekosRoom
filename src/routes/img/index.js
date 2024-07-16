@@ -4,7 +4,7 @@ import { uploadPhoto } from '../../controllers/img/uploadPhoto.js';
 import upload from '../../controllers/img/multer.js';
 import { listFiles } from '../../functions/directoryAndFile/listFiles/index.js';
 import { lastFile } from '../../functions/directoryAndFile/lastFile/index.js';
-
+import { deleteFile } from '../../functions/directoryAndFile/deleteFile/index.js';
 const router = express.Router();
 
 const dirPhat = './public/img';
@@ -52,5 +52,21 @@ router.get('/last',
       res.status(500).send({ message: 'Error al listar las imágenes' });
     }
   })
+
+//delete img
+router.get('/delete/:id',
+  async (req, res) => {
+    try {
+      const nameFile = req.params.id
+      const path = `${dirPhat}/${nameFile
+        }`;
+      debugger
+      await deleteFile(path);
+      res.status(200).send({ message: 'Imagen eliminada' });
+    } catch (error) {
+      res.status(500).send({ message: 'Error al eliminar la imagen' });
+    }
+  }
+);
 
 export default router;
