@@ -177,3 +177,4 @@ public/vid/*
 
 # Coverage test from jest
 /coverage
+.servicesKeyBucket.json

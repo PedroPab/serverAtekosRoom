@@ -3,6 +3,7 @@ import Logs from "../../utils/logColor/index.js";
 
 export const errorBoomHandler = (err, req, res, next) => {
   Logs.logInfo(`[errorBoomHandler]`)
+  console.log('err', err)
 
   if (Boom.isBoom(err)) {
     Logs.logError(err.output.payload);
