@@ -6,7 +6,7 @@ import ENV from '../../../config/index.js';
 const uploadHandler = multer({
   storage: new MulterGoogleCloudStorage({
     projectId: ENV.PROJECT_ID,
-    keyFilename: ENV.KEY_FILE_NAME,
+    key: ENV.SERVICES_KEY_BUCKET,
     bucket: ENV.BUCKET_NAME,
     emulator: ENV.USE_EMULATOR ? 'localhost:8080' : undefined,
     filename: (req, file, cb) => {
