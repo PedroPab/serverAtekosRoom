@@ -1,20 +1,19 @@
-import * as multer from 'multer';
-import * as express from 'express';
-import * as MulterGoogleCloudStorage from 'multer-cloud-storage';
-
-import filename from '../filename.js';
+import multer from 'multer';
+import bucketGoogleCloudStorage from 'multer-cloud-storage';
+const MulterGoogleCloudStorage = bucketGoogleCloudStorage.default;
+import ENV from '../../../config/index.js';
 
 const uploadHandler = multer({
-  storage: new MulterGoogleCloudStorage()
+  storage: new MulterGoogleCloudStorage({
+    projectId: ENV.PROJECT_ID,
+    keyFilename: ENV.KEY_FILE_NAME,
+    bucket: ENV.BUCKET_NAME,
+    emulator: ENV.USE_EMULATOR ? 'localhost:8080' : undefined,
+    filename: (req, file, cb) => {
+      cb(null, `${Date.now()}-${file.originalname}`);
+    },
+    destination: 'img'
+  })
 });
-
-// const upload = new MulterGoogleCloudStorage({
-//   projectId: 'atekos-369512',
-//   keyFilename: '.servicesKeyBucket.json',
-//   bucket: 'server-atekos-bucket',
-//   filename: filename,
-//   destination: 'img'
-// })
-
 
 export default uploadHandler;
