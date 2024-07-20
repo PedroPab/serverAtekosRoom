@@ -8,7 +8,6 @@ const uploadHandler = multer({
     projectId: ENV.PROJECT_ID,
     key: ENV.SERVICES_KEY_BUCKET,
     bucket: ENV.BUCKET_NAME,
-    emulator: ENV.USE_EMULATOR ? 'localhost:8080' : undefined,
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}-${file.originalname}`);
     },
