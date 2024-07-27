@@ -1,3 +1,5 @@
+import generateId from "../utilsShare/generateIds"
+
 /**
  * @param {Object} objet
  * @param {String} param0.id
@@ -15,13 +17,13 @@ export class Room {
    * @param {String} param0.description
    */
   constructor({
-    id = null,
+    id = generateId(),
     name = '',
     description = '',
   }) {
     this.id = id
     // this.type = type
-    this.name = name || id
+    this.name = name || this.id
     this.description = description || ''
 
     this.data = {}
