@@ -6,15 +6,19 @@ import room from './room/index.js';
 import img from './img/index.js';
 import vid from './vid/index.js';
 
+import RoomRouter from '../rooms/infrastructure/routes/RoomRoutes.js';
+
 const router = (app) => {
   const router = express.Router();
 
   app.use('/api/v1', router);
   app.use('/', helloWord);
   router.use('/helloWord', helloWord);
-  router.use('/room', room);
-  router.use('/img', img);
-  router.use('/vid', vid);
+  // router.use('/rooms', room);
+  router.use('/imgs', img);
+  router.use('/vids', vid);
+
+  router.use('/rooms', RoomRouter);
 }
 
 export default router;
