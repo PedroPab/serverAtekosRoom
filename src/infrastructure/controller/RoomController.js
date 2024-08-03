@@ -1,21 +1,16 @@
-import CreateRoom from '../../application/use_cases/CreateRoom.js';
-import GetAllRooms from '../../application/use_cases/GetAllRooms.js';
-import GetRoomById from '../../application/use_cases/GetRoomById.js';
-import UpdateRoom from '../../application/use_cases/UpdateRoom.js';
-import LocalRoomRepository from '../repository/localRoomRepository.js';
-import RoomService from '../../domain/services/RoomService.js';
+
 
 class RoomController {
-  constructor() {
-    //repository
-    this.roomRepository = new LocalRoomRepository();
-    //service
-    this.roomService = new RoomService({ roomRepository: this.roomRepository });
-    //use cases
-    this.createRoom = new CreateRoom(this.roomService);
-    this.getAllRooms = new GetAllRooms(this.roomService);
-    this.getRoomById = new GetRoomById(this.roomService);
-    this.updateRoom = new UpdateRoom(this.roomService);
+  constructor({
+    createRoom,
+    getAllRooms,
+    getRoomById,
+    update
+  }) {
+    this.createRoom = createRoom;
+    this.getAllRooms = getAllRooms;
+    this.getRoomById = getRoomById;
+    this.updateRoom = update;
   }
 
   async create(req, res) {
@@ -42,7 +37,8 @@ class RoomController {
 
   async getById(req, res) {
     try {
-      const room = await this.getRoomById.execute({ id: req.params.id });
+      const id = req.params.id;
+      const room = await this.getRoomById.execute(id);
       res.status(200).json(room);
     } catch (error) {
       res.status(404).json({ error: error.message });

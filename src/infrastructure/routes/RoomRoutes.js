@@ -1,13 +1,12 @@
 import express from 'express';
-import RoomController from '../controller/RoomController.js';
+import roomController from '../dependencies/initRoom.js';
 
 const router = express.Router();
-const roomController = new RoomController();
 
-router.post('/', (req, res) => roomController.create(req, res));
-router.get('/create', (req, res) => roomController.create(req, res));
-router.get('/', (req, res) => roomController.getAll(req, res));
-router.get('/:id', (req, res) => roomController.getById(req, res));
-router.put('/:id', (req, res) => roomController.update(req, res));
+router.post('/', roomController.create.bind(roomController));
+router.get('/create', roomController.create.bind(roomController));
+router.get('/', roomController.getAll.bind(roomController));
+router.get('/:id', roomController.getById.bind(roomController));
+router.put('/:id', roomController.update.bind(roomController));
 
 export default router;
