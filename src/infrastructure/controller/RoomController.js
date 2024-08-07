@@ -5,12 +5,14 @@ class RoomController {
     createRoom,
     getAllRooms,
     getRoomById,
-    update
+    update,
+    getParamRoom,
   }) {
     this.createRoom = createRoom;
     this.getAllRooms = getAllRooms;
     this.getRoomById = getRoomById;
     this.updateRoom = update;
+    this.getParamRoom = getParamRoom;
   }
 
   async create(req, res) {
@@ -40,6 +42,17 @@ class RoomController {
       const id = req.params.id;
       const room = await this.getRoomById.execute(id);
       res.status(200).json(room);
+    } catch (error) {
+      res.status(404).json({ error: error.message });
+    }
+  }
+
+  async getParam(req, res) {
+    try {
+      const id = req.params.id;
+      const param = req.params.param;
+      const rta = await this.getParamRoom.execute({ id, param });
+      res.status(200).json(rta);
     } catch (error) {
       res.status(404).json({ error: error.message });
     }
