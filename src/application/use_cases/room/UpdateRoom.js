@@ -4,7 +4,7 @@ class UpdateRoom {
   }
 
   async execute({ id, data }) {
-    return await this.roomRepository.update({ id, data });
+    return await this.roomRepository.update(id, data);
   }
 }
 

@@ -8,6 +8,7 @@ router.get('/create', roomController.create.bind(roomController));
 router.get('/', roomController.getAll.bind(roomController));
 //consultar un parámetro de un room
 router.get('/param/:id/:param', roomController.getParam.bind(roomController));
+router.get('/switchLight/:id', roomController.switchLight.bind(roomController));
 router.get('/:id', roomController.getById.bind(roomController));
 router.put('/:id', roomController.update.bind(roomController));
 

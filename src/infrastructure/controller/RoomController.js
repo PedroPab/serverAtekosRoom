@@ -7,12 +7,14 @@ class RoomController {
     getRoomById,
     update,
     getParamRoom,
+    switchLightRoom,
   }) {
     this.createRoom = createRoom;
     this.getAllRooms = getAllRooms;
     this.getRoomById = getRoomById;
     this.updateRoom = update;
     this.getParamRoom = getParamRoom;
+    this.switchLightRoom = switchLightRoom;
   }
 
   async create(req, res) {
@@ -57,7 +59,15 @@ class RoomController {
       res.status(404).json({ error: error.message });
     }
   }
-
+  async switchLight(req, res) {
+    try {
+      const id = req.params.id;
+      const rta = await this.switchLightRoom.execute({ id });
+      res.status(200).json(rta);
+    } catch (error) {
+      res.status(404).json({ error: error.message });
+    }
+  }
   async update(req, res) {
     try {
       const room = await this.updateRoom.execute({ id: req.params.id, data: req.body });

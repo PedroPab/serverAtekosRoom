@@ -1,4 +1,3 @@
-import Room from '../../../domain/models/RoomModel.js';
 
 class GetParamRoom {
   constructor({ roomRepository }) {
@@ -11,7 +10,7 @@ class GetParamRoom {
       if (!room) throw "Room not fount"
       //consultamos si el parámetro existe el el objeto
       const valueParam = room[param]
-      if (!valueParam) throw "Not fount"
+      if (valueParam == undefined) throw "Param not found"
       return valueParam
     } catch (error) {
       throw error;
