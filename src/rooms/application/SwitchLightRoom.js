@@ -1,4 +1,4 @@
-import Room from "../../../domain/models/RoomModel.js";
+import Room from "../domain/models/RoomModel.js";
 import CreateRoom from "./CreateRoom.js";
 import GetRoomById from "./GetRoomById.js";
 import UpdateRoom from "./UpdateRoom.js";

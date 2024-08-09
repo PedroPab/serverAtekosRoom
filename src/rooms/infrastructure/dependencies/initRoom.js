@@ -1,9 +1,9 @@
-import CreateRoom from '../../application/use_cases/room/CreateRoom.js';
-import GetAllRooms from '../../application/use_cases/room/GetAllRooms.js';
-import GetParamRoom from '../../application/use_cases/room/GetParamRoom.js';
-import GetRoomById from '../../application/use_cases/room/GetRoomById.js';
-import SwitchLightRoom from '../../application/use_cases/room/SwitchLightRoom.js';
-import UpdateRoom from '../../application/use_cases/room/UpdateRoom.js';
+import CreateRoom from './../../application/CreateRoom.js'
+import GetAllRooms from './../../application/GetAllRooms.js';
+import GetParamRoom from './../../application/GetParamRoom.js';
+import GetRoomById from './../../application/GetRoomById.js';
+import SwitchLightRoom from './../../application/SwitchLightRoom.js';
+import UpdateRoom from './../../application/UpdateRoom.js';
 // import LocalRoomRepository from '../repository/localRoomRepository.js';
 import RoomController from '../controller/RoomController.js';
 import RoomLocalMapRepository from '../repository/RoomLocalMapRepository.js';

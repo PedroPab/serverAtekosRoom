@@ -6,7 +6,7 @@ import room from './room/index.js';
 import img from './img/index.js';
 import vid from './vid/index.js';
 
-import RoomRouter from '../infrastructure/routes/RoomRoutes.js';
+import RoomRouter from './../rooms/infrastructure/routes/RoomRoutes.js';
 
 const router = (app) => {
   const router = express.Router();

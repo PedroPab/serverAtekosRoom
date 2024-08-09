@@ -1,4 +1,4 @@
-import Room from '../../../domain/models/RoomModel.js';
+import Room from '../domain/models/RoomModel.js';
 
 class CreateRoom {
   constructor({ roomRepository }) {

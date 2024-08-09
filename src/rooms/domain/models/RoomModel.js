@@ -1,4 +1,4 @@
-import generateId from "../utilsShare/generateIds.js"
+import generateId from "../../../utilsShare/generateIds.js"
 
 /**
  * @param {Object} objet
