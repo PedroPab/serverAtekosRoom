@@ -5,14 +5,14 @@ class RoomController {
     createRoom,
     getAllRooms,
     getRoomById,
-    update,
+    updateRoom,
     getParamRoom,
     switchLightRoom,
   }) {
     this.createRoom = createRoom;
     this.getAllRooms = getAllRooms;
     this.getRoomById = getRoomById;
-    this.updateRoom = update;
+    this.updateRoom = updateRoom;
     this.getParamRoom = getParamRoom;
     this.switchLightRoom = switchLightRoom;
   }
@@ -52,7 +52,7 @@ class RoomController {
   async getParam(req, res) {
     try {
       const id = req.params.id;
-      const param = req.params.param;
+      const param = req.query.param;
       const rta = await this.getParamRoom.execute({ id, param });
       res.status(200).json(rta);
     } catch (error) {
@@ -66,6 +66,24 @@ class RoomController {
       res.status(200).json(rta);
     } catch (error) {
       res.status(404).json({ error: error.message });
+    }
+  }
+  async modify(req, res) {
+    try {
+      const { id } = req.params
+      const { key, value, type } = req.query
+      //según el tipo de dato que se quiera modificar, se parsea
+      const parseValue = (type) => {
+        if (type === 'string') return value;
+        if (type === 'boolean') return value === 'true';
+        if (type === 'number') return Number(value);
+        return value;
+      }
+      const data = { [key]: parseValue(type) };
+      const room = await this.updateRoom.execute({ id, data });
+      res.status(200).json(room);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
     }
   }
   async update(req, res) {

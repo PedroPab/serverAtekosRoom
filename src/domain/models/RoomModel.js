@@ -17,11 +17,14 @@ export class Room {
    * @param {String} param0.description
    */
   constructor({
-    id = generateId(),
+    id,
     name = '',
     description = '',
+    dateCreate,
+    dateUpdate,
+    state = true,
   }) {
-    this.id = id
+    this.id = id || generateId()
     // this.type = type
     this.name = name || this.id
     this.description = description || ''
@@ -30,10 +33,10 @@ export class Room {
 
     const date = new Date()
 
-    this.dateCreate = date
-    this.dateUpdate = date
+    this.dateCreate = dateCreate || date
+    this.dateUpdate = dateUpdate || date
 
-    this.state = true
+    this.state = state
   }
 }
 
