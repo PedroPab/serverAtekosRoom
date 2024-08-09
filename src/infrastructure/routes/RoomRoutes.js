@@ -9,7 +9,7 @@ router.get('/', roomController.getAll.bind(roomController));
 //consultar un parámetro de un room
 router.get('/:id/findParam', roomController.getParam.bind(roomController));
 router.get('/:id/switchLight', roomController.switchLight.bind(roomController));
-router.patch('/:id/modify', roomController.modify.bind(roomController));
+router.post('/:id/modify', roomController.modify.bind(roomController));
 router.get('/:id', roomController.getById.bind(roomController));
 router.put('/:id', roomController.update.bind(roomController));
 
