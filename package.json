@@ -16,6 +16,7 @@
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "chalk": "^5.3.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.6.0",
     "express": "^4.19.2",
     "fluent-ffmpeg": "^2.1.3",
