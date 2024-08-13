@@ -7,6 +7,7 @@ import img from './img/index.js';
 import vid from './vid/index.js';
 
 import RoomRouter from './../rooms/infrastructure/routes/RoomRoutes.js';
+import ImgsRouter from './../imgs/infrastructure/routes/ImgRoutes.js';
 
 const router = (app) => {
   const router = express.Router();
@@ -19,6 +20,7 @@ const router = (app) => {
   router.use('/vids', vid);
 
   router.use('/rooms', RoomRouter);
+  router.use('/imgsAtekos', ImgsRouter);
 }
 
 export default router;
