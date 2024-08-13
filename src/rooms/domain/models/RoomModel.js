@@ -22,7 +22,7 @@ export class Room {
     description = '',
     dateCreate,
     dateUpdate,
-    state = true,
+    state,
   }) {
     this.id = id || generateId()
     // this.type = type
@@ -36,7 +36,7 @@ export class Room {
     this.dateCreate = dateCreate || date
     this.dateUpdate = dateUpdate || date
 
-    this.state = state
+    this.state = state ?? true
   }
 }
 
