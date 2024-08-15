@@ -13,8 +13,8 @@ export class ImgLocalFilesRepository {
   }
 
   //devolvemos el un objeto con la url de la imagen
-  async publish(file) {
-    const filePath = path.join(this.publicFolderPath, file.name);
+  async publish({ fileName, fileData }) {
+    const filePath = path.join(this.publicFolderPath, fileName);
     const fileStream = fs.createWriteStream(filePath);
 
     return new Promise((resolve, reject) => {
@@ -29,7 +29,7 @@ export class ImgLocalFilesRepository {
         });
       });
 
-      fileStream.write(file.data);
+      fileStream.write(fileData);
       fileStream.end();
     });
   }

@@ -11,9 +11,11 @@ class CreateImg {
 
   async execute({ id, data }) {
     try {
-
       //publicar imagen o guardar en algún lado
-      const imgDataPublic = await this.publishImgRepository.publish({ id, data });
+      const file = data.file;
+      // creo que deberíamos de revisar si ya existe una imagen con ese id
+      const options = { fileName: id, fileData: file }
+      const imgDataPublic = await this.publishImgRepository.publish(options);
 
       const img = new ImgArtikuz({
         id,
