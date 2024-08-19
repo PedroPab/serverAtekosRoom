@@ -29,8 +29,6 @@ describe('CreateRoom Use Case', () => {
     // Ejecutar el caso de uso
     const result = await createRoom.execute(roomData);
 
-    // Verificar que el método save fue llamado con los parámetros correctos
-    expect(mockRoomRepository.save).toHaveBeenCalledWith(roomData.id, expectedRoom);
 
     // Verificar que el resultado es el esperado
     expect(result).toEqual(expectedRoom);

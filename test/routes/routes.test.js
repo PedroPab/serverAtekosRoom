@@ -1,6 +1,6 @@
 import request from 'supertest';
 import express from 'express';
-import router from '../../src/routes/routes.js';
+import router from '../../src/routes/index.js';
 
 describe('Routes', () => {
   let app;
@@ -11,22 +11,17 @@ describe('Routes', () => {
   });
 
   it('should respond to GET method on version/helloWord', async () => {
-    const res = await request(app).get(`${version}/helloWord`);
+    const res = await request(app).get(`${version}/`);
     expect(res.statusCode).toEqual(200);
   });
 
   it('should respond to GET method on version/room', async () => {
-    const res = await request(app).get(`${version}/room`);
+    const res = await request(app).get(`${version}/rooms`);
     expect(res.statusCode).toEqual(200);
   });
 
   it('should respond to GET method on version/img', async () => {
-    const res = await request(app).get(`${version}/img`);
-    expect(res.statusCode).toEqual(200);
-  });
-
-  it('should respond to GET method on version/vid', async () => {
-    const res = await request(app).get(`${version}/vid`);
+    const res = await request(app).get(`${version}/imgsAtekos/Hello`);
     expect(res.statusCode).toEqual(200);
   });
 
