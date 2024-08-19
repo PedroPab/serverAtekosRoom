@@ -1,5 +1,5 @@
 import RoomRepository from "../../domain/repository/RoomRepository.js";
-import LocalMapRepository from "./repositories/LocalMapRepository.js";
+import LocalMapRepository from "./../../../utilsShare/repositories/LocalMapRepository.js";
 
 const db = new LocalMapRepository();
 
