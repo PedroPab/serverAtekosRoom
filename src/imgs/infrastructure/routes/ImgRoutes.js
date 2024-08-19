@@ -5,9 +5,9 @@ import imgController from '../dependencies/initImg.js';
 
 const router = express.Router();
 
-//usaremos multer para poder manejar archivos
-const upload = multer({ dest: 'public', limits: { fileSize: 1000000 } });
-
+// Configurar multer para almacenar los archivos en memoria (Buffer)
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 router.get('/Hello', (req, res) => {
   res.send('Hello World!');

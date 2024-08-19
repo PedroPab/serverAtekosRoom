@@ -33,6 +33,19 @@ class ImgLocalMapRepository extends ImgRepository {
     return rta;
   }
 
+  //existe ya  un elemento con el mismo id
+  async exist(id) {
+    if (!id) {
+      throw new Error("ID es requerido");
+    }
+
+    const rta = db.getById(id);
+    if (!rta) {
+      return false;
+    }
+    return true
+  }
+
   async update(id, data) {
     if (!id || !data) {
       throw new Error("ID y datos son requeridos");

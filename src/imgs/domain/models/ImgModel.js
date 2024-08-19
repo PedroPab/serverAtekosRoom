@@ -1,5 +1,6 @@
 class ImgArtikuz {
   constructor({
+    id,
     urlPublic,
     urlPrivate,
     name,
@@ -8,6 +9,7 @@ class ImgArtikuz {
     dateUpdate,
     state,
   }) {
+    this.id = id;
     this.urlPublic = urlPublic;
     this.urlPrivate = urlPrivate;
     this.name = name;

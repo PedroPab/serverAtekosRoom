@@ -11,17 +11,26 @@ class CreateImg {
 
   async execute({ id, data }) {
     try {
+
+      // creo que deberíamos de revisar si ya existe una imagen con ese id
+      if (await this.imgRepository.exist(id)) {
+        throw new Error('Ya existe una imagen con ese id');
+      }
+
       //publicar imagen o guardar en algún lado
       const file = data.file;
-      // creo que deberíamos de revisar si ya existe una imagen con ese id
-      const options = { fileName: id, fileData: file }
+      const buffer = file.buffer;
+      const options = { fileName: id, buffer }
       const imgDataPublic = await this.publishImgRepository.publish(options);
+
 
       const img = new ImgArtikuz({
         id,
         ...data,
         urlPublic: imgDataPublic.urlPublic,
         urlPrivate: imgDataPublic.urlPrivate,
+        dateCreate: new Date(),
+        dateUpdate: new Date(),
       });
       return await this.imgRepository.save(img.id, img);
     } catch (error) {

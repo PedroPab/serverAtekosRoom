@@ -26,8 +26,13 @@ class ImgController {
 
   async create(req, res) {
     try {
-      //agregamos la imagen  a la data
-      const file = req.file;
+      const nameImg = `${Date.now()}-${req.file.originalname}`;
+
+      const file = {
+        buffer: req.file.buffer,
+        name: nameImg,
+        mimetype: req.file.mimetype,
+      };
       const id = file.name
       const data = {
         ...req.body,
