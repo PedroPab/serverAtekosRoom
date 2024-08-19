@@ -26,8 +26,14 @@ class ImgController {
 
   async create(req, res) {
     try {
-      const img = req.body;
-      const newImg = await this.createImg.execute(img);
+      //agregamos la imagen  a la data
+      const file = req.file;
+      const id = file.name
+      const data = {
+        ...req.body,
+        file,
+      };
+      const newImg = await this.createImg.execute({ id, data });
       res.status(201).json(newImg);
     } catch (error) {
       res.status(400).json({ error: error.message });

@@ -1,37 +1,76 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import publishImgRepository from '../../domain/repository/publishImgRepository.js';
+import { __dirname } from '../../../../dirname.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export class ImgLocalFilesRepository {
-  constructor() {
-    this.dir = 'imgs'
-    this.publicFolderPath = path.join(__dirname, '../../../public/', this.dir);
+export class ImgLocalFilesRepository extends publishImgRepository {
+  constructor({ directoryFolder = 'img' }) {
+    super();
+    this.directoryFolder = directoryFolder;
+    this.publicFolderPath = this._resolvePublicFolderPath();
   }
 
-  //devolvemos el un objeto con la url de la imagen
-  async publish({ fileName, fileData }) {
-    const filePath = path.join(this.publicFolderPath, fileName);
-    const fileStream = fs.createWriteStream(filePath);
+  async publish({ filePath, fileName, buffer }) {
+    try {
+      await this._ensureDirectoryExists(this.publicFolderPath);
 
+      filePath = this._getFilePath(filePath, fileName);
+
+      await this._writeFile(filePath, buffer);
+
+      return this._generateResponse(filePath);
+    } catch (error) {
+      this._handleError(error);
+    }
+  }
+
+  _resolvePublicFolderPath() {
+    return path.resolve(__dirname, 'public', this.directoryFolder);
+  }
+
+  _getFilePath(filePath, fileName) {
+    return filePath || path.join(this.publicFolderPath, fileName);
+  }
+
+  async _writeFile(filePath, buffer) {
     return new Promise((resolve, reject) => {
-      fileStream.on('error', (error) => {
-        reject(error);
+      const fileStream = fs.createWriteStream(filePath);
+
+      fileStream.on('error', reject);
+
+      fileStream.write(buffer, (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
       });
 
-      fileStream.on('finish', () => {
-        resolve({
-          urlPublic: `http://localhost:8080/${this.dir}/${file.name}`,
-          urlPrivate: filePath
-        });
-      });
-
-      fileStream.write(fileData);
       fileStream.end();
     });
+  }
+
+  _generateResponse(filePath) {
+    //devover la ruta relativa de filePath (desde la raíz del proyecto)
+
+    return {
+      urlPublic: path.join('/', this.directoryFolder, path.basename(filePath)),
+      urlPrivate: path.join('/', this.directoryFolder, path.basename(filePath))
+    };
+  }
+
+  async _ensureDirectoryExists(directoryPath) {
+    try {
+      await fs.promises.mkdir(directoryPath, { recursive: true });
+    } catch (error) {
+      if (error.code !== 'EEXIST') {
+        throw error;
+      }
+    }
+  }
+
+  _handleError(error) {
+    throw new Error('Error al publicar la imagen');
   }
 }
 
