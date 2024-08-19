@@ -1,6 +1,6 @@
 import express from 'express';
 
-import router from './routes/routes.js';
+import router from './routes/index.js';
 import middlewaresErrors from './middlewares/middlewaresErrors.js';
 import middlewares from './middlewares/middlewares.js';
 

@@ -2,8 +2,8 @@
 import express from 'express';
 
 
-import RoomRouter from './../rooms/infrastructure/routes/RoomRoutes.js';
-import ImgsRouter from './../imgs/infrastructure/routes/ImgRoutes.js';
+import RoomRouter from '../rooms/infrastructure/routes/RoomRoutes.js';
+import ImgsRouter from '../imgs/infrastructure/routes/ImgRoutes.js';
 
 const router = (app) => {
   const router = express.Router();

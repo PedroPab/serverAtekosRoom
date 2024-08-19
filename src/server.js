@@ -1,6 +1,6 @@
 import http from 'http';
 import app from './app.js';
-import ENV from './config/index.js'
+import ENV from './config/dotEnv.js'
 import Logs from './utils/logColor/index.js';
 
 import setupWebsocketServer from './websocket/index.js';

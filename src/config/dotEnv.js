@@ -2,7 +2,7 @@
 import { config as dotenvConfig } from 'dotenv';
 import { resolve } from 'path';
 
-import { __dirname } from './../../dirname.js';
+import { __dirname } from '../../dirname.js';
 
 const environment = process.env.NODE_ENV || 'development';
 
