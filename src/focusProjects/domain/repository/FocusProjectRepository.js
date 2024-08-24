@@ -1,4 +1,4 @@
-class ImgRepository {
+class FocusProjectRepository {
 
   getAll() {
     throw new Error('Method not implemented');
@@ -12,11 +12,11 @@ class ImgRepository {
     throw new Error('Method not implemented')
   }
 
-  save(img) {
+  save(focusProject) {
     throw new Error('Method not implemented');
   }
 
-  update(id, img) {
+  update(id, focusProject) {
     throw new Error('Method not implemented');
   }
 
@@ -26,4 +26,4 @@ class ImgRepository {
 
 }
 
-export default ImgRepository;
+export default FocusProjectRepository;

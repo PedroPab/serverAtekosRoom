@@ -26,19 +26,8 @@ class FocusProjectController {
 
   async create(req, res) {
     try {
-      const nameFocusProject = `${Date.now()}-${req.file.originalname}`;
-
-      const file = {
-        buffer: req.file.buffer,
-        name: nameFocusProject,
-        mimetype: req.file.mimetype,
-      };
-      const id = file.name
-      const data = {
-        ...req.body,
-        file,
-      };
-      const newFocusProject = await this.createFocusProject.execute({ id, data });
+      const body = req.body
+      const newFocusProject = await this.createFocusProject.execute(body);
       res.status(201).json(newFocusProject);
     } catch (error) {
       res.status(400).json({ error: error.message });
