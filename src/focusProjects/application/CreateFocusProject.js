@@ -8,16 +8,16 @@ class CreateFocusProject {
   }
   async execute({ id, ...data }) {
     try {
-      return await this.getFocusProjectOrCreate(id, data);
+      return await this.retrieveOrCreateFocusProject(id, data);
     } catch (error) {
       throw error;
     }
   }
-  async getFocusProjectOrCreate(id, data) {
+  async retrieveOrCreateFocusProject(id, data) {
     try {
       const focusProjectFind = await this.getFocusProject(id)
       if (focusProjectFind) {
-        return focusProjectFind;
+        throw new Error('Error creating focus project');
       }
       const focusProjectCreated = await this.createFocusProject({ id, data });
       return focusProjectCreated;
@@ -27,9 +27,6 @@ class CreateFocusProject {
   }
   async getFocusProject(id) {
     try {
-      if (!id) {
-        return undefined
-      }
       return await this.focusProjectRepository.getById(id);
     } catch (error) {
       return undefined
