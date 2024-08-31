@@ -11,5 +11,7 @@ router.get('/Hello', (req, res) => {
 
 router.post('/', focusProjectController.create.bind(focusProjectController));
 
+router.post('/:id/element', focusProjectController.createFocusElement.bind(focusProjectController));
+
 
 export default router;

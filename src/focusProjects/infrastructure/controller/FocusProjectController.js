@@ -6,6 +6,7 @@ class FocusProjectController {
     createFocusProject,
     updateFocusProject,
     deleteFocusProject,
+    createFocusElementFromProject,
   }) {
     this.getAllFocusProjects = getAllFocusProjects;
     this.getIdFocusProject = getIdFocusProject;
@@ -13,6 +14,7 @@ class FocusProjectController {
     this.createFocusProject = createFocusProject;
     this.updateFocusProject = updateFocusProject;
     this.deleteFocusProject = deleteFocusProject;
+    this.createFocusElementFromProject = createFocusElementFromProject;
   }
 
   async getAll(req, res) {
@@ -29,6 +31,18 @@ class FocusProjectController {
       const body = req.body
       const newFocusProject = await this.createFocusProject.execute(body);
       res.status(201).json(newFocusProject);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
+  async createFocusElement(req, res) {
+    try {
+      const { id } = req.params;
+      const data = req.body;
+
+      const newFocusElement = await this.createFocusElementFromProject.execute({ focusProjectId: id, ...data });
+      res.status(201).json(newFocusElement);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
