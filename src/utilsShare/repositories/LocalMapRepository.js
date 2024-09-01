@@ -22,13 +22,29 @@ class LocalMapRepository {
   }
 
   async getByFilter({ key, option, value }) {
-    const result = [];
-    this.map.forEach((v, k) => {
-      if (v[option] === value) {
-        result.push(v);
+    const results = [];
+
+    const compare = (a, b, operator) => {
+      switch (operator) {
+        case '==': return a == b;
+        case '===': return a === b;
+        case '!=': return a != b;
+        case '!==': return a !== b;
+        case '>': return a > b;
+        case '>=': return a >= b;
+        case '<': return a < b;
+        case '<=': return a <= b;
+        default: return false;
       }
-    });
-    return result;
+    };
+
+    for (const [_, mapValue] of this.map.entries()) {
+      if (compare(mapValue[key], value, option)) {
+        results.push(mapValue);
+      }
+    }
+
+    return results;
   }
 
   async update(key, value) {

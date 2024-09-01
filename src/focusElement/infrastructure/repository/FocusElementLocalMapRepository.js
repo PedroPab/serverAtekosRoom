@@ -9,7 +9,7 @@ class FocusElementLocalMapRepository extends FocusProjectRepository {
       if (!id || !data) {
         throw new Error("ID y datos son requeridos");
       }
-      const rta = db.save(id, data)
+      const rta = await db.save(id, data)
       return rta;
     } catch (error) {
       throw error;
@@ -17,7 +17,7 @@ class FocusElementLocalMapRepository extends FocusProjectRepository {
   }
 
   async getAll() {
-    return db.getAll();
+    return await db.getAll();
   }
 
   async getById(id) {
@@ -25,11 +25,20 @@ class FocusElementLocalMapRepository extends FocusProjectRepository {
       throw new Error("ID es requerido");
     }
 
-    const rta = db.getById(id);
+    const rta = await db.getById(id);
     if (!rta) {
       throw new Error(`No se encontró la sala con ID: ${id}`);
     }
 
+    return rta;
+  }
+
+  async getFilter(filter) {
+    if (!filter) {
+      throw new Error("Filtro es requerido");
+    }
+
+    const rta = await db.getByFilter(filter);
     return rta;
   }
 

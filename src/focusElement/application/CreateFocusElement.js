@@ -6,7 +6,7 @@ class CreateFocusElement {
   }) {
     this.focusElementRepository = focusElementRepository;
   }
-  async execute({ id, ...data }) {
+  async execute({ id, data }) {
     try {
       return await this.retrieveOrCreateFocusElement(id, data);
     } catch (error) {
