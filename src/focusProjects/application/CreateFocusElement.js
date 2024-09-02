@@ -5,11 +5,13 @@ class CreateFocusElementFromProject {
   constructor({
     focusProjectRepository,
     focusElementRepository,
+    findFocusElement,
+    createFocusElement,
   }) {
     this.focusProjectRepository = focusProjectRepository;
     this.focusElementRepository = focusElementRepository;
-    this.findFocusElement = new FindFocusProject({ focusProjectRepository });
-    this.createFocusElement = new CreateFocusElement({ focusElementRepository });
+    this.findFocusElement = findFocusElement;
+    this.createFocusElement = createFocusElement;
   }
   async execute({ id, ...data }) {
     try {

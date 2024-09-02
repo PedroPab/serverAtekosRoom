@@ -40,10 +40,23 @@ class FocusProjectController {
 
   async createFocusElement(req, res) {
     try {
-      const { id } = req.params;
-      const data = req.body;
+      const { id: focusProjectId } = req.params;
+      const dataBody = req.body;
 
-      const newFocusElement = await this.createFocusElementFromProject.execute({ focusProjectId: id, ...data });
+      const nameImg = `${Date.now()}-${req.file.originalname}`;
+
+      const file = {
+        buffer: req.file.buffer,
+        name: nameImg,
+        mimetype: req.file.mimetype,
+      };
+
+      const data = {
+        ...req.body,
+        file,
+      };
+
+      const newFocusElement = await this.createFocusElementFromProject.execute({ focusProjectId, ...data });
       res.status(201).json(newFocusElement);
     } catch (error) {
       res.status(400).json({ error: error.message });

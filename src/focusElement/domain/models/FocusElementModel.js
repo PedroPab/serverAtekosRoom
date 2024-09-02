@@ -10,7 +10,8 @@ class FocusElement {
     dateUpdate,
     state,
     type,
-    data
+    data,
+    elementPureId,
   }) {
     this.id = id || ''
     this.focusProjectId = focusProjectId || ''
@@ -29,6 +30,7 @@ class FocusElement {
     }
 
     this.data = data || {}
+    this.elementPureId = elementPureId || ''
   }
 }
 

@@ -1,3 +1,4 @@
+import generateId from "../../utilsShare/generateIds.js";
 import ImgArtikuz from "../domain/models/ImgModel.js";
 
 class CreateImg {
@@ -13,6 +14,9 @@ class CreateImg {
     try {
 
       // creo que deberíamos de revisar si ya existe una imagen con ese id
+      if (!id) {
+        id = generateId();
+      }
       if (await this.imgRepository.exist(id)) {
         throw new Error('Ya existe una imagen con ese id');
       }
