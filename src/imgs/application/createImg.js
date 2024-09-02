@@ -24,7 +24,7 @@ class CreateImg {
       //publicar imagen o guardar en algún lado
       const file = data.file;
       const buffer = file.buffer;
-      const options = { fileName: id, buffer }
+      const options = { fileName: file.name, buffer }
       const imgDataPublic = await this.publishImgRepository.publish(options);
 
 
