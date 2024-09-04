@@ -4,6 +4,7 @@ class publishImgRepository {
   async publish({ filePhat, fileName, fileData }) {
     throw new Error("ERR_METHOD_NOT_IMPLEMENTED");
   }
+
 }
 
 export default publishImgRepository;

@@ -23,7 +23,7 @@ const router = (app) => {
   });
 
   router.use('/rooms', RoomRouter);
-  router.use('/imgsAtekos', ImgsRouter);
+  router.use('/imgs', ImgsRouter);
   router.use('/focusProjects', FocusProjectRouter);
 }
 

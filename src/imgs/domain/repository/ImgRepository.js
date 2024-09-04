@@ -4,7 +4,7 @@ class ImgRepository {
     throw new Error('Method not implemented');
   }
 
-  getId(id) {
+  getById(id) {
     throw new Error('Method not implemented');
   }
 

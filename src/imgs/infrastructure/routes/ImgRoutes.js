@@ -13,6 +13,8 @@ router.get('/Hello', (req, res) => {
   res.send('Hello World!');
 })
 
+router.get('/', imgController.getAll.bind(imgController));
+router.get('/:id', imgController.getId.bind(imgController));
 router.post('/', upload.single('photo'), imgController.create.bind(imgController));
 
 

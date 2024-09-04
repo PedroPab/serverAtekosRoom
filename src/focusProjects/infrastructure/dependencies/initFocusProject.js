@@ -4,7 +4,7 @@ import CreateFocusProject from '../../application/CreateFocusProject.js';
 import GetAllElementFromFocusProject from '../../application/GetAllElementFromFocusProject.js';
 
 //casos de uso Elements
-import createImg from '../../../imgs/infrastructure/dependencies/initCaseUsesImg.js';
+import { createImg } from '../../../imgs/infrastructure/dependencies/initCaseUsesImg.js';
 //repositorios
 import FocusProjectLocalMapRepository from '../repository/FocusProjectLocalMapRepository.js';
 import FocusElementLocalMapRepository from '../../../focusElement/infrastructure/repository/FocusElementLocalMapRepository.js';
