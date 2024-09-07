@@ -12,48 +12,15 @@
   <!-- Navbar -->
   <nav class="bg-blue-600 p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <!-- Logo o nombre, ahora es un enlace al Home -->
       <a href="/" class="text-white text-2xl font-bold">Atekos</a>
-
-      <!-- Icono del menú móvil -->
-      <div class="block lg:hidden">
-        <button id="menu-btn" class="text-white focus:outline-none">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Links del menú (pantalla grande) -->
       <ul class="hidden lg:flex space-x-4 text-white">
         <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
         <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
         <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
         <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
       </ul>
-
-      <!-- Menú desplegable para pantallas pequeñas -->
-      <div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 w-full bg-blue-600 text-white">
-        <ul class="flex flex-col space-y-2 p-4">
-          <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
-          <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
-          <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
-          <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
-        </ul>
-      </div>
     </div>
   </nav>
-
-  <script>
-    // Manejar el menú desplegable para pantallas pequeñas
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  </script>
-
 
   <!-- Contenido principal -->
   <div class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg">
@@ -64,25 +31,6 @@
       <!-- Las tarjetas de los proyectos se cargarán aquí -->
     </div>
   </div>
-  <!-- Footer -->
-  <footer class="bg-transparent p-4 mt-8 w-full text-center text-gray-800">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm">&copy; 2024 Atekos. Todos los derechos reservados ?</p>
-
-      <!-- Enlace a GitHub -->
-      <div class="flex items-center space-x-2 mt-4 md:mt-0">
-        <span class="text-sm">Sígueme en</span>
-        <a href="https://github.com/tuusuario" target="_blank" class="flex items-center hover:underline">
-          <!-- Ícono de GitHub (color oscuro) -->
-          <svg class="w-6 h-6 mr-1 fill-current text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.26.793-.577v-2.05c-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.238 1.84 1.238 1.07 1.834 2.806 1.305 3.492.997.108-.774.419-1.305.762-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.467-2.381 1.235-3.221-.124-.303-.535-1.524.116-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.004-.404c1.02.005 2.046.137 3.004.404 2.292-1.552 3.3-1.23 3.3-1.23.653 1.652.242 2.873.118 3.176.77.84 1.234 1.911 1.234 3.221 0 4.609-2.804 5.624-5.476 5.921.43.372.815 1.102.815 2.222v3.293c0 .319.192.694.801.576C20.566 21.8 24 17.303 24 12 24 5.373 18.627 0 12 0z" />
-          </svg>
-          <span>GitHub</span>
-        </a>
-      </div>
-    </div>
-  </footer>
 
   <script>
     // Función para formatear la fecha
@@ -107,10 +55,11 @@
         // Limpiar cualquier contenido existente
         projectCards.innerHTML = '';
 
-        // Iterar sobre los proyectos y crear las tarjetas
+        // Iterar sobre los proyectos y crear las tarjetas con enlace
         projects.forEach(project => {
-          const card = document.createElement('div');
-          card.classList.add('bg-white', 'rounded-lg', 'shadow-lg', 'p-4', 'flex', 'flex-col', 'justify-between');
+          const card = document.createElement('a');
+          card.href = `/html/viewElements.html?projectId=${project.id}`;  // Redirigir a la página de elementos del proyecto
+          card.classList.add('bg-white', 'rounded-lg', 'shadow-lg', 'p-4', 'flex', 'flex-col', 'justify-between', 'hover:shadow-xl', 'transition', 'cursor-pointer');
 
           card.innerHTML = `
             <div>

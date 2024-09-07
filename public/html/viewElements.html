@@ -62,6 +62,12 @@
   </footer>
 
   <script>
+    // Función para obtener el ID del proyecto desde la URL
+    function getProjectIdFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('projectId');
+    }
+
     // Función para formatear la fecha
     function formatDate(dateString) {
       const date = new Date(dateString);
@@ -127,6 +133,14 @@
       // Llamar a la función para cargar los elementos de este proyecto
       loadProjectElements(projectId);
     });
+
+    //miramos si tenemos un projectId en la URL
+    const projectId = getProjectIdFromUrl();
+    if (projectId) {
+      // Si hay un projectId en la URL, cargar los elementos de ese proyecto
+      document.getElementById('projectId').value = projectId;
+      loadProjectElements(projectId);
+    }
   </script>
 
 </body>
