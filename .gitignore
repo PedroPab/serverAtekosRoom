@@ -173,8 +173,8 @@ dist
 /uploads
 # el contenido  de la carpeta de public/img no se sube al repositorio
 public/img/*
+public/imgs/*
 public/vid/*
-public/*
 
 # Coverage test from jest
 /coverage

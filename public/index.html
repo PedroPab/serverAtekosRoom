@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Página de Inicio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-600 p-4 w-full">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-white text-2xl font-bold">Atekos</div>
+      <ul class="hidden lg:flex space-x-4 text-white">
+        <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+        <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
+        <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
+        <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg max-w-4xl text-center">
+
+    <!-- Presentación personal -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">¡Hola! Soy [Tu Nombre]</h1>
+      <p class="text-lg text-gray-600">Soy un apasionado desarrollador con experiencia en tecnologías web y un interés
+        especial en proyectos innovadores. Aquí puedes encontrar mis últimos trabajos y mi cuenta de GitHub donde
+        colaboro en diferentes proyectos.</p>
+    </div>
+
+    <!-- Tarjeta de GitHub -->
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Encuentra mi trabajo en GitHub</h2>
+      <p class="text-gray-600 mb-4">Sigue mis proyectos y colaboraciones en GitHub.</p>
+      <a href="https://github.com/tuusuario" target="_blank"
+        class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md shadow hover:bg-blue-600 transition">
+        Ver mi GitHub
+      </a>
+    </div>
+
+    <!-- Sección de habilidades creativa -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Habilidades Técnicas</h3>
+        <ul class="list-disc list-inside text-gray-600">
+          <li>JavaScript & Node.js</li>
+          <li>React & Vue.js</li>
+          <li>HTML, CSS, & TailwindCSS</li>
+          <li>API Restful & Integraciones</li>
+        </ul>
+      </div>
+
+      <div class="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Sobre Mí</h3>
+        <p class="text-gray-600">Soy un desarrollador entusiasta y autodidacta, siempre buscando nuevas oportunidades
+          para aprender y colaborar en proyectos emocionantes. Mi objetivo es crear soluciones efectivas utilizando la
+          tecnología para resolver problemas del mundo real.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 p-4 mt-8 w-full text-center text-white">
+    <p>&copy; 2024 Atekos. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+
+</html>

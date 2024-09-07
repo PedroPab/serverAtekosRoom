@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Elemento al Focus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 h-screen">
+
+
+
+  <!-- Navbar -->
+  <nav class="bg-blue-600 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-white text-2xl font-bold">Atekos</div>
+      <ul class="flex space-x-4 text-white">
+        <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+        <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
+        <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
+        <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenido de la página -->
+  <div class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center">Agregar Elemento al Focus</h1>
+
+    <!-- Formulario para agregar un elemento -->
+    <form id="elementForm" method="POST" enctype="multipart/form-data" class="space-y-4">
+      <div>
+        <label for="photo" class="block text-sm font-medium text-gray-700">Tomar o Subir Foto</label>
+        <input type="file" id="photo" name="photo" accept="image/*" capture="camera"
+          class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="id" class="block text-sm font-medium text-gray-700">ID del Proyecto</label>
+        <input type="text" id="id" name="id" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700">Nombre del Elemento</label>
+        <input type="text" id="name" name="name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+          required>
+      </div>
+      <div>
+        <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
+        <textarea id="description" name="description" class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+          rows="3" required></textarea>
+      </div>
+      <div>
+        <label for="type" class="block text-sm font-medium text-gray-700">Tipo</label>
+        <select id="type" name="type" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+          <option value="img">Imagen</option>
+          <option disabled value="video">Video</option>
+          <option disabled value="text">Texto</option>
+          <!-- Agregar más tipos si es necesario -->
+        </select>
+      </div>
+      <button type="submit" class="w-full bg-green-500 text-white p-2 rounded-md hover:bg-green-600">Enviar
+        Elemento</button>
+    </form>
+
+    <!-- Área para mostrar los datos devueltos organizados -->
+    <div id="responseData" class="hidden mt-6 p-4 bg-gray-100 rounded-md text-sm text-gray-700">
+      <h3 class="text-lg font-semibold mb-2">Datos del Elemento Agregado</h3>
+      <p><strong>ID del Elemento:</strong> <span id="dataId"></span></p>
+      <p><strong>Nombre del Elemento:</strong> <span id="dataName"></span></p>
+      <p><strong>Descripción:</strong> <span id="dataDescription"></span></p>
+      <p><strong>Fecha de Creación:</strong> <span id="dataDateCreate"></span></p>
+      <p><strong>Fecha de Actualización:</strong> <span id="dataDateUpdate"></span></p>
+      <p><strong>Estado:</strong> <span id="dataState"></span></p>
+    </div>
+
+  </div>
+  <!-- Footer -->
+  <footer class="bg-transparent p-4 mt-8 w-full text-center text-gray-800">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">&copy; 2024 Atekos. Todos los derechos reservados ?</p>
+
+      <!-- Enlace a GitHub -->
+      <div class="flex items-center space-x-2 mt-4 md:mt-0">
+        <span class="text-sm">Sígueme en</span>
+        <a href="https://github.com/tuusuario" target="_blank" class="flex items-center hover:underline">
+          <!-- Ícono de GitHub (color oscuro) -->
+          <svg class="w-6 h-6 mr-1 fill-current text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.26.793-.577v-2.05c-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.238 1.84 1.238 1.07 1.834 2.806 1.305 3.492.997.108-.774.419-1.305.762-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.467-2.381 1.235-3.221-.124-.303-.535-1.524.116-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.004-.404c1.02.005 2.046.137 3.004.404 2.292-1.552 3.3-1.23 3.3-1.23.653 1.652.242 2.873.118 3.176.77.84 1.234 1.911 1.234 3.221 0 4.609-2.804 5.624-5.476 5.921.43.372.815 1.102.815 2.222v3.293c0 .319.192.694.801.576C20.566 21.8 24 17.303 24 12 24 5.373 18.627 0 12 0z" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+
+<script>
+  // Función para mostrar los datos devueltos de la API en el div organizado
+  function showResponseData(data) {
+    document.getElementById('dataId').textContent = data.id;
+    document.getElementById('dataName').textContent = data.name || 'N/A';
+    document.getElementById('dataDescription').textContent = data.description || 'N/A';
+    document.getElementById('dataDateCreate').textContent = new Date(data.dateCreate).toLocaleString();
+    document.getElementById('dataDateUpdate').textContent = new Date(data.dateUpdate).toLocaleString();
+    document.getElementById('dataState').textContent = data.state ? 'Activo' : 'Inactivo';
+
+    // Mostrar el div con los datos organizados
+    document.getElementById('responseData').classList.remove('hidden');
+  }
+
+  // Capturar el evento de envío del formulario
+  document.getElementById('elementForm').addEventListener('submit', async function (event) {
+    event.preventDefault();  // Prevenir el envío estándar del formulario
+
+    // Obtener los valores del formulario
+    const projectId = document.getElementById('id').value;
+    const name = document.getElementById('name').value;
+    const description = document.getElementById('description').value;
+    const type = document.getElementById('type').value;
+    const photo = document.getElementById('photo').files[0];
+
+    // Verificar que se haya ingresado un ID de proyecto
+    if (!projectId) {
+      alert('Por favor ingresa el ID del proyecto.');
+      return;
+    }
+
+    // Crear un objeto FormData para enviar los datos, incluyendo el archivo
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('type', type);
+    formData.append('photo', photo);
+
+    // Construir la URL dinámicamente según el ID del proyecto
+    const apiUrl = `/api/v1/focusProjects/${projectId}/element`;
+
+    // Enviar los datos a la API usando fetch
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        body: formData  // Enviar los datos como multipart/form-data
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      // Mostrar los datos devueltos de manera organizada
+      showResponseData(result);
+    } catch (error) {
+      console.error('Error al enviar los datos:', error);
+      alert('Error al enviar los datos: ' + error.message);
+    }
+  });
+</script>
+
+</body>
+
+</html>
