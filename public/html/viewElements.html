@@ -82,7 +82,7 @@
       <!-- Enlace a GitHub -->
       <div class="flex items-center space-x-2 mt-4 md:mt-0">
         <span class="text-sm">Sígueme en</span>
-        <a href="https://github.com/tuusuario" target="_blank" class="flex items-center hover:underline">
+        <a href="https://github.com/PedroPab" target="_blank" class="flex items-center hover:underline">
           <!-- Ícono de GitHub (color oscuro) -->
           <svg class="w-6 h-6 mr-1 fill-current text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
@@ -114,8 +114,11 @@
         if (!response.ok) {
           throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
+        let elements = await response.json();
 
-        const elements = await response.json();
+        // Ordenar los elementos por fecha de creación (de más reciente a más antiguo)
+        elements = elements.sort((a, b) => new Date(b.dateCreate) - new Date(a.dateCreate));
+
 
         // Obtener el contenedor de las tarjetas
         const elementGrid = document.getElementById('elementGrid');

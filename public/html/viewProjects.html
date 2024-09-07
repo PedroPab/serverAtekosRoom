@@ -81,7 +81,10 @@
           throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
 
-        const projects = await response.json();
+        let projects = await response.json();
+
+        // Ordenar los elementos por fecha de creación (de más reciente a más antiguo)
+        projects = projects.sort((a, b) => new Date(b.dateCreate) - new Date(a.dateCreate));
 
         // Obtener el contenedor de las tarjetas
         const projectCards = document.getElementById('projectCards');

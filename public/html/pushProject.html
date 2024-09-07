@@ -107,7 +107,7 @@
       <!-- Enlace a GitHub -->
       <div class="flex items-center space-x-2 mt-4 md:mt-0">
         <span class="text-sm">Sígueme en</span>
-        <a href="https://github.com/tuusuario" target="_blank" class="flex items-center hover:underline">
+        <a href="https://github.com/PedroPab" target="_blank" class="flex items-center hover:underline">
           <!-- Ícono de GitHub (color oscuro) -->
           <svg class="w-6 h-6 mr-1 fill-current text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
@@ -179,6 +179,11 @@
         showMessage('Elemento enviado correctamente', false);
         // Mostrar los datos devueltos de manera organizada
         showResponseData(result);
+        //borrar los datos del formulario
+        document.getElementById('id').value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('description').value = '';
+
 
       } catch (error) {
         // Mostrar mensaje de error en la pantalla
