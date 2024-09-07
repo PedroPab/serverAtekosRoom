@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visualizar Focus Projects</title>
+  <title>Página no encontrada - 404</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 min-h-screen">
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
   <!-- Navbar -->
   <nav class="bg-blue-600 p-4">
     <div class="container mx-auto flex justify-between items-center">
@@ -27,7 +28,7 @@
       <!-- Links del menú (pantalla grande) -->
       <ul class="hidden lg:flex space-x-4 text-white">
         <li><a href="/html/manual.html" class="hover:underline">Manual</a></li>
-        <li><a href=" /html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+        <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
         <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
         <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
         <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
@@ -56,15 +57,23 @@
     </script>
   </nav>
 
-  <!-- Contenido principal -->
-  <div class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg">
-    <h1 class="text-2xl font-bold text-center mb-4">Lista de Focus Projects</h1>
+  <!-- Contenido principal 404 -->
+  <main class="flex-grow flex items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-6xl font-bold text-blue-600">404</h1>
+      <p class="text-xl text-gray-700 mt-4">¡Ups! Parece que te perdiste...</p>
+      <p class="text-md text-gray-600 mt-2">No te preocupes, a veces a todos nos pasa. ¡Vuelve al inicio y sigue
+        explorando!</p>
 
-    <!-- Sección de tarjetas para los proyectos -->
-    <div id="projectCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Las tarjetas de los proyectos se cargarán aquí -->
+      <!-- Imagen graciosa -->
+      <img src="https://i.imgur.com/qIufhof.png" alt="Página no encontrada" class="w-64 h-auto mx-auto mt-6" />
+
+      <!-- Botón para regresar al Home -->
+      <a href="/" class="mt-6 inline-block bg-green-500 text-white py-2 px-6 rounded-md hover:bg-green-600 transition">
+        Volver al Home
+      </a>
     </div>
-  </div>
+  </main>
   <!-- Footer -->
   <footer class="bg-transparent p-4 mt-8 w-full text-center text-gray-800">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -84,64 +93,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    // Función para formatear la fecha
-    function formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleString();
-    }
-
-    // Función para cargar los proyectos desde la API
-    async function loadFocusProjects() {
-      try {
-        const response = await fetch('/api/v1/focusProjects');
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}: ${response.statusText}`);
-        }
-
-        let projects = await response.json();
-
-        // Ordenar los elementos por fecha de creación (de más reciente a más antiguo)
-        projects = projects.sort((a, b) => new Date(b.dateCreate) - new Date(a.dateCreate));
-
-        // Obtener el contenedor de las tarjetas
-        const projectCards = document.getElementById('projectCards');
-
-        // Limpiar cualquier contenido existente
-        projectCards.innerHTML = '';
-
-        // Iterar sobre los proyectos y crear las tarjetas con enlace
-        projects.forEach(project => {
-          const card = document.createElement('a');
-          card.href = `/html/viewElements.html?projectId=${project.id}`;  // Redirigir a la página de elementos del proyecto
-          card.classList.add('bg-white', 'rounded-lg', 'shadow-lg', 'p-4', 'flex', 'flex-col', 'justify-between', 'hover:shadow-xl', 'transition', 'cursor-pointer');
-
-          card.innerHTML = `
-            <div>
-              <h3 class="text-xl font-semibold mb-2">${project.name || 'Sin nombre'}</h3>
-              <p class="text-gray-600 text-sm mb-4">${project.description || 'Sin descripción'}</p>
-              <p class="text-gray-500 text-xs mb-1">Fecha de Creación: ${formatDate(project.dateCreate)}</p>
-              <p class="text-gray-500 text-xs mb-1">Fecha de Actualización: ${formatDate(project.dateUpdate)}</p>
-              <p class="text-gray-500 text-xs">Estado: ${project.state ? 'Activo' : 'Inactivo'}</p>
-            </div>
-            <div class="mt-4 text-right">
-              <span class="text-gray-700 text-sm font-medium">ID: ${project.id}</span>
-            </div>
-          `;
-
-          // Agregar la tarjeta al contenedor
-          projectCards.appendChild(card);
-        });
-      } catch (error) {
-        console.error('Error al cargar los Focus Projects:', error);
-        alert('Error al cargar los Focus Projects: ' + error.message);
-      }
-    }
-
-    // Cargar los proyectos cuando se carga la página
-    window.onload = loadFocusProjects;
-  </script>
 
 </body>
 
