@@ -4,72 +4,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Página de Inicio</title>
+  <title>Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
+<body class="bg-gray-100 min-h-screen ">
 
   <!-- Navbar -->
-  <nav class="bg-blue-600 p-4 w-full">
+  <nav class="bg-blue-600 p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <div class="text-white text-2xl font-bold">Atekos</div>
+      <!-- Logo o nombre, ahora es un enlace al Home -->
+      <a href="/" class="text-white text-2xl font-bold">Atekos</a>
+
+      <!-- Icono del menú móvil -->
+      <div class="block lg:hidden">
+        <button id="menu-btn" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Links del menú (pantalla grande) -->
       <ul class="hidden lg:flex space-x-4 text-white">
-        <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+        <li><a href="/html/manual.html" class="hover:underline">Manual</a></li>
+        <li><a href=" /html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
         <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
         <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
         <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
       </ul>
+
+      <!-- Menú desplegable para pantallas pequeñas -->
+      <div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 w-full bg-blue-600 text-white">
+        <ul class="flex flex-col space-y-2 p-4">
+          <li><a href="/html/manual.html" class="hover:underline">Manual</a></li>
+          <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+          <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
+          <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
+          <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
+        </ul>
+      </div>
     </div>
+
+    <script>
+      // Manejar el menú desplegable para pantallas pequeñas
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
   </nav>
 
   <!-- Contenido principal -->
   <div class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg max-w-4xl text-center">
 
-    <!-- Presentación personal -->
+    <!-- Información personal -->
     <div class="mb-8">
-      <h1 class="text-4xl font-bold text-gray-800 mb-4">¡Hola! Soy [Tu Nombre]</h1>
-      <p class="text-lg text-gray-600">Soy un apasionado desarrollador con experiencia en tecnologías web y un interés
-        especial en proyectos innovadores. Aquí puedes encontrar mis últimos trabajos y mi cuenta de GitHub donde
-        colaboro en diferentes proyectos.</p>
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">¡Hola! Soy Pedro Pablo Montes</h1>
+      <p class="text-lg text-gray-600">Programador Full Stack enfocado en crear soluciones web innovadoras.</p>
     </div>
 
-    <!-- Tarjeta de GitHub -->
-    <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center mb-8">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Encuentra mi trabajo en GitHub</h2>
-      <p class="text-gray-600 mb-4">Sigue mis proyectos y colaboraciones en GitHub.</p>
-      <a href="https://github.com/tuusuario" target="_blank"
-        class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md shadow hover:bg-blue-600 transition">
-        Ver mi GitHub
-      </a>
-    </div>
 
-    <!-- Sección de habilidades creativa -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">Habilidades Técnicas</h3>
-        <ul class="list-disc list-inside text-gray-600">
-          <li>JavaScript & Node.js</li>
-          <li>React & Vue.js</li>
-          <li>HTML, CSS, & TailwindCSS</li>
-          <li>API Restful & Integraciones</li>
-        </ul>
+
+    <!-- Foto y Contacto -->
+    <div class="flex flex-col md:flex-row justify-center items-center mb-8">
+      <img src="https://avatars.githubusercontent.com/u/84478457?v=4" alt="Foto Pedro Pablo Montes"
+        class="rounded-full w-32 h-32 mb-4 md:mb-0 md:mr-8">
+
+      <!-- Botón de GitHub -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center mt-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Encuentra mi trabajo en GitHub</h2>
+        <p class="text-gray-600 mb-4">Sigue mis proyectos y colaboraciones en GitHub.</p>
+        <a href="https://github.com/PedroPab" target="_blank"
+          class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md shadow hover:bg-blue-600 transition flex items-center justify-center">
+          <i class="fab fa-github mr-2"></i> Ver mi GitHub
+        </a>
       </div>
 
-      <div class="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">Sobre Mí</h3>
-        <p class="text-gray-600">Soy un desarrollador entusiasta y autodidacta, siempre buscando nuevas oportunidades
-          para aprender y colaborar en proyectos emocionantes. Mi objetivo es crear soluciones efectivas utilizando la
-          tecnología para resolver problemas del mundo real.</p>
-      </div>
+
     </div>
 
-  </div>
+    <!-- Perfil Profesional -->
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md text-left mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Perfil Profesional</h2>
+      <p class="text-gray-600 mb-4">Soy un programador Full Stack especializado en el desarrollo de soluciones web
+        eficientes y personalizadas. Trabajo con tecnologías como Node.js en el backend y React en el frontend. Mi
+        enfoque es crear servicios web robustos y personalizados utilizando herramientas como Linux, Git, JavaScript,
+        Node.js, Express, HTML, Bootstrap, GCP y Firebase.</p>
 
-  <!-- Footer -->
-  <footer class="bg-blue-600 p-4 mt-8 w-full text-center text-white">
-    <p>&copy; 2024 Atekos. Todos los derechos reservados.</p>
-  </footer>
+      <!-- Habilidades y Proyectos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">Habilidades Técnicas</h3>
+          <ul class="list-disc list-inside text-gray-600">
+            <li>JavaScript & Node.js</li>
+            <li>React</li>
+            <li>API Restful & Socket.io</li>
+            <li>Integraciones</li>
+          </ul>
+        </div>
+
+        <div class="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">Proyectos Personales</h3>
+          <p class="text-gray-600">En mi tiempo libre, desarrollo proyectos de IoT y Arduino, creando automatizaciones
+            inteligentes para mi hogar. Esta pasión se refleja en mi vida profesional, donde siempre estoy buscando
+            nuevas
+            formas de implementar automatizaciones eficientes.</p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 p-4 mt-8 w-full text-center text-white">
+      <p>&copy; 2024 Atekos. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 

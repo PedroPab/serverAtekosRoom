@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Usuario - Plataforma de Proyectos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-600 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Logo o nombre, ahora es un enlace al Home -->
+      <a href="/" class="text-white text-2xl font-bold">Atekos</a>
+
+      <!-- Icono del menú móvil -->
+      <div class="block lg:hidden">
+        <button id="menu-btn" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Links del menú (pantalla grande) -->
+      <ul class="hidden lg:flex space-x-4 text-white">
+        <li><a href="/html/manual.html" class="hover:underline">Manual</a></li>
+        <li><a href=" /html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+        <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
+        <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
+        <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
+      </ul>
+
+      <!-- Menú desplegable para pantallas pequeñas -->
+      <div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 w-full bg-blue-600 text-white">
+        <ul class="flex flex-col space-y-2 p-4">
+          <li><a href="/html/manual.html" class="hover:underline">Manual</a></li>
+          <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+          <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
+          <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
+          <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Manejar el menú desplegable para pantallas pequeñas
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+  </nav>
+
+  <!-- Contenedor Principal -->
+  <div class="container mx-auto p-8 bg-white shadow-lg mt-8 rounded-lg">
+    <h1 class="text-3xl font-bold text-blue-600 text-center mb-6">Manual de Usuario</h1>
+
+    <!-- Introducción -->
+    <section class="mb-6">
+      <p class="text-gray-700 text-lg">
+        Bienvenido a la plataforma de gestión de proyectos y elementos. Este sistema te permite crear proyectos,
+        organizarlos y vincularles elementos como texto, imágenes, videos y más.
+      </p>
+    </section>
+
+    <!-- ¿Qué es un Proyecto? -->
+    <section class="mb-6">
+      <h2 class="text-2xl font-semibold text-blue-600">¿Qué es un Proyecto?</h2>
+      <p class="text-gray-700 mt-2">
+        Un proyecto es una entidad que actúa como una carpeta donde puedes organizar tus elementos multimedia. Cada
+        proyecto contiene:
+      </p>
+      <ul class="list-disc list-inside text-gray-700 ml-4 mt-2">
+        <li><strong>ID:</strong> un identificador único del proyecto.</li>
+        <li><strong>Nombre:</strong> un título que define el proyecto.</li>
+        <li><strong>Descripción:</strong> un breve resumen sobre el contenido o propósito del proyecto.</li>
+      </ul>
+    </section>
+
+    <!-- ¿Qué es un Elemento? -->
+    <section class="mb-6">
+      <h2 class="text-2xl font-semibold text-blue-600">¿Qué es un Elemento?</h2>
+      <p class="text-gray-700 mt-2">
+        Un elemento es cualquier archivo o contenido multimedia que agregas a un proyecto. Puede ser texto, imagen,
+        video
+        o cualquier otro formato compatible. Lo más importante es que cada elemento está vinculado a un solo proyecto, y
+        no puede existir de manera independiente.
+      </p>
+    </section>
+
+    <!-- Instrucciones de uso -->
+    <section class="mb-6">
+      <h2 class="text-2xl font-semibold text-blue-600">Instrucciones de Uso</h2>
+
+      <!-- Crear Proyecto -->
+      <div class="mt-4">
+        <h3 class="text-xl font-bold text-gray-800">1. Crear un Proyecto</h3>
+        <p class="text-gray-700 mt-2">
+          Para crear un proyecto, necesitas ingresar un nombre y una descripción. El sistema generará un ID único para
+          el
+          proyecto. Este ID es esencial para poder asociar elementos al proyecto más adelante.
+        </p>
+      </div>
+
+      <!-- Agregar Elementos a un Proyecto -->
+      <div class="mt-4">
+        <h3 class="text-xl font-bold text-gray-800">2. Agregar Elementos a un Proyecto</h3>
+        <p class="text-gray-700 mt-2">
+          Una vez que has creado un proyecto, puedes comenzar a agregarle elementos. Para hacer esto, selecciona el
+          proyecto utilizando su ID. Los elementos pueden ser de diferentes tipos: texto, audio, video, imágenes, etc.
+        </p>
+        <p class="text-gray-600 italic mt-2">
+          Nota: El ID del proyecto es obligatorio para asociar elementos al proyecto.
+        </p>
+      </div>
+
+      <!-- Visualizar Proyectos -->
+      <div class="mt-4">
+        <h3 class="text-xl font-bold text-gray-800">3. Visualizar Proyectos</h3>
+        <p class="text-gray-700 mt-2">
+          En la sección de "Visualizar Proyectos", podrás ver la lista de proyectos creados, con su ID, nombre y
+          descripción.
+        </p>
+      </div>
+
+      <!-- Buscar Elementos por Proyecto -->
+      <div class="mt-4">
+        <h3 class="text-xl font-bold text-gray-800">4. Buscar Elementos en un Proyecto</h3>
+        <p class="text-gray-700 mt-2">
+          Si deseas ver los elementos asociados a un proyecto, simplemente ingresa el ID del proyecto y obtendrás la
+          lista de elementos vinculados a ese proyecto.
+        </p>
+      </div>
+    </section>
+
+    <!-- Feedback -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-semibold text-blue-600">Demostración y Feedback</h2>
+      <p class="text-gray-700 mt-2">
+        Esta plataforma está en fase de demostración. Nos encantaría recibir tu opinión para mejorarla. Si tienes algún
+        comentario o sugerencia, no dudes en compartirlo con nosotros.
+      </p>
+      <a href="mailto:feedback@atekos.com"
+        class="bg-blue-600 text-white px-6 py-3 rounded-md mt-4 inline-block hover:bg-blue-700">
+        Enviar Feedback
+      </a>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white text-center p-4 mt-8">
+    <p>&copy; 2024 Atekos - Todos los derechos reservados?</p>
+  </footer>
+
+</body>
+
+</html>

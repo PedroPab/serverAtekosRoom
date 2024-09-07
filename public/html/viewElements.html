@@ -9,18 +9,51 @@
 </head>
 
 <body class="bg-gray-100 h-screen">
-
   <!-- Navbar -->
   <nav class="bg-blue-600 p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <div class="text-white text-2xl font-bold">Atekos</div>
-      <ul class="flex space-x-4 text-white">
-        <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+      <!-- Logo o nombre, ahora es un enlace al Home -->
+      <a href="/" class="text-white text-2xl font-bold">Atekos</a>
+
+      <!-- Icono del menú móvil -->
+      <div class="block lg:hidden">
+        <button id="menu-btn" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Links del menú (pantalla grande) -->
+      <ul class="hidden lg:flex space-x-4 text-white">
+        <li><a href="/html/manual.html" class="hover:underline">Manual</a></li>
+        <li><a href=" /html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
         <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
         <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
         <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
       </ul>
+
+      <!-- Menú desplegable para pantallas pequeñas -->
+      <div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 w-full bg-blue-600 text-white">
+        <ul class="flex flex-col space-y-2 p-4">
+          <li><a href="/html/manual.html" class="hover:underline">Manual</a></li>
+          <li><a href="/html/pushProject.html" class="hover:underline">Agregar Focus Project</a></li>
+          <li><a href="/html/pushElement.html" class="hover:underline">Agregar Elemento</a></li>
+          <li><a href="/html/viewElements.html" class="hover:underline">Visualizar Elementos</a></li>
+          <li><a href="/html/viewProjects.html" class="hover:underline">Visualizar Focus Projects</a></li>
+        </ul>
+      </div>
     </div>
+
+    <script>
+      // Manejar el menú desplegable para pantallas pequeñas
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
   </nav>
 
   <!-- Contenido principal -->
