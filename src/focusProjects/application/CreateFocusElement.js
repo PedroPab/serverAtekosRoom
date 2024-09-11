@@ -24,6 +24,7 @@ class CreateFocusElementFromProject {
 
       return await this.createFocusElement.execute({ id, data });
     } catch (error) {
+      console.error(error);
       throw error;
     }
   }

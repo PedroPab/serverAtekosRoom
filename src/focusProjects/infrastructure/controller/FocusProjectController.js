@@ -43,7 +43,7 @@ class FocusProjectController {
       const { id: focusProjectId } = req.params;
       const dataBody = req.body;
 
-      const nameImg = `${Date.now()}-${req.file.originalname}`;
+      const nameImg = `${Date.now()}-${req.file?.originalname || 'default'}`;
 
       const file = {
         buffer: req.file.buffer,
