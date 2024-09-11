@@ -74,6 +74,15 @@
       <!-- Las tarjetas de los elementos se cargarán aquí -->
     </div>
   </div>
+
+  <!-- Lightbox para visualizar imágenes en grande -->
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex items-center justify-center">
+    <button id="prev-btn" class="absolute left-4 text-white">⟨</button>
+    <img id="lightbox-img" src="" alt="Imagen grande" class="max-w-full max-h-full">
+    <button id="next-btn" class="absolute right-4 text-white">⟩</button>
+    <button id="close-btn" class="absolute top-4 right-4 text-white">✕</button>
+  </div>
+
   <!-- Footer -->
   <footer class="bg-transparent p-4 mt-8 w-full text-center text-gray-800">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -107,6 +116,9 @@
       return date.toLocaleString();
     }
 
+    let currentIndex = 0;
+    let elementsArray = []; // Para almacenar los elementos y navegar entre ellos
+
     // Función para cargar los elementos de un proyecto desde la API
     async function loadProjectElements(projectId) {
       try {
@@ -116,31 +128,28 @@
         }
         let elements = await response.json();
 
-        // Ordenar los elementos por fecha de creación (de más reciente a más antiguo)
+        // Ordenar los elementos por fecha de creación
         elements = elements.sort((a, b) => new Date(b.dateCreate) - new Date(a.dateCreate));
 
+        // Guardar los elementos para la navegación
+        elementsArray = elements;
 
         // Obtener el contenedor de las tarjetas
         const elementGrid = document.getElementById('elementGrid');
-
-        // Limpiar cualquier contenido existente
         elementGrid.innerHTML = '';
 
         // Iterar sobre los elementos
-        elements.forEach(async element => {
+        elements.forEach(async (element, index) => {
           if (element.type === 'img') {
-            // Si el tipo es 'img', buscar la imagen usando el elementPureId
             const responseElement = await fetch(`/api/v1/imgs/${element.elementPureId}`);
-            const elementPure = await responseElement.json()
+            const elementPure = await responseElement.json();
             const imageUrl = elementPure.urlPublic;
-            console.log("🚀 ~ loadProjectElements ~ imageUrl:", imageUrl)
 
             // Crear la tarjeta de imagen
             const card = document.createElement('div');
             card.classList.add('bg-white', 'rounded-lg', 'shadow-lg', 'overflow-hidden');
-
             card.innerHTML = `
-              <img src="${imageUrl}" alt="Imagen de ${element.name}" class="w-full h-48 object-cover">
+              <img src="${imageUrl}" alt="Imagen de ${element.name}" class="w-full h-48 object-cover cursor-pointer">
               <div class="p-4">
                 <h3 class="text-lg font-semibold">${element.name || 'Sin nombre'}</h3>
                 <p class="text-gray-600 text-sm">${element.description || 'Sin descripción'}</p>
@@ -149,7 +158,12 @@
               </div>
             `;
 
-            // Agregar la tarjeta al contenedor
+            // Agregar evento para abrir el lightbox al hacer clic en la imagen
+            card.querySelector('img').addEventListener('click', () => {
+              currentIndex = index;
+              openLightbox(imageUrl);
+            });
+
             elementGrid.appendChild(card);
           }
         });
@@ -158,6 +172,46 @@
         alert('Error al cargar los elementos: ' + error.message);
       }
     }
+
+    function openLightbox(imageUrl) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = imageUrl;
+      lightbox.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.add('hidden');
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % elementsArray.length;
+      const nextElement = elementsArray[currentIndex];
+      loadImageInLightbox(nextElement);
+    }
+
+    function showPreviousImage() {
+      currentIndex = (currentIndex - 1 + elementsArray.length) % elementsArray.length;
+      const prevElement = elementsArray[currentIndex];
+      loadImageInLightbox(prevElement);
+    }
+
+    function loadImageInLightbox(element) {
+      if (element.type === 'img') {
+        fetch(`/api/v1/imgs/${element.elementPureId}`)
+          .then(response => response.json())
+          .then(data => {
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = data.urlPublic;
+          });
+      }
+    }
+
+    // Eventos para cerrar y navegar
+    document.getElementById('close-btn').addEventListener('click', closeLightbox);
+    document.getElementById('next-btn').addEventListener('click', showNextImage);
+    document.getElementById('prev-btn').addEventListener('click', showPreviousImage);
 
     // Capturar el evento de envío del formulario
     document.getElementById('projectForm').addEventListener('submit', function (event) {
@@ -170,10 +224,9 @@
       loadProjectElements(projectId);
     });
 
-    //miramos si tenemos un projectId en la URL
+    // Ver si hay un projectId en la URL
     const projectId = getProjectIdFromUrl();
     if (projectId) {
-      // Si hay un projectId en la URL, cargar los elementos de ese proyecto
       document.getElementById('projectId').value = projectId;
       loadProjectElements(projectId);
     }
