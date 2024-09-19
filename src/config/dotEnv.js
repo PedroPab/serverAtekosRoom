@@ -15,7 +15,7 @@ console.log(`corriendo en ${environment}`);
 const serviceAccountJson = process.env.SERVICES_KEY_BUCKET || '{}';
 const serviceAccount = JSON.parse(serviceAccountJson);
 
-export default {
+const ENV = {
   NODE_ENV: process.env.NODE_ENV || 'development',
   PORT: process.env.PORT || 3012,
   HOST: process.env.HOST || 'localhost',
@@ -25,3 +25,5 @@ export default {
   BUCKET_NAME: process.env.BUCKET_NAME || 'server-bucket',
   SERVICES_KEY_BUCKET: serviceAccount
 };
+
+export default ENV;

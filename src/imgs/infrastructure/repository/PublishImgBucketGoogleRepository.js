@@ -1,79 +1,58 @@
 import { Storage } from '@google-cloud/storage';
+import ENV from '../../../config/dotEnv.js';
 
 class PublishImgBucketGoogleRepository {
   constructor({ directoryFolder = 'img' }) {
-    super();
     this.directoryFolder = directoryFolder;
-    this.publicFolderPath = null
-    this.storage = new Storage();
-    this.bucketName = directoryFolder; // Cambia esto por el nombre de tu bucket
+    this.publicFolderPath = null;
+    this.storage = new Storage({
+      credentials: ENV.SERVICES_KEY_BUCKET,
+    });
+    this.bucketName = ENV.BUCKET_NAME; // Nombre del bucket desde tus variables de entorno
     this.bucket = this.storage.bucket(this.bucketName);
   }
 
-  async getAll() {
+  async publish({ fileName, buffer }) {
     try {
-      const [files] = await this.bucket.getFiles();
-      return files.map(file => file.name);
-    } catch (error) {
-      throw new Error(`Error al obtener todas las imágenes: ${error.message}`);
-    }
-  }
+      // Especifica la ruta completa incluyendo la carpeta
+      const fullFilePath = this.directoryFolder ? `${this.directoryFolder}/${fileName}` : fileName;
 
-  async getById(id) {
-    try {
-      const file = this.bucket.file(id);
-      const [exists] = await file.exists();
-      if (!exists) {
-        throw new Error('Imagen no encontrada');
-      }
-      const [metadata] = await file.getMetadata();
-      return metadata;
-    } catch (error) {
-      throw new Error(`Error al obtener la imagen: ${error.message}`);
-    }
-  }
+      const file = this.bucket.file(fullFilePath);
 
-  async getFilter(filter) {
-    try {
-      const [files] = await this.bucket.getFiles({ prefix: filter });
-      return files.map(file => file.name);
-    } catch (error) {
-      throw new Error(`Error al filtrar las imágenes: ${error.message}`);
-    }
-  }
+      // Subimos la imagen utilizando un stream
+      await new Promise((resolve, reject) => {
+        const stream = file.createWriteStream({
+          metadata: {
+            contentType: 'image/jpeg', // Cambia esto según el tipo de archivo
+          },
+          resumable: false,
+        });
 
-  async save(img) {
-    try {
-      const { originalname, buffer } = img;
-      const file = this.bucket.file(originalname);
-      await file.save(buffer);
-      return `Imagen ${originalname} guardada exitosamente.`;
-    } catch (error) {
-      throw new Error(`Error al guardar la imagen: ${error.message}`);
-    }
-  }
+        stream.on('error', reject);
+        stream.on('finish', resolve);
+        stream.end(buffer);
+      });
 
-  async update(id, img) {
-    try {
-      const file = this.bucket.file(id);
-      const [exists] = await file.exists();
-      if (!exists) {
-        throw new Error('Imagen no encontrada');
-      }
-      await file.save(img.buffer);
-      return `Imagen ${id} actualizada exitosamente.`;
-    } catch (error) {
-      throw new Error(`Error al actualizar la imagen: ${error.message}`);
-    }
-  }
+      // Hacer que el archivo sea público
+      await file.makePublic();
 
-  async delete(id) {
-    try {
-      const file = this.bucket.file(id);
-      await file.delete();
-      return `Imagen ${id} eliminada exitosamente.`;
+      // URL pública
+      const publicUrl = `https://storage.googleapis.com/${this.bucketName}/${fullFilePath}`;
+
+      // Obtener URL privada firmada que expira en 1 hora
+      const privateUrl = await file.getSignedUrl({
+        action: 'read',
+        expires: Date.now() + 1000 * 60 * 60, // Expira en 1 hora
+      });
+
+      // Devolver ambas URLs
+      return {
+        urlPublic: publicUrl,
+        urlPrivate: privateUrl[0], // La URL firmada es devuelta en un array
+      };
     } catch (error) {
-      throw new Error(`Error al eliminar la imagen: ${error.message}`);
+      console.error(`Error publicando la imagen: ${error.message}`);
+      throw new Error('ERR_PUBLISH_IMG_FAILED' + error.message);
     }
   }
 }

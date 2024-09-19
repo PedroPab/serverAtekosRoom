@@ -1,16 +1,16 @@
 import CreateImg from '../../application/createImg.js';
 
-import ImgBucketGoogleRepository from '../repository/PublishImgBucketGoogleRepository.js';
+import PublishImgBucketGoogleRepository from '../repository/PublishImgBucketGoogleRepository.js';
 
-import PublishImgLocalFilesRepository from '../repository/PublishImgLocalFilesRepository.js';
 import GetImg from '../../application/getImg.js';
 import GetAllImg from '../../application/getAllImg.js';
+import ImgLocalMapRepository from '../repository/ImgLocalMapRepository.js';
 
 //repository
-const imgRepository = new ImgBucketGoogleRepository();
+const imgRepository = new ImgLocalMapRepository();
 // const imgRepository = new ImgLocalMapRepository();
 //repository para publicar imágenes
-const publishImgRepository = new PublishImgLocalFilesRepository({});
+const publishImgRepository = new PublishImgBucketGoogleRepository({});
 
 //use cases
 const createImg = new CreateImg({
