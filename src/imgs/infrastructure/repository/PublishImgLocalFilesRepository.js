@@ -3,7 +3,7 @@ import path from 'path';
 import publishImgRepository from '../../domain/repository/publishImgRepository.js';
 import { __dirname } from '../../../../dirname.js';
 
-export class ImgLocalFilesRepository extends publishImgRepository {
+export class PublishImgLocalFilesRepository extends publishImgRepository {
   constructor({ directoryFolder = 'img' }) {
     super();
     this.directoryFolder = directoryFolder;
@@ -74,4 +74,4 @@ export class ImgLocalFilesRepository extends publishImgRepository {
   }
 }
 
-export default ImgLocalFilesRepository;
+export default PublishImgLocalFilesRepository;

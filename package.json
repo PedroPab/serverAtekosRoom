@@ -14,6 +14,7 @@
     "open:coverage": "open coverage/lcov-report/index.html"
   },
   "dependencies": {
+    "@google-cloud/storage": "^7.12.1",
     "@hapi/boom": "^10.0.1",
     "chalk": "^5.3.0",
     "cors": "^2.8.5",
