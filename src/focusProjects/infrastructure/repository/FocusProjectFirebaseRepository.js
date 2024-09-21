@@ -52,7 +52,7 @@ class FocusProjectFirebaseRepository extends FocusProjectRepository {
       throw new Error("ID y datos son requeridos");
     }
 
-    const rta = await db.update(id, data);
+    const rta = await db.update(id, { ...data });
     return rta;
   }
 
