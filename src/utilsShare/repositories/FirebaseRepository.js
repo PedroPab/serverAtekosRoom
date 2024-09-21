@@ -1,3 +1,4 @@
+import { Timestamp } from 'firebase-admin/firestore';
 import db from '../../config/firebase/config.js';
 
 class FirebaseRepository {
@@ -18,7 +19,8 @@ class FirebaseRepository {
     try {
       const doc = await this.collection.doc(key).get();
       if (doc.exists) {
-        return { id: doc.id, ...doc.data() };
+        const data = this._convertTimestampsToDates(doc.data());
+        return { id: doc.id, ...data };
       } else {
         throw new Error(`Documento con ID ${key} no encontrado.`);
       }
@@ -32,7 +34,7 @@ class FirebaseRepository {
       const querySnapshot = await this.collection.get();
       const docs = querySnapshot.docs.map(doc => ({
         id: doc.id,
-        ...doc.data()
+        ...this._convertTimestampsToDates(doc.data())
       }));
       return docs;
     } catch (error) {
@@ -44,7 +46,8 @@ class FirebaseRepository {
     try {
       const doc = await this.collection.doc(key).get();
       if (doc.exists) {
-        return { id: doc.id, ...doc.data() };
+        const data = this._convertTimestampsToDates(doc.data());
+        return { id: doc.id, ...data };
       } else {
         throw new Error(`Documento con ID ${key} no encontrado.`);
       }
@@ -53,6 +56,19 @@ class FirebaseRepository {
         return null;
       }
       throw new Error(`Error al obtener el documento por ID: ${error.message}`);
+    }
+  }
+
+  async getByFilter(filter) {
+    try {
+      const querySnapshot = await this.collection.where(filter.key, filter.option, filter.value).get();
+      const docs = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...this._convertTimestampsToDates(doc.data())
+      }));
+      return docs;
+    } catch (error) {
+      throw new Error(`Error al obtener los documentos por filtro: ${error.message}`);
     }
   }
 
@@ -72,6 +88,17 @@ class FirebaseRepository {
     } catch (error) {
       throw new Error(`Error al eliminar el documento: ${error.message}`);
     }
+  }
+
+  // Método para convertir automáticamente los campos de tipo Timestamp a Date
+  _convertTimestampsToDates(data) {
+    for (let key in data) {
+      if (data[key] instanceof Timestamp) {
+        // Convertir el Timestamp a un objeto Date de JavaScript
+        data[key] = data[key].toDate();
+      }
+    }
+    return data;
   }
 }
 

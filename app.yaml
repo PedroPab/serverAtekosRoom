@@ -9,7 +9,6 @@ automatic_scaling: # especifica la configuración de escalado automático
 env_variables: # especifica las variables de entorno
   NODE_ENV: "production"
 
-project: atekos-369512
 service: default
 
 network:
