@@ -49,6 +49,9 @@ class FirebaseRepository {
         throw new Error(`Documento con ID ${key} no encontrado.`);
       }
     } catch (error) {
+      if (error.message === `Documento con ID ${key} no encontrado.`) {
+        return null;
+      }
       throw new Error(`Error al obtener el documento por ID: ${error.message}`);
     }
   }

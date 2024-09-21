@@ -8,7 +8,7 @@ import { createImg } from '../../../imgs/infrastructure/dependencies/initCaseUse
 //repositorios
 // import FocusProjectLocalMapRepository from '../repository/FocusProjectLocalMapRepository.js';
 import FocusProjectFirebaseRepository from '../repository/FocusProjectFirebaseRepository.js';
-import FocusElementLocalMapRepository from '../../../focusElement/infrastructure/repository/FocusElementLocalMapRepository.js';
+import FocusElementFirebaseRepository from '../../../focusElement/infrastructure/repository/FocusElementFirebaseRepository.js';
 
 //controladores
 import FocusProjectController from '../controller/FocusProjectController.js';
@@ -19,7 +19,7 @@ import FindFocusProject from '../../application/FindFocusProject.js';
 
 //repository
 const focusProjectRepository = new FocusProjectFirebaseRepository();
-const focusElementRepository = new FocusElementLocalMapRepository();
+const focusElementRepository = new FocusElementFirebaseRepository();
 //repository para publicar imágenes
 
 //use cases

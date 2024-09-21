@@ -10,13 +10,13 @@ class ImgArtikuz {
     state,
   }) {
     this.id = id;
-    this.urlPublic = urlPublic;
-    this.urlPrivate = urlPrivate;
-    this.name = name;
-    this.description = description;
+    this.urlPublic = urlPublic || '';;
+    this.urlPrivate = urlPrivate || '';;
+    this.name = name || '';
+    this.description = description || '';
     this.dateCreate = dateCreate;
     this.dateUpdate = dateUpdate;
-    this.state = state;
+    this.state = state || true;
   }
 }
 

@@ -1,16 +1,15 @@
-import FocusProjectRepository from "../../domain/repository/FocusProjectRepository.js";
+import ImgRepository from "../../domain/repository/ImgRepository.js";
 import FirebaseRepository from "../../../utilsShare/repositories/FirebaseRepository.js";
 
-const db = new FirebaseRepository("focusProjects");
+const db = new FirebaseRepository('imgs');
 
-class FocusProjectFirebaseRepository extends FocusProjectRepository {
+class ImgFirebaseRepository extends ImgRepository {
   async save(id, data) {
     try {
       if (!id || !data) {
         throw new Error("ID y datos son requeridos");
       }
-
-      const rta = await db.save(id, { ...data });
+      const rta = await db.save(id, { ...data })
       return rta;
     } catch (error) {
       throw error;
@@ -39,20 +38,13 @@ class FocusProjectFirebaseRepository extends FocusProjectRepository {
     if (!id) {
       throw new Error("ID es requerido");
     }
-    try {
-      const rta = await db.getById(id);
-      if (!rta) {
-        return false;
-      }
-      return true;
-    } catch (error) {
-      if (error.message === `Documento con ID ${id} no encontrado.`) {
-        return false;
-      }
-      throw error;
+    const rta = await db.getById(id);
+    if (!rta) {
+      return false;
     }
-
+    return true;
   }
+
 
   async update(id, data) {
     if (!id || !data) {
@@ -73,4 +65,4 @@ class FocusProjectFirebaseRepository extends FocusProjectRepository {
   }
 }
 
-export default FocusProjectFirebaseRepository;
+export default ImgFirebaseRepository;

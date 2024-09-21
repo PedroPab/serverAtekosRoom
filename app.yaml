@@ -1,4 +1,4 @@
-runtime: nodejs18 # especifica la versión de Node.js
+runtime: nodejs20 # especifica la versión de Node.js
 
 instance_class: F1 # especifica la clase de instancia
 
@@ -8,6 +8,9 @@ automatic_scaling: # especifica la configuración de escalado automático
 
 env_variables: # especifica las variables de entorno
   NODE_ENV: "production"
+
+project: atekos-369512
+service: default
 
 network:
   session_affinity: true # Importante para aplicaciones WebSocket

@@ -17,7 +17,7 @@ class CreateFocusProject {
     try {
       const focusProjectFind = await this.getFocusProject(id)
       if (focusProjectFind) {
-        throw new Error('Error creating focus project');
+        throw new Error(`Ya existe un proyecto con ese ID ${id}`);
       }
       const focusProjectCreated = await this.createFocusProject({ id, data });
       return focusProjectCreated;

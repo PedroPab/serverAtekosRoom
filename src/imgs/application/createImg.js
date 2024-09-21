@@ -17,7 +17,8 @@ class CreateImg {
       if (!id) {
         id = generateId();
       }
-      if (await this.imgRepository.exist(id)) {
+      const exists = await this.imgRepository.exist(id);
+      if (exists) {
         throw new Error('Ya existe una imagen con ese id');
       }
 

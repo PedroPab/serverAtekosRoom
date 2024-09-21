@@ -1,16 +1,15 @@
-import FocusProjectRepository from "../../domain/repository/FocusProjectRepository.js";
+import FocusProjectRepository from "../../../focusProjects/domain/repository/FocusProjectRepository.js";
 import FirebaseRepository from "../../../utilsShare/repositories/FirebaseRepository.js";
 
-const db = new FirebaseRepository("focusProjects");
+const db = new FirebaseRepository('focusElements');
 
-class FocusProjectFirebaseRepository extends FocusProjectRepository {
+class FocusElementFirebaseRepository extends FocusProjectRepository {
   async save(id, data) {
     try {
       if (!id || !data) {
         throw new Error("ID y datos son requeridos");
       }
-
-      const rta = await db.save(id, { ...data });
+      const rta = await db.save(id, { ...data })
       return rta;
     } catch (error) {
       throw error;
@@ -34,24 +33,26 @@ class FocusProjectFirebaseRepository extends FocusProjectRepository {
     return rta;
   }
 
+  async getFilter(filter) {
+    if (!filter) {
+      throw new Error("Filtro es requerido");
+    }
+
+    const rta = await db.getByFilter(filter);
+    return rta;
+  }
+
   //existe ya  un elemento con el mismo id
   async exist(id) {
     if (!id) {
       throw new Error("ID es requerido");
     }
-    try {
-      const rta = await db.getById(id);
-      if (!rta) {
-        return false;
-      }
-      return true;
-    } catch (error) {
-      if (error.message === `Documento con ID ${id} no encontrado.`) {
-        return false;
-      }
-      throw error;
-    }
 
+    const rta = db.getById(id);
+    if (!rta) {
+      return false;
+    }
+    return true
   }
 
   async update(id, data) {
@@ -59,7 +60,7 @@ class FocusProjectFirebaseRepository extends FocusProjectRepository {
       throw new Error("ID y datos son requeridos");
     }
 
-    const rta = await db.update(id, { ...data });
+    const rta = db.update(id, { ...data });
     return rta;
   }
 
@@ -68,9 +69,9 @@ class FocusProjectFirebaseRepository extends FocusProjectRepository {
       throw new Error("ID es requerido");
     }
 
-    await db.delete(id);
+    db.delete(id);
     return true;
   }
 }
 
-export default FocusProjectFirebaseRepository;
+export default FocusElementFirebaseRepository;
