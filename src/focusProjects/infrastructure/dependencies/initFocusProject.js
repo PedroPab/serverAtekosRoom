@@ -6,7 +6,8 @@ import GetAllElementFromFocusProject from '../../application/GetAllElementFromFo
 //casos de uso Elements
 import { createImg } from '../../../imgs/infrastructure/dependencies/initCaseUsesImg.js';
 //repositorios
-import FocusProjectLocalMapRepository from '../repository/FocusProjectLocalMapRepository.js';
+// import FocusProjectLocalMapRepository from '../repository/FocusProjectLocalMapRepository.js';
+import FocusProjectFirebaseRepository from '../repository/FocusProjectFirebaseRepository.js';
 import FocusElementLocalMapRepository from '../../../focusElement/infrastructure/repository/FocusElementLocalMapRepository.js';
 
 //controladores
@@ -17,7 +18,7 @@ import FindFocusProject from '../../application/FindFocusProject.js';
 
 
 //repository
-const focusProjectRepository = new FocusProjectLocalMapRepository();
+const focusProjectRepository = new FocusProjectFirebaseRepository();
 const focusElementRepository = new FocusElementLocalMapRepository();
 //repository para publicar imágenes
 
