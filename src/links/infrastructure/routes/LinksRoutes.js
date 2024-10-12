@@ -6,6 +6,6 @@ const router = express.Router()
 
 router.post('/', linkController.create.bind(linkController))
 
-// router.get('/:id', linksController.getAllElements.bind(linksController))
+router.get('/', linkController.getAll.bind(linkController))
 
 export default router
