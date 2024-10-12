@@ -7,7 +7,7 @@
   "scripts": {
     "start": "export NODE_ENV=production ; node src/server.js",
     "dev": "export NODE_ENV=development ; nodemon src/server.js",
-    "upDb": "firebase emulators:start",
+    "upDb": "firebase emulators:start --only firestore",
     "deploy": "gcloud beta app deploy --no-cache",
     "log": "gcloud app logs tail -s default",
     "lint": "eslint .",

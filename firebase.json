@@ -1,12 +1,5 @@
 {
-  "firestore": {
-    "rules": "firestore.rules"
-  },
   "emulators": {
-    "project": "atekos-369512",
-    "hub": {
-      "port": 4401
-    },
     "firestore": {
       "port": 8097
     },

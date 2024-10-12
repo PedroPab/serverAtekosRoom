@@ -26,6 +26,7 @@ const ENV = {
   SERVICES_KEY_BUCKET: serviceAccount,
   PORT_DATABASE: process.env.PORT_DATABASE || '8087',
   SERVICE_ACCOUNT: JSON.parse(process.env.SERVICE_ACCOUNT) || '',
+  FIRESTORE_EMULATOR_HOST: process.env.FIRESTORE_EMULATOR_HOST || 'localhost:8097',
 }
 
 export default ENV
