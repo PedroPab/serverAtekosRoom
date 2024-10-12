@@ -8,4 +8,7 @@ router.post('/', linkController.create.bind(linkController))
 
 router.get('/', linkController.getAll.bind(linkController))
 
+router.get('/:id', linkController.getById.bind(linkController))
+router.get('/u/:id', linkController.getByIdUse.bind(linkController))
+
 export default router
