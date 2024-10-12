@@ -6,7 +6,7 @@ import RoomRouter from '../rooms/infrastructure/routes/RoomRoutes.js';
 import ImgsRouter from '../imgs/infrastructure/routes/ImgRoutes.js';
 
 import FocusProjectRouter from '../focusProjects/infrastructure/routes/FocusProjectRoutes.js';
-
+import LinksRouter from '../links/infrastructure/routes/LinksRoutes.js';
 
 const router = (app) => {
 
@@ -25,6 +25,7 @@ const router = (app) => {
   router.use('/rooms', RoomRouter);
   router.use('/imgs', ImgsRouter);
   router.use('/focusProjects', FocusProjectRouter);
+  router.use(['/links', 'l' ], LinksRouter);
 }
 
 export default router;
