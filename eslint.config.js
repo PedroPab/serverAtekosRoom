@@ -31,6 +31,7 @@ export default [
       'object-curly-spacing': ['error', 'always'],
       'require-jsdoc': 'off',
       'new-cap': ['error', { newIsCap: true, capIsNew: false }],
+      'indent': ['error', 2]
     }
-}
+  }
 ]

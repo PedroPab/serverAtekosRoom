@@ -16,11 +16,11 @@ class UpdateRoom {
   }
   async getRoomOrCreate(id, data) {
     const roomFind = await this.getRoom(id)
-      if (roomFind) {
-        return roomFind
-      }
-      const roomCrete = await this.createRoom({ id, data })
-      return roomCrete
+    if (roomFind) {
+      return roomFind
+    }
+    const roomCrete = await this.createRoom({ id, data })
+    return roomCrete
   }
   async getRoom(id) {
     try {

@@ -1,8 +1,8 @@
 export default class Link {
   constructor({
     id,
-     url,
-     title,
+    url,
+    title,
     description
   }) {
     this.id = id

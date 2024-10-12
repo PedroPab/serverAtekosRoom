@@ -13,7 +13,7 @@ class GetAllElementFromFocusProject {
   }
   // eslint-disable-next-line no-unused-vars
   async execute({ focusProjectId, page }) {
- await this.findFocusProject.execute(focusProjectId)
+    await this.findFocusProject.execute(focusProjectId)
 
     const filter = {
       key: 'focusProjectId',

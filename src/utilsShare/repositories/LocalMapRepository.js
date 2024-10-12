@@ -26,15 +26,15 @@ class LocalMapRepository {
 
     const compare = (a, b, operator) => {
       switch (operator) {
-        case '==': return a == b
-        case '===': return a === b
-        case '!=': return a != b
-        case '!==': return a !== b
-        case '>': return a > b
-        case '>=': return a >= b
-        case '<': return a < b
-        case '<=': return a <= b
-        default: return false
+      case '==': return a == b
+      case '===': return a === b
+      case '!=': return a != b
+      case '!==': return a !== b
+      case '>': return a > b
+      case '>=': return a >= b
+      case '<': return a < b
+      case '<=': return a <= b
+      default: return false
       }
     }
 
