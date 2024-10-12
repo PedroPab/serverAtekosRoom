@@ -1,16 +1,17 @@
 //repository
 import LinkLocalMapRepository from '../repository/LinkLocalMapRepository.js';
-const LinkRepository  = new LinkLocalMapRepository()
 //use case
 import CreateLink from '../../application/CreateLink.js';
-
-const createLink = new CreateLink({LinkRepository})
-
 //controller
-import {LinkController} from '../controller/LinkController.js';
+import LinksController   from '../controller/LinksController.js';
 
-const linkController = new LinkController({
-createLink,
+
+const linkRepository  = new LinkLocalMapRepository()
+
+const createLink = new CreateLink({linkRepository});
+
+const linkController = new LinksController({
+  createLink,
 });
 
 export default linkController;

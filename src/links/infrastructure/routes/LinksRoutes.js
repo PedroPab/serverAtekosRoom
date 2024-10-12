@@ -1,10 +1,10 @@
 import express from 'express';
 
-import linksController from '../dependencies/initLinks.js';
+import linkController from '../dependencies/initLinks.js';
 
 const router = express.Router();
 
-// router.post('/:id', linksController.createFocusElement.bind(linksController));
+router.post('/', linkController.create.bind(linkController));
 
 // router.get('/:id', linksController.getAllElements.bind(linksController))
 

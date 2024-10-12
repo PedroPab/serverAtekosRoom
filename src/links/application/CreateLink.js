@@ -4,7 +4,7 @@ export default class CreateLink {
   constructor({ linkRepository }) {
     this.linkRepository = linkRepository;
   }
-  async run(data) {
+  async execute(data) {
     try {
       const link = new Link(data);
       const linkCreated = await this.linkRepository.save(link);
