@@ -5,15 +5,11 @@ const db = new LocalMapRepository()
 
 class ImgLocalMapRepository extends ImgRepository {
   async save(id, data) {
-    try {
-      if (!id || !data) {
-        throw new Error('ID y datos son requeridos')
-      }
-      const rta = db.save(id, data)
-      return rta
-    } catch (error) {
-      throw error
+    if (!id || !data) {
+      throw new Error('ID y datos son requeridos')
     }
+    const rta = db.save(id, data)
+    return rta
   }
 
   async getAll() {

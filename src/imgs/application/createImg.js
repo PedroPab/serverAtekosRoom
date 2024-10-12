@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import generateId from '../../utilsShare/generateIds.js'
 import ImgArtikuz from '../domain/models/ImgModel.js'
 

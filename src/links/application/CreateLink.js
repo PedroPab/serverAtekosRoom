@@ -5,12 +5,8 @@ export default class CreateLink {
     this.linkRepository = linkRepository
   }
   async execute(data) {
-    try {
-      const link = new Link(data)
-      const linkCreated = await this.linkRepository.save(link)
-      return linkCreated
-    } catch (error) {
-      throw error
-    }
+    const link = new Link(data)
+    const linkCreated = await this.linkRepository.save(link)
+    return linkCreated
   }
 }

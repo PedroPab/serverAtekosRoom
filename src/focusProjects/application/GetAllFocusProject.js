@@ -5,11 +5,7 @@ class GetAllFocusProject {
     this.focusProjectRepository = focusProjectRepository
   }
   async execute() {
-    try {
-      return await this.focusProjectRepository.getAll()
-    } catch (error) {
-      throw error
-    }
+    return await this.focusProjectRepository.getAll()
   }
 }
 

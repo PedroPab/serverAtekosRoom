@@ -12,33 +12,26 @@ class CreateFocusElement {
     this.createImage = createImg
   }
   async execute({ id, data }) {
-    try {
-      return await this.retrieveOrCreateFocusElement(id, data)
-    } catch (error) {
-      throw error
-    }
+    return await this.retrieveOrCreateFocusElement(id, data)
+
   }
   async retrieveOrCreateFocusElement(id, data) {
-    try {
-      if (!id) {
-        id = generateId()
-      }
-      const focusElementFind = await this.getFocusElement(id)
-      if (focusElementFind) {
-        throw new Error('Error creating focus element')
-      }
-      //según el tipo de elemento crearemos un proceso diferente
-      const elementPure = await this.createElementPureByType(data)
-      const dataElement = {
-        ...data,
-        elementPureId: elementPure.id
-      }
-      const focusElementCreated = await this.createFocusElement({ id, data: dataElement })
-
-      return focusElementCreated
-    } catch (error) {
-      throw error
+    if (!id) {
+      id = generateId()
     }
+    const focusElementFind = await this.getFocusElement(id)
+    if (focusElementFind) {
+      throw new Error('Error creating focus element')
+    }
+    //según el tipo de elemento crearemos un proceso diferente
+    const elementPure = await this.createElementPureByType(data)
+    const dataElement = {
+      ...data,
+      elementPureId: elementPure.id
+    }
+    const focusElementCreated = await this.createFocusElement({ id, data: dataElement })
+
+    return focusElementCreated
   }
   async createElementPureByType(data) {
     //según el tipo de elemento crearemos un proceso diferente
@@ -58,17 +51,14 @@ class CreateFocusElement {
   async getFocusElement(id) {
     try {
       return await this.focusElementRepository.getById(id)
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       return undefined
     }
   }
   async createFocusElement({ id, data }) {
-    try {
-      const rta = new FocusElement({ id, ...data })
-      return await this.focusElementRepository.save(rta.id, rta)
-    } catch (error) {
-      throw error
-    }
+    const rta = new FocusElement({ id, ...data })
+    return await this.focusElementRepository.save(rta.id, rta)
   }
 }
 

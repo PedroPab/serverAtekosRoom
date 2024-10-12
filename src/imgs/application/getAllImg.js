@@ -6,11 +6,7 @@ class GetAllImg {
   }
 
   async execute() {
-    try {
-      return await this.imgRepository.getAll()
-    } catch (error) {
-      throw error
-    }
+    return await this.imgRepository.getAll()
   }
 }
 

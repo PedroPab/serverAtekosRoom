@@ -1,13 +1,27 @@
 import globals from 'globals'
 import pluginJs from '@eslint/js'
-import tseslint from 'typescript-eslint'
+// import tseslint from 'typescript-eslint'
+//jest
+import jest from 'eslint-plugin-jest'
 
 
 export default [
   { files: ['**/*.{js,mjs,cjs,ts}'] },
-  { languageOptions: { globals: globals.browser } },
+  { languageOptions: { globals: globals.node } },
   pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+  // ...tseslint.configs.recommended,
+  {
+    files: ['**/*.test.js'], // Configurar para los archivos de test
+    ...jest.configs['flat/recommended'], // Configurar las reglas recomendadas de Jest
+    rules: {
+      ...jest.configs['flat/recommended'].rules, // Reglas recomendadas
+      'jest/no-disabled-tests': 'warn',
+      'jest/no-focused-tests': 'error',
+      'jest/no-identical-title': 'error',
+      'jest/prefer-to-have-length': 'warn',
+      'jest/valid-expect': 'error'
+    }
+  },
   {
     rules: {
       'no-restricted-globals': ['error', 'name', 'length'],

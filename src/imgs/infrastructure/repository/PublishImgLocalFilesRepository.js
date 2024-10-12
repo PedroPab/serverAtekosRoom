@@ -69,6 +69,7 @@ export class PublishImgLocalFilesRepository extends publishImgRepository {
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   _handleError(error) {
     throw new Error('Error al publicar la imagen')
   }

@@ -23,6 +23,7 @@ export class Room {
   update(data) {
     //debemos de actualizar solo los parametros que mandamos
     for (const key in data) {
+      // eslint-disable-next-line no-prototype-builtins
       if (data.hasOwnProperty(key)) {
         this[key] = data[key]
       }

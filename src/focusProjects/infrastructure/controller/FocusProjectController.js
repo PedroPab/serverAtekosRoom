@@ -41,7 +41,7 @@ class FocusProjectController {
   async createFocusElement(req, res) {
     try {
       const { id: focusProjectId } = req.params
-      const dataBody = req.body
+      // const dataBody = req.body
 
       const nameImg = `${Date.now()}-${req.file?.originalname || 'default'}`
 

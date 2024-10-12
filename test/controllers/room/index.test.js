@@ -1,19 +1,19 @@
 import { createRoom } from '../../../src/controllers/room/controller.js'
-import StoreBaseService from '../../../src/database/index.js'
-import { COLLECTIONS } from '../../../src/utils/collectionNames/collectionNames.js'
+// import StoreBaseService from '../../../src/database/index.js'
+// import { COLLECTIONS } from '../../../src/utils/collectionNames/collectionNames.js'
 
 const DataBaseStub = {
-  setValue: (key, value) => ({}),
-  getValue: (key) => ([]),
-  deleteValue: (key) => ({}),
+  setValue: ( ) => ({}),
+  getValue: () => ([]),
+  deleteValue: () => ({}),
 }
 jest.mock('../../../src/database/index.js', () => jest.fn().mockImplementation(() => DataBaseStub))
 
 describe('Room Controller', () => {
-  let Data
+  // let Data
 
   beforeEach(() => {
-    Data = new StoreBaseService()
+    // Data = new StoreBaseService()
   })
 
   describe('createRoom', () => {

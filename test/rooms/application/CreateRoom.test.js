@@ -1,7 +1,7 @@
 import CreateRoom from '../../../src/rooms/application/CreateRoom.js'
 import Room from '../../../src/rooms/domain/models/RoomModel.js'
 
-describe('CreateRoom Use Case', () => {
+describe('CreateRoom Use Case', () => { 
   let mockRoomRepository
   let createRoom
 

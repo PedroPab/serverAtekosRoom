@@ -5,15 +5,11 @@ const db = new LocalMapRepository()
 
 class RoomLocalMapRepository extends RoomRepository {
   async save(id, data) {
-    try {
-      if (!id || !data) {
-        throw new Error('ID y datos son requeridos')
-      }
-      const room = db.save(id, data)
-      return room
-    } catch (error) {
-      throw error
+    if (!id || !data) {
+      throw new Error('ID y datos son requeridos')
     }
+    const room = db.save(id, data)
+    return room
   }
 
   async getAll() {

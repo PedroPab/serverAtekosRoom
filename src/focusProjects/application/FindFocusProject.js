@@ -5,11 +5,8 @@ class FindFocusProject {
     this.focusProjectRepository = focusProjectRepository
   }
   async execute(id) {
-    try {
-      return await this.focusProjectRepository.getById(id)
-    } catch (error) {
-      throw error
-    }
+    return await this.focusProjectRepository.getById(id)
+
   }
 }
 

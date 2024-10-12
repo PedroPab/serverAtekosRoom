@@ -5,11 +5,8 @@ class FindFilterFocusElement {
     this.focusElementRepository = focusElementRepository
   }
   async execute(filter) {
-    try {
-      return await this.focusElementRepository.getFilter(filter)
-    } catch (error) {
-      throw error
-    }
+    return await this.focusElementRepository.getFilter(filter)
+
   }
 }
 

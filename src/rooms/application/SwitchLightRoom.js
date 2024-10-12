@@ -12,11 +12,13 @@ class SwitchLightRoom {
   }
 
   async execute({ id }) {
+    // eslint-disable-next-line no-useless-catch
     try {
       let room
       try {
         //usamos un caso de uso para buscar el Room por id
         room = await this.getById.execute(id)
+      // eslint-disable-next-line no-unused-vars
       } catch (error) {
         room = new Room({ id })
         //creamos el room en la base de datos

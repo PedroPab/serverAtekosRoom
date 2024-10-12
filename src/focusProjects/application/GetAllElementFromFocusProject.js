@@ -11,21 +11,18 @@ class GetAllElementFromFocusProject {
     this.findFocusProject = new FindFocusProject({ focusProjectRepository })
     this.getFilterFocusElement = new FindFilterFocusElement({ focusElementRepository })
   }
+  // eslint-disable-next-line no-unused-vars
   async execute({ focusProjectId, page }) {
-    try {
-      const focusProject = await this.findFocusProject.execute(focusProjectId)
+ await this.findFocusProject.execute(focusProjectId)
 
-      const filter = {
-        key: 'focusProjectId',
-        value: focusProjectId,
-        option: '=='
-      }
-      const elements = await this.getFilterFocusElement.execute(filter)
-
-      return elements
-    } catch (error) {
-      throw error
+    const filter = {
+      key: 'focusProjectId',
+      value: focusProjectId,
+      option: '=='
     }
+    const elements = await this.getFilterFocusElement.execute(filter)
+
+    return elements
   }
 }
 

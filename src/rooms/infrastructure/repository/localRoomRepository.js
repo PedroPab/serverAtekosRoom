@@ -9,13 +9,9 @@ class LocalRoomRepository extends RoomRepository {
       throw new Error('ID y datos son requeridos')
     }
 
-    try {
-      const room = new Room({ id, ...data })
-      db.push(room)
-      return room
-    } catch (error) {
-      throw error
-    }
+    const room = new Room({ id, ...data })
+    db.push(room)
+    return room
   }
 
   async getAll() {

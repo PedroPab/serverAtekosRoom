@@ -15,31 +15,24 @@ class UpdateRoom {
     return await this.update(id, room)
   }
   async getRoomOrCreate(id, data) {
-    try {
-      const roomFind = await this.getRoom(id)
+    const roomFind = await this.getRoom(id)
       if (roomFind) {
         return roomFind
       }
       const roomCrete = await this.createRoom({ id, data })
       return roomCrete
-    } catch (error) {
-      throw error
-    }
   }
   async getRoom(id) {
     try {
       return await this.roomRepository.getById(id)
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       return undefined
     }
   }
   async createRoom({ id, data }) {
-    try {
-      const room = new Room({ id, ...data })
-      return await this.create.execute(room)
-    } catch (error) {
-      throw error
-    }
+    const room = new Room({ id, ...data })
+    return await this.create.execute(room)
   }
   modify(room, data) {
     const rta = this.modifyData(room, data)
@@ -54,14 +47,9 @@ class UpdateRoom {
     return room
   }
   async update(id, room) {
-    try {
-      const newRoom = new Room(room)
-      await this.roomRepository.update(id, newRoom)
-      return newRoom
-    }
-    catch (error) {
-      throw error
-    }
+    const newRoom = new Room(room)
+    await this.roomRepository.update(id, newRoom)
+    return newRoom
   }
 }
 

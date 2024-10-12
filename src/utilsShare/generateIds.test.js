@@ -3,7 +3,7 @@ import generateId from './generateIds'
 describe('generateId', () => {
   it('should generate an id of the specified size', () => {
     const id = generateId(10)
-    expect(id.length).toBe(10)
+    expect(id).toHaveLength(10)
   })
 
   it('should generate a different id each time', () => {

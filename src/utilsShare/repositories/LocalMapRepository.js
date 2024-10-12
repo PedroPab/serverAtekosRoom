@@ -38,6 +38,7 @@ class LocalMapRepository {
       }
     }
 
+    // eslint-disable-next-line no-unused-vars
     for (const [_, mapValue] of this.map.entries()) {
       if (compare(mapValue[key], value, option)) {
         results.push(mapValue)

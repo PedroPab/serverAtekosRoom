@@ -1,7 +1,7 @@
 import path from 'path'
 import express from 'express'
 import setPublicFolder from '../../../src/middlewares/setPublicFolder/setPublicFolder.js'
-import { __dirname } from '../../../dirname.js'
+// import { __dirname } from '../../../dirname.js'
 
 jest.mock('express', () => {
   const express = jest.fn(() => ({

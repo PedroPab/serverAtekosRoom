@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 class LinkRepository {
   async getAll() {
     throw new Error('Method not implemented')

@@ -21,8 +21,10 @@ class LocalMapRepository {
     return this.map.get(key)
   }
 
+  // eslint-disable-next-line no-unused-vars
   async getByFilter({ key, option, value }) {
     const result = []
+    // eslint-disable-next-line no-unused-vars
     this.map.forEach((v, k) => {
       if (v[option] === value) {
         result.push(v)

@@ -1,11 +1,11 @@
-const fs = require('fs')
+// const fs = require('fs')
 
 import ImgLocalFilesRepository from '../../../../src/imgs/infrastructure/repository/ImgLocalFilesRepository.js'
 
 
 describe('ImgLocalFilesRepository', () => {
   const imageTestDir = 'img-test'
-  const urlPublicRoot = './../../../../public/img-test'
+  // const urlPublicRoot = './../../../../public/img-test'
 
 
   // usamos publish para publicar una imagen

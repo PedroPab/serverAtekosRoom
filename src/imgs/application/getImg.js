@@ -6,14 +6,10 @@ class GetImg {
   }
 
   async execute(id) {
-    try {
-      if (!id) {
-        throw new Error('Id is required')
-      }
-      return await this.imgRepository.getById(id)
-    } catch (error) {
-      throw error
+    if (!id) {
+      throw new Error('Id is required')
     }
+    return await this.imgRepository.getById(id)
   }
 }
 

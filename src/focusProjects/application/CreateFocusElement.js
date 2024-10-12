@@ -1,6 +1,3 @@
-import FindFocusProject from './FindFocusProject.js'
-import CreateFocusElement from '../../focusElement/application/CreateFocusElement.js'
-
 class CreateFocusElementFromProject {
   constructor({
     focusProjectRepository,

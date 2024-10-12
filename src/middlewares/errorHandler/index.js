@@ -12,7 +12,7 @@ export const errorBoomHandler = (err, req, res, next) => {
   next(err)
 }
 
-export const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err, req, res) => {
   Logs.logInfo(`[errorHandler]`)
   Logs.logError(err)
   const statusCode = err.statusCode || 500

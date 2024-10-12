@@ -50,6 +50,7 @@ const createVideoFromImages = (images, output, fps, nameVideoOutput) => {
       console.error('Error: ' + err.message)
       console.error('ffmpeg stderr: ' + stderr)
     })
+    // eslint-disable-next-line no-unused-vars
     .on('end', (stdout, stderr) => {
       console.log('Transcoding succeeded!')
     })

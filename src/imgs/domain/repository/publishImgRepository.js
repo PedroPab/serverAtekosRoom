@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 class publishImgRepository {
   //recibe los datos de la imagen y los publica
 
