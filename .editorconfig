@@ -1,0 +1,13 @@
+# EditorConfig ayuda a mantener estilos de codificación consistentes
+root = true
+
+[*]
+indent_style = space  # Usa espacios en lugar de tabulaciones
+indent_size = 2  # Establece la indentación a 2 espacios (común en proyectos JS)
+end_of_line = lf  # Usa saltos de línea LF (para compatibilidad en entornos UNIX)
+charset = utf-8  # Codificación de caracteres UTF-8
+trim_trailing_whitespace = true  # Elimina espacios en blanco al final de las líneas
+insert_final_newline = true  # Añade una nueva línea al final de cada archivo
+
+[*.md]
+trim_trailing_whitespace = false  # Mantener espacios en blanco en archivos Markdown
