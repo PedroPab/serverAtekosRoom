@@ -25,7 +25,7 @@ const router = (app) => {
   router.use('/rooms', RoomRouter)
   router.use('/imgs', ImgsRouter)
   router.use('/focusProjects', FocusProjectRouter)
-  router.use(['/links', 'l' ], LinksRouter)
+  router.use(['/links', '/l' ], LinksRouter)
 }
 
 export default router
