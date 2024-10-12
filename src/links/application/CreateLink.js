@@ -6,7 +6,7 @@ export default class CreateLink {
   }
   async execute(data) {
     const link = new Link(data)
-    const linkCreated = await this.linkRepository.save(link)
+    const linkCreated = await this.linkRepository.save(link.id, link)
     return linkCreated
   }
 }

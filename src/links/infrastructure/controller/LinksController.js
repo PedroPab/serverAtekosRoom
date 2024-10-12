@@ -14,8 +14,8 @@ class LinksController {
   }
   async create(req, res) {
     try {
-      const { body } = req
-      const link = await this.createLink.execute(body)
+      const data = req.body
+      const link = await this.createLink.execute(data)
       res.status(201).send(link)
     } catch (error) {
       res.status(400).send(error.message)
