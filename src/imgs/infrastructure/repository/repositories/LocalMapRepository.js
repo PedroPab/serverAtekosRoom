@@ -1,43 +1,43 @@
 class LocalMapRepository {
   constructor() {
-    this.map = new Map();
+    this.map = new Map()
   }
 
   async save(key, value) {
-    this.map.set(key, value);
-    return value;
+    this.map.set(key, value)
+    return value
   }
 
   async get(key) {
-    return this.map.get(key);
+    return this.map.get(key)
   }
 
   async getAll() {
     //devuelve un array con los valores del map
-    return Array.from(this.map.values());
+    return Array.from(this.map.values())
   }
 
   getById(key) {
-    return this.map.get(key);
+    return this.map.get(key)
   }
 
   async getByFilter({ key, option, value }) {
-    const result = [];
+    const result = []
     this.map.forEach((v, k) => {
       if (v[option] === value) {
-        result.push(v);
+        result.push(v)
       }
-    });
-    return result;
+    })
+    return result
   }
 
   async update(key, value) {
-    this.map.set(key, value);
+    this.map.set(key, value)
   }
 
   async delete(key) {
-    this.map.delete(key);
+    this.map.delete(key)
   }
 }
 
-export default LocalMapRepository;
+export default LocalMapRepository

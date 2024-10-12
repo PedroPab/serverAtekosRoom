@@ -2,16 +2,16 @@ class GetAllImg {
   constructor({
     imgRepository,
   }) {
-    this.imgRepository = imgRepository;
+    this.imgRepository = imgRepository
   }
 
   async execute() {
     try {
-      return await this.imgRepository.getAll();
+      return await this.imgRepository.getAll()
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 }
 
-export default GetAllImg;
+export default GetAllImg

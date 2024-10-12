@@ -11,6 +11,7 @@
     "deploy": "gcloud beta app deploy --no-cache",
     "log": "gcloud app logs tail -s default",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "open:coverage": "open coverage/lcov-report/index.html"

@@ -1,32 +1,32 @@
-import FindFilterFocusElement from "../../focusElement/application/FindFilterFocusElement.js";
-import FindFocusProject from "./FindFocusProject.js";
+import FindFilterFocusElement from '../../focusElement/application/FindFilterFocusElement.js'
+import FindFocusProject from './FindFocusProject.js'
 
 class GetAllElementFromFocusProject {
   constructor({
     focusProjectRepository,
     focusElementRepository
   }) {
-    this.focusProjectRepository = focusProjectRepository;
-    this.focusElementRepository = focusElementRepository;
-    this.findFocusProject = new FindFocusProject({ focusProjectRepository });
-    this.getFilterFocusElement = new FindFilterFocusElement({ focusElementRepository });
+    this.focusProjectRepository = focusProjectRepository
+    this.focusElementRepository = focusElementRepository
+    this.findFocusProject = new FindFocusProject({ focusProjectRepository })
+    this.getFilterFocusElement = new FindFilterFocusElement({ focusElementRepository })
   }
   async execute({ focusProjectId, page }) {
     try {
-      const focusProject = await this.findFocusProject.execute(focusProjectId);
+      const focusProject = await this.findFocusProject.execute(focusProjectId)
 
       const filter = {
         key: 'focusProjectId',
         value: focusProjectId,
-        option: "=="
+        option: '=='
       }
-      const elements = await this.getFilterFocusElement.execute(filter);
+      const elements = await this.getFilterFocusElement.execute(filter)
 
-      return elements;
+      return elements
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 }
 
-export default GetAllElementFromFocusProject;
+export default GetAllElementFromFocusProject

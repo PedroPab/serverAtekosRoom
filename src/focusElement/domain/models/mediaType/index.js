@@ -3,6 +3,6 @@ const MEDIA_TYPES_FOCUS_ELEMENT = {
   video: 'video',
   text: 'text',
   link: 'link',
-};
+}
 
-export default MEDIA_TYPES_FOCUS_ELEMENT;
+export default MEDIA_TYPES_FOCUS_ELEMENT

@@ -2,13 +2,13 @@ class FindFocusProject {
   constructor({
     focusProjectRepository,
   }) {
-    this.focusProjectRepository = focusProjectRepository;
+    this.focusProjectRepository = focusProjectRepository
   }
   async execute(id) {
     try {
-      return await this.focusProjectRepository.getById(id);
+      return await this.focusProjectRepository.getById(id)
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 }

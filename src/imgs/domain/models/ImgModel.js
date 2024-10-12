@@ -9,15 +9,15 @@ class ImgArtikuz {
     dateUpdate,
     state,
   }) {
-    this.id = id;
-    this.urlPublic = urlPublic || '';;
-    this.urlPrivate = urlPrivate || '';;
-    this.name = name || '';
-    this.description = description || '';
-    this.dateCreate = dateCreate;
-    this.dateUpdate = dateUpdate;
-    this.state = state || true;
+    this.id = id
+    this.urlPublic = urlPublic || ''
+    this.urlPrivate = urlPrivate || ''
+    this.name = name || ''
+    this.description = description || ''
+    this.dateCreate = dateCreate
+    this.dateUpdate = dateUpdate
+    this.state = state || true
   }
 }
 
-export default ImgArtikuz;
+export default ImgArtikuz

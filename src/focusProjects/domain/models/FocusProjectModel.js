@@ -1,4 +1,4 @@
-import generateId from "../../../utilsShare/generateIds.js";
+import generateId from '../../../utilsShare/generateIds.js'
 
 class FocusProject {
   constructor({
@@ -13,11 +13,11 @@ class FocusProject {
     this.id = id || generateId()
     this.name = name || ''
     this.description = description || ''
-    this.dateCreate = dateCreate || new Date();
-    this.dateUpdate = dateUpdate || new Date();
-    this.state = state ?? true;
+    this.dateCreate = dateCreate || new Date()
+    this.dateUpdate = dateUpdate || new Date()
+    this.state = state ?? true
     this.data = data || {}
   }
 }
 
-export default FocusProject;
+export default FocusProject

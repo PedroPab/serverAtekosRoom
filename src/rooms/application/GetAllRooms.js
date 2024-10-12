@@ -1,11 +1,11 @@
 class GetAllRooms {
   constructor({ roomRepository }) {
-    this.roomRepository = roomRepository;
+    this.roomRepository = roomRepository
   }
 
   async execute() {
-    return await this.roomRepository.getAll();
+    return await this.roomRepository.getAll()
   }
 }
 
-export default GetAllRooms;
+export default GetAllRooms

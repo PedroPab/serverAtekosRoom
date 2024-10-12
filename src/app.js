@@ -1,25 +1,25 @@
-import express from 'express';
+import express from 'express'
 
-import router from './routes/index.js';
-import middlewaresErrors from './middlewares/middlewaresErrors.js';
-import middlewares from './middlewares/middlewares.js';
+import router from './routes/index.js'
+import middlewaresErrors from './middlewares/middlewaresErrors.js'
+import middlewares from './middlewares/middlewares.js'
 
-const app = express();
+const app = express()
 
 //aplicar los middlewares
-middlewares(app);
+middlewares(app)
 
 //aplicar las rutas
-router(app);
+router(app)
 
 //404 not found
 app.use((req, res) => {
   //mandar la pagina de public/html/404.html
-  res.status(404).sendFile('404.html', { root: 'public/html' });
-});
+  res.status(404).sendFile('404.html', { root: 'public/html' })
+})
 
 //middlewares para errores
-middlewaresErrors(app);
+middlewaresErrors(app)
 
 
-export default app;
+export default app

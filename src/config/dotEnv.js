@@ -1,19 +1,19 @@
 
-import { config as dotenvConfig } from 'dotenv';
-import { resolve } from 'path';
+import { config as dotenvConfig } from 'dotenv'
+import { resolve } from 'path'
 
-import { __dirname } from '../../dirname.js';
+import { __dirname } from '../../dirname.js'
 
-const environment = process.env.NODE_ENV || 'development';
+const environment = process.env.NODE_ENV || 'development'
 
-const envFile = resolve(__dirname, `.env.${environment}`);
-dotenvConfig({ path: envFile });
+const envFile = resolve(__dirname, `.env.${environment}`)
+dotenvConfig({ path: envFile })
 
-console.log(`corriendo en ${environment}`);
+console.log(`corriendo en ${environment}`)
 
 // normalmente esta información se guarda en un archivo .json pero para ser mas compatible con sistemas de CI/CD se guarda en una variable de entorno
-const serviceAccountJson = process.env.SERVICES_KEY_BUCKET || '{}';
-const serviceAccount = JSON.parse(serviceAccountJson);
+const serviceAccountJson = process.env.SERVICES_KEY_BUCKET || '{}'
+const serviceAccount = JSON.parse(serviceAccountJson)
 
 const ENV = {
   NODE_ENV: process.env.NODE_ENV || 'development',
@@ -26,6 +26,6 @@ const ENV = {
   SERVICES_KEY_BUCKET: serviceAccount,
   PORT_DATABASE: process.env.PORT_DATABASE || '8087',
   SERVICE_ACCOUNT: JSON.parse(process.env.SERVICE_ACCOUNT) || '',
-};
+}
 
-export default ENV;
+export default ENV

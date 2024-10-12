@@ -24,7 +24,7 @@ export class Room {
     //debemos de actualizar solo los parametros que mandamos
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
-        this[key] = data[key];
+        this[key] = data[key]
       }
     }
     this.dateUpdate = new Date()

@@ -1,5 +1,5 @@
-import Logs from "../../utils/logColor/index.js"
-import clients from "../clients/index.js"
+import Logs from '../../utils/logColor/index.js'
+import clients from '../clients/index.js'
 
 export const socketEventIdRoom = (idSocket, data) => {
   try {
@@ -11,7 +11,7 @@ export const socketEventIdRoom = (idSocket, data) => {
     }
     const rta = { type: `update`, data }
     Logs.logInfo(`mandamos esta info al socket ${idSocket}: ${JSON.stringify(rta)}`)
-    ws.send(JSON.stringify(rta));
+    ws.send(JSON.stringify(rta))
     return
   } catch (error) {
     throw error

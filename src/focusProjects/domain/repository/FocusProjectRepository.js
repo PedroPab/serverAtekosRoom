@@ -1,11 +1,11 @@
 class FocusProjectRepository {
 
   getAll() {
-    throw new Error('Method not implemented');
+    throw new Error('Method not implemented')
   }
 
   getId(id) {
-    throw new Error('Method not implemented');
+    throw new Error('Method not implemented')
   }
 
   getFilter(filter) {
@@ -13,17 +13,17 @@ class FocusProjectRepository {
   }
 
   save(focusProject) {
-    throw new Error('Method not implemented');
+    throw new Error('Method not implemented')
   }
 
   update(id, focusProject) {
-    throw new Error('Method not implemented');
+    throw new Error('Method not implemented')
   }
 
   delete(id) {
-    throw new Error('Method not implemented');
+    throw new Error('Method not implemented')
   }
 
 }
 
-export default FocusProjectRepository;
+export default FocusProjectRepository

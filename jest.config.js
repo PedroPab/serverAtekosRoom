@@ -7,4 +7,4 @@ export default {
     '/node_modules/(?!chalk)',
   ],
   testEnvironment: 'node',
-};
+}

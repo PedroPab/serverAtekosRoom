@@ -2,24 +2,24 @@
 
 class RoomService {
   constructor({ roomRepository }) {
-    this.roomRepository = roomRepository;
+    this.roomRepository = roomRepository
   }
 
   async createRoom(room) {
-    return this.roomRepository.save(room);
+    return this.roomRepository.save(room)
   }
 
   async getRooms() {
-    return this.roomRepository.getAll();
+    return this.roomRepository.getAll()
   }
 
   async getRoomById(id) {
-    return this.roomRepository.getById(id);
+    return this.roomRepository.getById(id)
   }
 
   async updateRoom({ id, data }) {
-    return this.roomRepository.update({ id, data });
+    return this.roomRepository.update({ id, data })
   }
 }
 
-export default RoomService;
+export default RoomService

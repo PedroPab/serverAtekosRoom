@@ -1,61 +1,61 @@
-import { WebSocketServer } from 'ws';
-import Logs from '../utils/logColor/index.js';
-import clients from './clients/index.js';
-import subscriptions from './subscriptions/index.js';
+import { WebSocketServer } from 'ws'
+import Logs from '../utils/logColor/index.js'
+import clients from './clients/index.js'
+import subscriptions from './subscriptions/index.js'
 
 export default function setupWebSocket(server) {
 
-  const wss = new WebSocketServer({ server });
+  const wss = new WebSocketServer({ server })
 
-  wss.on('connection', function connection(ws, req) {
-    const remoteAddress = req.socket.remoteAddress;
+  wss.on('connection', (ws, req) => {
+    const remoteAddress = req.socket.remoteAddress
     Logs.logInfo(`se conecto un nuevo websocket ${remoteAddress}`)
 
-    let userId; // Identificador único del cliente
+    let userId // Identificador único del cliente
 
     ws.on('message', (message) => {
-      const msg = JSON.parse(message);
+      const msg = JSON.parse(message)
 
       switch (msg.type) {
         case 'identify':
-          userId = msg.userId;
-          clients[userId] = ws;
+          userId = msg.userId
+          clients[userId] = ws
           Logs.logSuccess(`el cliente se identifica como ${userId}`)
           ws.send(`Te identificaste como ${userId}, suscribete a un evento o espera a que te volvamos a mandar un mensaje xd`)
-          break;
+          break
         case 'subscribe':
           // Añadir este cliente a la lista de suscripciones para el evento especificado
           Logs.logSuccess(`el cliente ${userId} se suscribió al evento ${msg.event}`)
           if (subscriptions[msg.event]) {
-            subscriptions[msg.event].push(userId);
+            subscriptions[msg.event].push(userId)
           } else {
-            subscriptions[msg.event] = [userId];
+            subscriptions[msg.event] = [userId]
           }
-          break;
+          break
         case 'message':
           // Enviar el mensaje a todos los clientes suscritos al evento especificado
           if (subscriptions[msg.event]) {
             subscriptions[msg.event].forEach(subscriber => {
-              clients[subscriber].send(JSON.stringify(msg));
-            });
+              clients[subscriber].send(JSON.stringify(msg))
+            })
           }
-          break;
+          break
         default:
           Logs.logInfo(msg)
-          break;
+          break
       }
-    });
+    })
 
     ws.on('close', () => {
       Logs.logError(`se desconecto el websocket ${remoteAddress}, con el id ${userId}`)
       // Limpiar al cliente de todas las suscripciones y la lista de clientes
       Object.keys(subscriptions).forEach(event => {
-        subscriptions[event] = subscriptions[event].filter(subscriber => subscriber !== userId);
-      });
-      delete clients[userId];
-    });
-  });
+        subscriptions[event] = subscriptions[event].filter(subscriber => subscriber !== userId)
+      })
+      delete clients[userId]
+    })
+  })
 
-  return wss;
+  return wss
 
 }

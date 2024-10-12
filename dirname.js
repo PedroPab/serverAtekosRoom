@@ -1,7 +1,7 @@
 // mostrar la raíz del proyecto
 
-import { dirname } from 'path';
+import { dirname } from 'path'
 
-const __dirname = dirname('.');
+const __dirname = dirname('.')
 
-export { __dirname };
+export { __dirname }

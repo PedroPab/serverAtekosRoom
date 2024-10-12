@@ -1,4 +1,4 @@
-import MEDIA_TYPES_FOCUS_ELEMENT from "./mediaType/index.js";
+import MEDIA_TYPES_FOCUS_ELEMENT from './mediaType/index.js'
 
 class FocusElement {
   constructor({
@@ -17,9 +17,9 @@ class FocusElement {
     this.focusProjectId = focusProjectId || ''
     this.name = name || ''
     this.description = description || ''
-    this.dateCreate = dateCreate || new Date();
-    this.dateUpdate = dateUpdate || new Date();
-    this.state = state ?? true;
+    this.dateCreate = dateCreate || new Date()
+    this.dateUpdate = dateUpdate || new Date()
+    this.state = state ?? true
 
     this.type = type || ''
     //convertir un objeto en array
@@ -34,4 +34,4 @@ class FocusElement {
   }
 }
 
-export default FocusElement;
+export default FocusElement
