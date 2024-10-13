@@ -13,6 +13,8 @@ const router = (app) => {
   app.get('/', (_, res) => {
     res.send('Hello World!').status(200)
   })
+  //para ser lo mas cortos posibles los links
+  app.use(['/links', '/l' ], LinksRouter)
 
   const router = express.Router()
 
@@ -26,6 +28,7 @@ const router = (app) => {
   router.use('/imgs', ImgsRouter)
   router.use('/focusProjects', FocusProjectRouter)
   router.use(['/links', '/l' ], LinksRouter)
+
 }
 
 export default router
