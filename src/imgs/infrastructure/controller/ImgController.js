@@ -49,6 +49,7 @@ class ImgController {
         file,
       }
       const newImg = await this.createImg.execute({ id, data })
+      console.log(`[ ~ ImgController ~ create ~ newImg]`, newImg)
       res.status(201).json(newImg)
     } catch (error) {
       res.status(400).json({ error: error.message })

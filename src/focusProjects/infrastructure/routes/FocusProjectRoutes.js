@@ -8,6 +8,12 @@ const router = express.Router()
 const storage = multer.memoryStorage()
 const upload = multer({ storage })
 
+//console.table()
+router.use((req, res, next) => {
+  console.table({ path: req.path, method: req.method })
+  next()
+})
+
 router.get('/', focusProjectController.getAll.bind(focusProjectController))
 
 router.post('/', focusProjectController.create.bind(focusProjectController))

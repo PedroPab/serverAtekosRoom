@@ -34,6 +34,7 @@ class CreateFocusElement {
     return focusElementCreated
   }
   async createElementPureByType(data) {
+    console.log(`[ ~ CreateFocusElement ~ createElementPureByType ~ data]`, data)
     //según el tipo de elemento crearemos un proceso diferente
     switch (data.type) {
     case this.typeMedia.img:
