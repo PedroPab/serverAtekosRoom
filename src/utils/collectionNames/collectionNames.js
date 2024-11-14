@@ -1,8 +1,8 @@
 const COLLECTIONS = {
-  rooms: 'rooms',
-  room: 'room',
+	rooms: 'rooms',
+	room: 'room',
 }
 
 export {
-  COLLECTIONS,
+	COLLECTIONS,
 }

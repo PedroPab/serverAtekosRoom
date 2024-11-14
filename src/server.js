@@ -14,5 +14,5 @@ const PORT = ENV.PORT
 const HOST = ENV.HOST
 
 server.listen(PORT, () => {
-  Logs.logInfo(`Server is running on port http://${HOST}:${PORT}`)
+	Logs.logInfo(`Server is running on port http://${HOST}:${PORT}`)
 })

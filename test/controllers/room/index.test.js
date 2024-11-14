@@ -3,28 +3,28 @@ import { createRoom } from '../../../src/controllers/room/controller.js'
 // import { COLLECTIONS } from '../../../src/utils/collectionNames/collectionNames.js'
 
 const DataBaseStub = {
-  setValue: ( ) => ({}),
-  getValue: () => ([]),
-  deleteValue: () => ({}),
+	setValue: ( ) => ({}),
+	getValue: () => ([]),
+	deleteValue: () => ({}),
 }
 jest.mock('../../../src/database/index.js', () => jest.fn().mockImplementation(() => DataBaseStub))
 
 describe('Room Controller', () => {
-  // let Data
+	// let Data
 
-  beforeEach(() => {
-    // Data = new StoreBaseService()
-  })
+	beforeEach(() => {
+		// Data = new StoreBaseService()
+	})
 
-  describe('createRoom', () => {
-    it('solo comprobamos el resultado de crear un Room', async () => {
-      const idRoom = 'test-room-id'
+	describe('createRoom', () => {
+		it('solo comprobamos el resultado de crear un Room', async () => {
+			const idRoom = 'test-room-id'
 
-      const result = await createRoom(idRoom)
+			const result = await createRoom(idRoom)
 
-      expect(result.id).toBe(idRoom)
-    })
+			expect(result.id).toBe(idRoom)
+		})
 
-  })
+	})
 
 })

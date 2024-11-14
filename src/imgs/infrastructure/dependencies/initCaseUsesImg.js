@@ -14,20 +14,20 @@ const publishImgRepository = new PublishImgBucketGoogleRepository({})
 
 //use cases
 const createImg = new CreateImg({
-  imgRepository,
-  publishImgRepository
+	imgRepository,
+	publishImgRepository
 })
 
 const getIdImg = new GetImg({
-  imgRepository,
+	imgRepository,
 })
 
 const getAllImgs = new GetAllImg({
-  imgRepository,
+	imgRepository,
 })
 
 export {
-  createImg,
-  getIdImg,
-  getAllImgs,
+	createImg,
+	getIdImg,
+	getAllImgs,
 }

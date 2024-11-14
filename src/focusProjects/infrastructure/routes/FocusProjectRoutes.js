@@ -10,8 +10,8 @@ const upload = multer({ storage })
 
 //console.table()
 router.use((req, res, next) => {
-  console.table({ path: req.path, method: req.method , origin: req.headers.origin , body: req.body, from: req.headers.referer })
-  next()
+	console.table({ path: req.path, method: req.method , origin: req.headers.origin , body: req.body, from: req.headers.referer })
+	next()
 })
 
 router.get('/', focusProjectController.getAll.bind(focusProjectController))

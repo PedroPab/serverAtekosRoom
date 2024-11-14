@@ -10,9 +10,9 @@ import { createImg, getIdImg, getAllImgs } from './initCaseUsesImg.js'
 
 //init controller
 const roomController = new ImgController({
-  createImg,
-  getIdImg,
-  getAllImgs,
+	createImg,
+	getIdImg,
+	getAllImgs,
 })
 
 export default roomController

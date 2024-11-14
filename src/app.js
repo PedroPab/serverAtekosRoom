@@ -9,8 +9,8 @@ const app = express()
 //aplicar los middlewares
 middlewares(app)
 app.use((req, res, next) => {
-  console.table({ path: req.path, method: req.method , origin: req.headers.origin , body: req.body, from: req.headers.referer })
-  next()
+	console.table({ path: req.path, method: req.method , origin: req.headers.origin , body: req.body, from: req.headers.referer })
+	next()
 })
 
 //aplicar las rutas
@@ -18,8 +18,8 @@ router(app)
 
 //404 not found
 app.use((req, res) => {
-  //mandar la pagina de public/html/404.html
-  res.status(404).sendFile('404.html', { root: 'public/html' })
+	//mandar la pagina de public/html/404.html
+	res.status(404).sendFile('404.html', { root: 'public/html' })
 })
 
 //middlewares para errores

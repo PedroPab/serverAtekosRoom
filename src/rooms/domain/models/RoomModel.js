@@ -10,34 +10,34 @@ import generateId from '../../../utilsShare/generateIds.js'
  * @returns {Room}
  */
 export class Room {
-  /**
+	/**
    * @param {Object} param0
    * @param {String} param0.id
    * @param {String} param0.name
    * @param {String} param0.description
    */
-  constructor({
-    id,
-    name = '',
-    description = '',
-    dateCreate,
-    dateUpdate,
-    state,
-  }) {
-    this.id = id || generateId()
-    // this.type = type
-    this.name = name || this.id
-    this.description = description || ''
+	constructor({
+		id,
+		name = '',
+		description = '',
+		dateCreate,
+		dateUpdate,
+		state,
+	}) {
+		this.id = id || generateId()
+		// this.type = type
+		this.name = name || this.id
+		this.description = description || ''
 
-    this.data = {}
+		this.data = {}
 
-    const date = new Date()
+		const date = new Date()
 
-    this.dateCreate = dateCreate || date
-    this.dateUpdate = dateUpdate || date
+		this.dateCreate = dateCreate || date
+		this.dateUpdate = dateUpdate || date
 
-    this.state = state ?? true
-  }
+		this.state = state ?? true
+	}
 }
 
 export default Room

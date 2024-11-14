@@ -21,10 +21,10 @@ const getLinkById = new GetIdLink({ linkRepository })
 const updateById = new UpdateLink({ linkRepository })
 
 const linkController = new LinksController({
-  createLink,
-  getAllLinks,
-  getLinkById,
-  updateById
+	createLink,
+	getAllLinks,
+	getLinkById,
+	updateById
 })
 
 export default linkController

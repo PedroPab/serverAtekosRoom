@@ -1,45 +1,45 @@
 class LocalMapRepository {
-  constructor() {
-    this.map = new Map()
-  }
+	constructor() {
+		this.map = new Map()
+	}
 
-  async save(key, value) {
-    this.map.set(key, value)
-    return value
-  }
+	async save(key, value) {
+		this.map.set(key, value)
+		return value
+	}
 
-  async get(key) {
-    return this.map.get(key)
-  }
+	async get(key) {
+		return this.map.get(key)
+	}
 
-  async getAll() {
-    //devuelve un array con los valores del map
-    return Array.from(this.map.values())
-  }
+	async getAll() {
+		//devuelve un array con los valores del map
+		return Array.from(this.map.values())
+	}
 
-  getById(key) {
-    return this.map.get(key)
-  }
+	getById(key) {
+		return this.map.get(key)
+	}
 
-  // eslint-disable-next-line no-unused-vars
-  async getByFilter({ key, option, value }) {
-    const result = []
-    // eslint-disable-next-line no-unused-vars
-    this.map.forEach((v, k) => {
-      if (v[option] === value) {
-        result.push(v)
-      }
-    })
-    return result
-  }
+	// eslint-disable-next-line no-unused-vars
+	async getByFilter({ key, option, value }) {
+		const result = []
+		// eslint-disable-next-line no-unused-vars
+		this.map.forEach((v, k) => {
+			if (v[option] === value) {
+				result.push(v)
+			}
+		})
+		return result
+	}
 
-  async update(key, value) {
-    this.map.set(key, value)
-  }
+	async update(key, value) {
+		this.map.set(key, value)
+	}
 
-  async delete(key) {
-    this.map.delete(key)
-  }
+	async delete(key) {
+		this.map.delete(key)
+	}
 }
 
 export default LocalMapRepository

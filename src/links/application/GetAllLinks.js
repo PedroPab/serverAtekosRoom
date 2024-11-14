@@ -1,11 +1,11 @@
 class GetAllLinks {
-  constructor({ linkRepository }) {
-    this.linkRepository = linkRepository
-  }
+	constructor({ linkRepository }) {
+		this.linkRepository = linkRepository
+	}
 
-  async execute() {
-    return this.linkRepository.getAll()
-  }
+	async execute() {
+		return this.linkRepository.getAll()
+	}
 }
 
 export default GetAllLinks

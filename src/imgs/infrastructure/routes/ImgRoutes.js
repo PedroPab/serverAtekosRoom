@@ -10,7 +10,7 @@ const storage = multer.memoryStorage()
 const upload = multer({ storage })
 
 router.get('/Hello', (req, res) => {
-  res.send('Hello World!')
+	res.send('Hello World!')
 })
 
 router.get('/', imgController.getAll.bind(imgController))

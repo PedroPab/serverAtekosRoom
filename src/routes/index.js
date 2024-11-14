@@ -10,24 +10,24 @@ import LinksRouter from '../links/infrastructure/routes/LinksRoutes.js'
 
 const router = (app) => {
 
-  app.get('/', (_, res) => {
-    res.send('Hello World!').status(200)
-  })
-  //para ser lo mas cortos posibles los links
-  app.use(['/links', '/l' ], LinksRouter)
+	app.get('/', (_, res) => {
+		res.send('Hello World!').status(200)
+	})
+	//para ser lo mas cortos posibles los links
+	app.use(['/links', '/l' ], LinksRouter)
 
-  const router = express.Router()
+	const router = express.Router()
 
-  app.use('/api/v1', router)
+	app.use('/api/v1', router)
 
-  router.get('/', (_, res) => {
-    res.send('Hello World! (api/v1)').status(200)
-  })
+	router.get('/', (_, res) => {
+		res.send('Hello World! (api/v1)').status(200)
+	})
 
-  router.use('/rooms', RoomRouter)
-  router.use('/imgs', ImgsRouter)
-  router.use('/focusProjects', FocusProjectRouter)
-  router.use(['/links', '/l' ], LinksRouter)
+	router.use('/rooms', RoomRouter)
+	router.use('/imgs', ImgsRouter)
+	router.use('/focusProjects', FocusProjectRouter)
+	router.use(['/links', '/l' ], LinksRouter)
 
 }
 

@@ -21,12 +21,12 @@ const getParamRoom = new GetParamRoom({ roomRepository })
 const switchLightRoom = new SwitchLightRoom({ roomRepository })
 //init controller
 const roomController = new RoomController({
-  createRoom,
-  getAllRooms,
-  getRoomById,
-  updateRoom,
-  getParamRoom,
-  switchLightRoom,
+	createRoom,
+	getAllRooms,
+	getRoomById,
+	updateRoom,
+	getParamRoom,
+	switchLightRoom,
 })
 
 export default roomController
