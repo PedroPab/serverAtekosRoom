@@ -8,6 +8,10 @@ const app = express()
 
 //aplicar los middlewares
 middlewares(app)
+app.use((req, res, next) => {
+  console.table({ path: req.path, method: req.method , origin: req.headers.origin , body: req.body, from: req.headers.referer })
+  next()
+})
 
 //aplicar las rutas
 router(app)
