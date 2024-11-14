@@ -1,14 +1,14 @@
 import Room from '../domain/models/RoomModel.js'
-import CreateRoom from './CreateRoom.js'
-import GetRoomById from './GetRoomById.js'
-import UpdateRoom from './UpdateRoom.js'
 
 class SwitchLightRoom {
-	constructor({ roomRepository }) {
-		this.roomRepository = roomRepository
-		this.getById = new GetRoomById({ roomRepository })
-		this.update = new UpdateRoom({ roomRepository })
-		this.create = new CreateRoom({ roomRepository })
+	constructor({
+		getRoomById,
+		updateRoom,
+		createRoom
+	}) {
+		this.getById = getRoomById
+		this.update = updateRoom
+		this.create = createRoom
 	}
 
 	async execute({ id }) {
