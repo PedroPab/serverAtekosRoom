@@ -3,7 +3,7 @@ import app from './app.js'
 import ENV from './config/dotEnv.js'
 import Logs from './utils/logColor/index.js'
 
-import setupWebsocketServer from './websocket/index.js'
+import setupWebsocketServer from './websocket/setupWebSocket.js'
 
 const server = http.createServer(app)
 
