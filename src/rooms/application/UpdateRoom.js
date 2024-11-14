@@ -1,18 +1,24 @@
 import Room from '../domain/models/RoomModel.js'
-import CreateRoom from './CreateRoom.js'
-import GetRoomById from './GetRoomById.js'
 
 class UpdateRoom {
-	constructor({ roomRepository }) {
+	constructor({
+		roomRepository,
+		eventRoom,
+		getRoomById,
+		createRoom,
+	}) {
 		this.roomRepository = roomRepository
-		this.getById = new GetRoomById({ roomRepository })
-		this.create = new CreateRoom({ roomRepository })
+		this.eventRoom = eventRoom
+		this.getById = getRoomById
+		this.create = createRoom
 	}
 	async execute({ id, data }) {
 		let room = await this.getRoomOrCreate(id, data)
 		room = this.modify(room, data)
 
-		return await this.update(id, room)
+		const rta = await this.update(id, room)
+		this.eventRoom.emit('room.update', rta)
+		return rta
 	}
 	async getRoomOrCreate(id, data) {
 		const roomFind = await this.getRoom(id)

@@ -14,37 +14,36 @@ export default function setupWebSocket(server) {
 		let userId // Identificador único del cliente
 
 		ws.on('message', (message) => {
-			console.log(`[ ~ ws.on ~ message]`, message)
 			//recibit buffer y parsear a json
 			const msg = JSON.parse(message)
 
 			switch (msg.type) {
-			case 'identify':
-				userId = msg.userId
-				clients[userId] = ws
-				Logs.logSuccess(`el cliente se identifica como ${userId}`)
-				ws.send(`Te identificaste como ${userId}, suscribete a un evento o espera a que te volvamos a mandar un mensaje xd`)
-				break
-			case 'subscribe':
-				// Añadir este cliente a la lista de suscripciones para el evento especificado
-				Logs.logSuccess(`el cliente ${userId} se suscribió al evento ${msg.event}`)
-				if (subscriptions[msg.event]) {
-					subscriptions[msg.event].push(userId)
-				} else {
-					subscriptions[msg.event] = [userId]
-				}
-				break
-			case 'message':
-				// Enviar el mensaje a todos los clientes suscritos al evento especificado
-				if (subscriptions[msg.event]) {
-					subscriptions[msg.event].forEach(subscriber => {
-						clients[subscriber].send(JSON.stringify(msg))
-					})
-				}
-				break
-			default:
-				Logs.logInfo(msg)
-				break
+				case 'identify':
+					userId = msg.userId
+					clients[userId] = ws
+					Logs.logSuccess(`el cliente se identifica como ${userId}`)
+					ws.send(`Te identificaste como ${userId}, suscribete a un evento o espera a que te volvamos a mandar un mensaje xd`)
+					break
+				case 'subscribe':
+					// Añadir este cliente a la lista de suscripciones para el evento especificado
+					Logs.logSuccess(`el cliente ${userId} se suscribió al evento ${msg.event}`)
+					if (subscriptions[msg.event]) {
+						subscriptions[msg.event].push(userId)
+					} else {
+						subscriptions[msg.event] = [userId]
+					}
+					break
+				case 'message':
+					// Enviar el mensaje a todos los clientes suscritos al evento especificado
+					if (subscriptions[msg.event]) {
+						subscriptions[msg.event].forEach(subscriber => {
+							clients[subscriber].send(JSON.stringify(msg))
+						})
+					}
+					break
+				default:
+					Logs.logInfo(msg)
+					break
 			}
 		})
 

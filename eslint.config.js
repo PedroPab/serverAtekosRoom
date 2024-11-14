@@ -32,7 +32,7 @@ export default [
 			'require-jsdoc': 'off',
 			'new-cap': ['error', { newIsCap: true, capIsNew: false }],
 			'no-tabs': 'off', // Desactiva la prohibición de tabs
-			'indent': ['error', 'tab'], // Usa tabs para la indentación
+			//'indent': ['error', 'tab'], // Usa tabs para la indentación
 
 		}
 	}
