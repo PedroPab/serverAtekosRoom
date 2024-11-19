@@ -5,10 +5,6 @@ import GetAllElementFromFocusProject from '../../application/GetAllElementFromFo
 
 //casos de uso Elements
 import { createImg } from '../../../imgs/infrastructure/dependencies/initCaseUsesImg.js'
-//repositorios
-// import FocusProjectLocalMapRepository from '../repository/FocusProjectLocalMapRepository.js';
-import FocusProjectFirebaseRepository from '../repository/FocusProjectFirebaseRepository.js'
-import FocusElementFirebaseRepository from '../../../focusElement/infrastructure/repository/FocusElementFirebaseRepository.js'
 
 //controladores
 import FocusProjectController from '../controller/FocusProjectController.js'
@@ -16,10 +12,13 @@ import CreateFocusElementFromProject from '../../application/CreateFocusElement.
 import CreateFocusElement from '../../../focusElement/application/CreateFocusElement.js'
 import FindFocusProject from '../../application/FindFocusProject.js'
 
+//repositorios
+import FocusProjectsRepository from './FocusProjectsRepositoryFactory.js'
+import FocusElementRepository from '../../../focusElement/infrastructure/dependencies/FocusElementRepositoryFactory.js'
 
 //repository
-const focusProjectRepository = new FocusProjectFirebaseRepository()
-const focusElementRepository = new FocusElementFirebaseRepository()
+const focusProjectRepository = new FocusProjectsRepository()
+const focusElementRepository = new FocusElementRepository()
 //repository para publicar imágenes
 
 //use cases

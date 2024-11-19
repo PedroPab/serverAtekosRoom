@@ -29,6 +29,8 @@ const ENV = {
 	FIRESTORE_EMULATOR_HOST: process.env.FIRESTORE_EMULATOR_HOST || 'localhost:8097',
 	IMG_REPOSITORY: process.env.IMG_REPOSITORY || 'local',
 	PUBLISH_REPOSITORY: process.env.PUBLISH_REPOSITORY || 'local',
+	FOCUS_ELEMENT_REPOSITORY: process.env.FOCUS_ELEMENT_REPOSITORY || 'local',
+	FOCUS_PROJECT_REPOSITORY: process.env.FOCUS_PROJECT_REPOSITORY || 'local',
 }
 
 export default ENV
