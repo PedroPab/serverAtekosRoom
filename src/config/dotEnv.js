@@ -27,6 +27,8 @@ const ENV = {
 	PORT_DATABASE: process.env.PORT_DATABASE || '8087',
 	SERVICE_ACCOUNT: JSON.parse(process.env.SERVICE_ACCOUNT) || '',
 	FIRESTORE_EMULATOR_HOST: process.env.FIRESTORE_EMULATOR_HOST || 'localhost:8097',
+	IMG_REPOSITORY: process.env.IMG_REPOSITORY || 'local',
+	PUBLISH_REPOSITORY: process.env.PUBLISH_REPOSITORY || 'local',
 }
 
 export default ENV
