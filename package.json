@@ -17,7 +17,7 @@
 		"open:coverage": "open coverage/lcov-report/index.html",
 		"build": "docker build -t gcr.io/$GCP_PROJECT_ID/$NAME_IMG .",
 		"push": "docker push gcr.io/$GCP_PROJECT_ID/$NAME_IMG",
-		"deploy": "gcloud run deploy $NAME_SERVICE --image gcr.io/$GCP_PROJECT_ID/$NAME_IMG --platform managed --region $REGION --allow-unauthenticated --min-instances 0 --max-instances 1 --memory 1Gi --cpu 1 ",
+		"deploy": "gcloud run deploy $NAME_SERVICE --image gcr.io/$GCP_PROJECT_ID/$NAME_IMG --platform managed --region $REGION --allow-unauthenticated --min-instances 0 --max-instances 1 --memory 512Mi --cpu 1",
 		"full-deploy": "npm run build ; npm run push ; npm run deploy"
 	},
 	"engines": {
