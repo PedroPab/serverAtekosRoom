@@ -8,13 +8,17 @@
 		"start": "export NODE_ENV=production ; node src/server.js",
 		"dev": "export NODE_ENV=development ; nodemon src/server.js",
 		"upDb": "firebase emulators:start --only firestore",
-		"deploy": "gcloud beta app deploy --project=atekos-369512",
+		"deploy:engine": "gcloud beta app deploy --project=atekos-369512",
 		"log": "gcloud app logs tail -s default",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"test": "jest",
 		"test:coverage": "jest --coverage",
-		"open:coverage": "open coverage/lcov-report/index.html"
+		"open:coverage": "open coverage/lcov-report/index.html",
+		"build": "docker build -t gcr.io/$GCP_PROJECT_ID/$NAME_IMG .",
+		"push": "docker push gcr.io/$GCP_PROJECT_ID/$NAME_IMG",
+		"deploy": "gcloud run deploy $NAME_SERVICE --image gcr.io/$GCP_PROJECT_ID/$NAME_IMG --platform managed --region $REGION --allow-unauthenticated --min-instances 0 --max-instances 1 --memory 1Gi --cpu 1 ",
+		"full-deploy": "npm run build ; npm run push ; npm run deploy"
 	},
 	"engines": {
 		"node": "18"
