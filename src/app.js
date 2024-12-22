@@ -6,10 +6,17 @@ import middlewares from './middlewares/middlewares.js'
 
 const app = express()
 
+//cors
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*')
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+	next()
+})
+
 //aplicar los middlewares
 middlewares(app)
 app.use((req, res, next) => {
-	console.table({ path: req.path, method: req.method , origin: req.headers.origin , body: req.body, from: req.headers.referer })
+	console.table({ path: req.path, method: req.method, origin: req.headers.origin, body: req.body, from: req.headers.referer })
 	next()
 })
 

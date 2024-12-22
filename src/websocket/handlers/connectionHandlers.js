@@ -17,7 +17,7 @@ export function handleConnection(ws, req) {
 				handleIdentify(ws, userId)
 				break
 			case 'subscribe':
-				handleSubscribe(userId, msg)
+				handleSubscribe(ws, userId, msg)
 				break
 			case 'message':
 				handleMessage(msg)

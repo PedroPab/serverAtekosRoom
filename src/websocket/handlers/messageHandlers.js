@@ -8,10 +8,14 @@ export function handleIdentify(ws, userId) {
 	//pero como todo es publico no es necesario
 	clients[userId] = ws
 	Logs.logSuccess(`El cliente se identifica como ${userId}`)
-	ws.send(`Te identificaste como ${userId}, suscribete a un evento o espera actualizaciones de Room.`)
+	const response = {
+		type: `message`,
+		data: `Te identificaste como ${userId}, suscribete a un evento o espera actualizaciones de Room.`
+	}
+	ws.send(JSON.stringify(response))
 }
 
-export function handleSubscribe(userId, msg) {
+export function handleSubscribe(ws, userId, msg) {
 	const event = msg.event
 	const roomId = msg.room
 
@@ -23,6 +27,11 @@ export function handleSubscribe(userId, msg) {
 	subscriptions[event] = subscriptions[event] || {}
 	subscriptions[event][roomId] = subscriptions[event][roomId] || []
 	subscriptions[event][roomId].push(userId)
+	const response = {
+		type: 'message',
+		data: `Te has suscrito correctamente al evento ${event} para el room ${roomId}.`
+	}
+	ws.send(JSON.stringify(response))
 }
 
 export function handleMessage(msg) {
