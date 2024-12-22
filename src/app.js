@@ -13,8 +13,6 @@ app.use((req, res, next) => {
 	next()
 })
 
-//aplicar los middlewares
-middlewares(app)
 app.use((req, res, next) => {
 	console.table({ path: req.path, method: req.method, origin: req.headers.origin, body: req.body, from: req.headers.referer })
 	next()
@@ -22,6 +20,9 @@ app.use((req, res, next) => {
 
 //aplicar las rutas
 router(app)
+
+//aplicar los middlewares
+middlewares(app)
 
 //404 not found
 app.use((req, res) => {

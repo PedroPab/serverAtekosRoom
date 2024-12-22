@@ -4,7 +4,15 @@ import { __dirname } from '../../../dirname.js'
 
 const setPublicFolder = (app, folderPath) => {
 	const publicPath = path.join(__dirname, folderPath)
-	app.use(express.static(publicPath))
+	// app.use(express.static(publicPath))
+
+	// Servir los archivos estáticos desde la carpeta "build"
+	app.use(express.static(path.join(publicPath, 'dist')))
+
+	// Manejar cualquier ruta y devolver el archivo "index.html"
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(publicPath, 'dist', 'index.html'))
+	})
 }
 
 export default setPublicFolder
