@@ -7,7 +7,8 @@
 	"scripts": {
 		"start": "export NODE_ENV=production ; node src/server.js",
 		"dev": "export NODE_ENV=development ; nodemon src/server.js",
-		"upDb": "firebase emulators:start --only firestore",
+		"emulator": "firebase emulators:start --only firestore",
+		"emulator:stop": "firebase emulators:exec -- echo 'Stopping emulators...'",
 		"deploy:engine": "gcloud beta app deploy --project=atekos-369512",
 		"log": "gcloud app logs tail -s default",
 		"lint": "eslint .",
