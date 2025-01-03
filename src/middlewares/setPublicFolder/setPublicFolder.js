@@ -8,7 +8,7 @@ const setPublicFolder = (app, folderPath) => {
 
 	// Servir los archivos estáticos desde la carpeta "build"
 	app.use(express.static(path.join(publicPath, 'dist')))
-
+	app.use(express.static(path.join(publicPath)))
 	// Manejar cualquier ruta y devolver el archivo "index.html"
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve(publicPath, 'dist', 'index.html'))

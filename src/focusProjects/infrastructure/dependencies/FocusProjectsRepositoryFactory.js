@@ -5,6 +5,8 @@ import FocusProjectFirebaseRepository from '../repository/FocusProjectFirebaseRe
 
 let Repository
 
+console.log(`repository FocusProjects: ${ENV.FOCUS_PROJECT_REPOSITORY}`)
+
 switch (ENV.FOCUS_PROJECT_REPOSITORY) {
 	case 'firebase':
 		Repository = FocusProjectFirebaseRepository

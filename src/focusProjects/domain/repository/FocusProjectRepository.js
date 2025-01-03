@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 class FocusProjectRepository {
 
-	getAll() {
+	getAll(pagination) {
 		throw new Error('Method not implemented')
 	}
 
@@ -9,7 +9,7 @@ class FocusProjectRepository {
 		throw new Error('Method not implemented')
 	}
 
-	getFilter(filter) {
+	getFilter(filter, pagination) {
 		throw new Error('Method not implemented')
 	}
 

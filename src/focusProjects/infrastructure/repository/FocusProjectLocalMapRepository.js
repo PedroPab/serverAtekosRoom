@@ -12,8 +12,12 @@ class FocusProjectLocalMapRepository extends FocusProjectRepository {
 		return rta
 	}
 
-	async getAll() {
-		return db.getAll()
+	async getAll(pagination) {
+		return db.getAll(pagination)
+	}
+
+	async getFilter(filter, pagination) {
+		return db.getByFilter(filter, pagination)
 	}
 
 	async getById(id) {

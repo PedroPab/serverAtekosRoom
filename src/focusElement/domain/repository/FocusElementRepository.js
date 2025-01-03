@@ -9,7 +9,7 @@ class FocusElementRepository {
 		throw new Error('Method not implemented')
 	}
 
-	getFilter(filter) {
+	getFilter(filter, pagination) {
 		throw new Error('Method not implemented')
 	}
 

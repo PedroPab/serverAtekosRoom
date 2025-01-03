@@ -23,16 +23,17 @@ const focusElementRepository = new FocusElementRepository()
 
 //use cases
 const getAllFocusProjects = new GetAllFocusProject({ focusProjectRepository })
+const getIdFocusProject = new FindFocusProject({ focusProjectRepository })
 const createFocusProject = new CreateFocusProject({ focusProjectRepository })
 
 //use cases Elements
-const findFocusElement = new FindFocusProject({ focusProjectRepository })
+// const findFocusElement = new FindFocusProject({ focusProjectRepository })
 const createFocusElement = new CreateFocusElement({ focusElementRepository, createImg })
 
 const createFocusElementFromProject = new CreateFocusElementFromProject({
 	focusProjectRepository,
 	focusElementRepository,
-	findFocusElement,
+	findFocusElement: getIdFocusProject,
 	createFocusElement,
 })
 
@@ -41,6 +42,7 @@ const getAllElementsByIdFocusProject = new GetAllElementFromFocusProject({ focus
 //init controller
 const focusProjectController = new FocusProjectController({
 	getAllFocusProjects,
+	getIdFocusProject,
 	createFocusProject,
 	createFocusElementFromProject,
 	getAllElementsByIdFocusProject,

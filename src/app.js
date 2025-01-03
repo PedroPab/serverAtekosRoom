@@ -3,6 +3,7 @@ import express from 'express'
 import router from './routes/index.js'
 import middlewaresErrors from './middlewares/middlewaresErrors.js'
 import middlewares from './middlewares/middlewares.js'
+import setPublicFolder from './middlewares/setPublicFolder/setPublicFolder.js'
 
 const app = express()
 
@@ -18,11 +19,14 @@ app.use((req, res, next) => {
 	next()
 })
 
+//aplicar los middlewares
+middlewares(app)
+
 //aplicar las rutas
 router(app)
 
-//aplicar los middlewares
-middlewares(app)
+setPublicFolder(app, 'public')
+
 
 //404 not found
 app.use((req, res) => {

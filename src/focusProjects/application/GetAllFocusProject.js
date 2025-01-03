@@ -4,8 +4,8 @@ class GetAllFocusProject {
 	}) {
 		this.focusProjectRepository = focusProjectRepository
 	}
-	async execute() {
-		return await this.focusProjectRepository.getAll()
+	async execute(pagination) {
+		return await this.focusProjectRepository.getAll(pagination)
 	}
 }
 

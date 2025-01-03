@@ -1,9 +1,9 @@
-import FocusProjectRepository from '../../../focusProjects/domain/repository/FocusProjectRepository.js'
+import FocusElementRepository from '../../domain/repository/FocusElementRepository.js'
 import LocalMapRepository from '../../../utilsShare/repositories/LocalMapRepository.js'
 
 const db = new LocalMapRepository()
 
-class FocusElementLocalMapRepository extends FocusProjectRepository {
+class FocusElementLocalMapRepository extends FocusElementRepository {
 	async save(id, data) {
 		if (!id || !data) {
 			throw new Error('ID y datos son requeridos')
@@ -29,12 +29,12 @@ class FocusElementLocalMapRepository extends FocusProjectRepository {
 		return rta
 	}
 
-	async getFilter(filter) {
+	async getFilter(filter, pagination) {
 		if (!filter) {
 			throw new Error('Filtro es requerido')
 		}
 
-		const rta = await db.getByFilter(filter)
+		const rta = await db.getByFilter(filter, pagination)
 		return rta
 	}
 

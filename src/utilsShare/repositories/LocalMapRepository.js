@@ -12,29 +12,31 @@ class LocalMapRepository {
 		return this.map.get(key)
 	}
 
-	async getAll() {
-		//devuelve un array con los valores del map
-		return Array.from(this.map.values())
+	async getAll({ page = 1, limit = 50 } = {}) {
+		const values = Array.from(this.map.values())
+		const start = (page - 1) * limit
+		const end = page * limit
+		return values.slice(start, end)
 	}
 
 	getById(key) {
 		return this.map.get(key)
 	}
 
-	async getByFilter({ key, option, value }) {
+	async getByFilter({ key, option, value }, { page = 1, limit = 50 } = {}) {
 		const results = []
 
 		const compare = (a, b, operator) => {
 			switch (operator) {
-			case '==': return a == b
-			case '===': return a === b
-			case '!=': return a != b
-			case '!==': return a !== b
-			case '>': return a > b
-			case '>=': return a >= b
-			case '<': return a < b
-			case '<=': return a <= b
-			default: return false
+				case '==': return a == b
+				case '===': return a === b
+				case '!=': return a != b
+				case '!==': return a !== b
+				case '>': return a > b
+				case '>=': return a >= b
+				case '<': return a < b
+				case '<=': return a <= b
+				default: return false
 			}
 		}
 
@@ -45,7 +47,9 @@ class LocalMapRepository {
 			}
 		}
 
-		return results
+		const start = (page - 1) * limit
+		const end = page * limit
+		return results.slice(start, end)
 	}
 
 	async update(key, value) {

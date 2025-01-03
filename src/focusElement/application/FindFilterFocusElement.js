@@ -4,8 +4,8 @@ class FindFilterFocusElement {
 	}) {
 		this.focusElementRepository = focusElementRepository
 	}
-	async execute(filter) {
-		return await this.focusElementRepository.getFilter(filter)
+	async execute(filter, pagination) {
+		return await this.focusElementRepository.getFilter(filter, pagination)
 
 	}
 }

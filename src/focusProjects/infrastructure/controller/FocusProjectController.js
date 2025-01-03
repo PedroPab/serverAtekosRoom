@@ -21,8 +21,21 @@ class FocusProjectController {
 
 	async getAll(req, res) {
 		try {
-			const focusProjects = await this.getAllFocusProjects.execute()
+			//pagination
+			const { page = 1, limit = 10 } = req.query
+			const pagination = { page, limit }
+			const focusProjects = await this.getAllFocusProjects.execute(pagination)
 			res.status(200).json(focusProjects)
+		} catch (error) {
+			res.status(400).json({ error: error.message })
+		}
+	}
+
+	async getId(req, res) {
+		try {
+			const { id } = req.params
+			const focusProject = await this.getIdFocusProject.execute(id)
+			res.status(200).json(focusProject)
 		} catch (error) {
 			res.status(400).json({ error: error.message })
 		}
@@ -65,7 +78,8 @@ class FocusProjectController {
 	async getAllElements(req, res) {
 		try {
 			const { id } = req.params
-			const focusElements = await this.getAllElementsByIdFocusProject.execute({ focusProjectId: id })
+			const { page = 1, limit = 10 } = req.query
+			const focusElements = await this.getAllElementsByIdFocusProject.execute({ focusProjectId: id, pagination: { page, limit } })
 			res.status(200).json(focusElements)
 		} catch (error) {
 			res.status(400).json({ error: error.message })

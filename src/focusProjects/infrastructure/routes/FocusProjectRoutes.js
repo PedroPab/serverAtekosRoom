@@ -10,17 +10,17 @@ const upload = multer({ storage })
 
 //console.table()
 router.use((req, res, next) => {
-	console.table({ path: req.path, method: req.method , origin: req.headers.origin , body: req.body, from: req.headers.referer })
+	console.table({ path: req.path, method: req.method, origin: req.headers.origin, body: req.body, from: req.headers.referer })
 	next()
 })
 
 router.get('/', focusProjectController.getAll.bind(focusProjectController))
-
+router.get('/:id', focusProjectController.getId.bind(focusProjectController))
 router.post('/', focusProjectController.create.bind(focusProjectController))
 
-router.post('/:id/element', upload.single('photo'), focusProjectController.createFocusElement.bind(focusProjectController))
+router.post('/:id/elements', upload.single('photo'), focusProjectController.createFocusElement.bind(focusProjectController))
 
-router.get('/:id/element', focusProjectController.getAllElements.bind(focusProjectController))
+router.get('/:id/elements', focusProjectController.getAllElements.bind(focusProjectController))
 
 
 

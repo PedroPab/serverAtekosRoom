@@ -4,7 +4,7 @@ import FocusElementFirebaseRepository from '../../../focusElement/infrastructure
 import FocusElementLocalMapRepository from '../repository/FocusElementLocalMapRepository.js'
 
 let Repository
-
+console.log(`repository FocusElement: ${ENV.FOCUS_ELEMENT_REPOSITORY}`)
 switch (ENV.FOCUS_ELEMENT_REPOSITORY) {
 	case 'firebase':
 		Repository = FocusElementFirebaseRepository
