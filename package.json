@@ -19,7 +19,8 @@
 		"build": "docker build -t gcr.io/$GCP_PROJECT_ID/$NAME_IMG:latest .",
 		"push": "docker push gcr.io/$GCP_PROJECT_ID/$NAME_IMG:latest",
 		"deploy": "gcloud run deploy $NAME_SERVICE --image gcr.io/$GCP_PROJECT_ID/$NAME_IMG --platform managed --region $REGION --allow-unauthenticated --min-instances 0 --max-instances 1 --memory 128Mi --cpu 1 --platform managed --concurrency 10",
-		"full-deploy": "npm run build ; npm run push ; npm run deploy"
+		"full-deploy": "npm run build ; npm run push ; npm run deploy",
+		"build:front": "git clone https://github.com/PedroPab/frontAtekos.git temp-repo && cd temp-repo && npm install && npm run build && cd .. && rm -rf public/dist && cp -R temp-repo/dist* public && rm -rf temp-repo"
 	},
 	"engines": {
 		"node": "18"
