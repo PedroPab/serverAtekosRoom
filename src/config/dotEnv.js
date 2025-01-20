@@ -30,8 +30,9 @@ const ENV = {
 	IMG_REPOSITORY: process.env.IMG_REPOSITORY || 'local',
 	PUBLISH_REPOSITORY: process.env.PUBLISH_REPOSITORY || 'local',
 	FOCUS_ELEMENT_REPOSITORY: process.env.FOCUS_ELEMENT_REPOSITORY || 'local',
-	FOCUS_PROJECT_REPOSITORY: process.env.FOCUS_PROJECT_REPOSITORY || 'local',
+	FOCUS_PROJECT_REPOSITORY: process.env.FOCUS_PROJECT_REPOSITORY || 'mongo',
 	LINKS_REPOSITORY: process.env.LINKS_REPOSITORY || 'local',
+	MONGO_URI: process.env.MONGO_URI || 'mongodb://localhost:27017',
 }
 
 export default ENV
