@@ -1,8 +1,9 @@
 import LinkRepository from '../../domain/repository/LinkRepository.js'
-import FirebaseRepository from '../../../utilsShare/repositories/FirebaseRepository.js'
 import LocalMapRepository from '../../../utilsShare/repositories/LocalMapRepository.js'
+import Repository from './../dependencies/LinksRepositoryFactory.js'
 
-const db = new FirebaseRepository('links')
+const db = new Repository()
+//debería de usar redis
 const dbCache = new LocalMapRepository()
 
 class LinkFirebaseCacheRepository extends LinkRepository {

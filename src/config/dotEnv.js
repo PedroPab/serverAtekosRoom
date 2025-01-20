@@ -31,6 +31,7 @@ const ENV = {
 	PUBLISH_REPOSITORY: process.env.PUBLISH_REPOSITORY || 'local',
 	FOCUS_ELEMENT_REPOSITORY: process.env.FOCUS_ELEMENT_REPOSITORY || 'local',
 	FOCUS_PROJECT_REPOSITORY: process.env.FOCUS_PROJECT_REPOSITORY || 'local',
+	LINKS_REPOSITORY: process.env.LINKS_REPOSITORY || 'local',
 }
 
 export default ENV
