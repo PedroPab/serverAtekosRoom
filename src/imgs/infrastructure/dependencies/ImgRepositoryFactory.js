@@ -11,6 +11,9 @@ switch (ENV.IMG_REPOSITORY) {
 	case 'local':
 		Repository = ImgLocalMapRepository
 		break
+	case 'mongo':
+		Repository = ImgLocalMapRepository
+		break
 	default:
 		Repository = ImgFirebaseRepository
 		break
