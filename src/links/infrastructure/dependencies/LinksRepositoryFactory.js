@@ -1,7 +1,8 @@
 import ENV from '../../../config/dotEnv.js'
 
-import FocusProjectLocalMapRepository from '../repository/LinkLocalMapRepository.js'
-import FocusProjectFirebaseRepository from '../repository/LinkFirebaseRepository.js'
+import LinkLocalMapRepository from '../repository/LinkLocalMapRepository.js'
+import LinkFirebaseRepository from '../repository/LinkFirebaseRepository.js'
+import LinkMongoRepository from '../repository/LinkMongoRepository.js'
 
 let Repository
 
@@ -9,13 +10,16 @@ console.log(`repository Links: ${ENV.LINKS_REPOSITORY}`)
 
 switch (ENV.LINKS_REPOSITORY) {
 	case 'firebase':
-		Repository = FocusProjectFirebaseRepository
+		Repository = LinkFirebaseRepository
 		break
 	case 'local':
-		Repository = FocusProjectLocalMapRepository
+		Repository = LinkLocalMapRepository
+		break
+	case 'mongo':
+		Repository = LinkMongoRepository
 		break
 	default:
-		Repository = FocusProjectFirebaseRepository
+		Repository = LinkLocalMapRepository
 		break
 }
 

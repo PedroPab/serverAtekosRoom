@@ -29,7 +29,7 @@ const ENV = {
 	FIRESTORE_EMULATOR_HOST: process.env.FIRESTORE_EMULATOR_HOST || 'localhost:8097',
 	IMG_REPOSITORY: process.env.IMG_REPOSITORY || 'local',
 	PUBLISH_REPOSITORY: process.env.PUBLISH_REPOSITORY || 'local',
-	FOCUS_ELEMENT_REPOSITORY: process.env.FOCUS_ELEMENT_REPOSITORY || 'local',
+	FOCUS_ELEMENT_REPOSITORY: process.env.FOCUS_ELEMENT_REPOSITORY || 'mongo',
 	FOCUS_PROJECT_REPOSITORY: process.env.FOCUS_PROJECT_REPOSITORY || 'mongo',
 	LINKS_REPOSITORY: process.env.LINKS_REPOSITORY || 'local',
 	MONGO_URI: process.env.MONGO_URI || 'mongodb://localhost:27017',

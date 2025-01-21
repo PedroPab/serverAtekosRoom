@@ -26,12 +26,49 @@ class MongoRepository {
 		}
 	}
 
-	async getAll() {
+	async getAll({ page = 1, limit = 50 } = {}) {
 		try {
-			const docs = await this.collection.find().toArray()
+			const skip = (page - 1) * limit
+			const docs = await this.collection.find().skip(skip).limit(limit).toArray()
 			return docs.map(doc => ({ id: doc._id, ...doc }))
 		} catch (error) {
 			throw new Error(`Error al obtener todos los documentos: ${error.message}`)
+		}
+	}
+
+	async getByFilter(filter, { page = 1, limit = 50 } = {}) {
+		try {
+			const query = {}
+			if (filter && filter.key && filter.option && filter.value) {
+				switch (filter.option) {
+					case '==':
+						query[filter.key] = filter.value
+						break
+					case '!=':
+						query[filter.key] = { $ne: filter.value }
+						break
+					case '>':
+						query[filter.key] = { $gt: filter.value }
+						break
+					case '>=':
+						query[filter.key] = { $gte: filter.value }
+						break
+					case '<':
+						query[filter.key] = { $lt: filter.value }
+						break
+					case '<=':
+						query[filter.key] = { $lte: filter.value }
+						break
+					default:
+						throw new Error(`Operador no soportado: ${filter.option}`)
+				}
+			}
+
+			const skip = (page - 1) * limit
+			const docs = await this.collection.find(query).skip(skip).limit(limit).toArray()
+			return docs.map(doc => ({ id: doc._id, ...doc }))
+		} catch (error) {
+			throw new Error(`Error al obtener los documentos por filtro: ${error.message}`)
 		}
 	}
 

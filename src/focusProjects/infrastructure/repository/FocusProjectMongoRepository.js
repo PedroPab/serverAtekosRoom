@@ -22,7 +22,7 @@ class FocusProjectMongoRepository extends FocusProjectRepository {
 			throw new Error('ID es requerido')
 		}
 
-		const rta = await db.getById(id)
+		const rta = await db.get(id)
 		if (!rta) {
 			throw new Error(`No se encontró el documento con ID: ${id}`)
 		}
@@ -36,7 +36,7 @@ class FocusProjectMongoRepository extends FocusProjectRepository {
 		}
 
 		try {
-			const rta = await db.getById(id)
+			const rta = await db.get(id)
 			return !!rta // Devuelve true si el documento existe, false si no
 		} catch (error) {
 			if (error.message === `Documento con ID ${id} no encontrado.`) {
