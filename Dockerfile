@@ -30,7 +30,7 @@ COPY --from=builder /app /app
 ENV NODE_ENV=production
 
 # Expone el puerto que utiliza tu servidor
-EXPOSE 8080
+EXPOSE 3012
 
 # Comando para ejecutar la aplicación
 CMD ["node", "src/server.js"]

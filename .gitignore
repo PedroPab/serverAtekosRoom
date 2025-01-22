@@ -180,3 +180,5 @@ public/vid/*
 /coverage
 .servicesKeyBucket.json
 .env*
+
+docker-compose.prod.yml

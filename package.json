@@ -6,6 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"start": "export NODE_ENV=production ; node src/server.js",
+		"start:docker": "docker-compose -f docker-compose.prod.yml up -d",
 		"dev": "export NODE_ENV=development ; nodemon src/server.js",
 		"emulator": "firebase emulators:start --only firestore",
 		"emulator:stop": "firebase emulators:exec -- echo 'Stopping emulators...'",
@@ -16,7 +17,8 @@
 		"test": "jest",
 		"test:coverage": "jest --coverage",
 		"open:coverage": "open coverage/lcov-report/index.html",
-		"build": "docker build -t gcr.io/$GCP_PROJECT_ID/$NAME_IMG:latest .",
+		"build:gcp": "docker build -t gcr.io/$GCP_PROJECT_ID/$NAME_IMG:latest .",
+		"build": "docker build -t $NAME_IMG:latest .",
 		"push": "docker push gcr.io/$GCP_PROJECT_ID/$NAME_IMG:latest",
 		"deploy": "gcloud run deploy $NAME_SERVICE --image gcr.io/$GCP_PROJECT_ID/$NAME_IMG --platform managed --region $REGION --allow-unauthenticated --min-instances 0 --max-instances 1 --memory 128Mi --cpu 1 --platform managed --concurrency 10",
 		"full-deploy": "npm run build ; npm run push ; npm run deploy",

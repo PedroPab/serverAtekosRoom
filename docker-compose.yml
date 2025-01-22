@@ -12,7 +12,6 @@ services:
       - ./public:/app/public
     environment:
       - NODE_ENV=development
-      - MONGO_URI=mongodb://root:example@mongo:27017/?directConnection=true
       - COUCHDB_URI=http://admin:password@couchdb:5984
 
     env_file:
@@ -31,7 +30,7 @@ services:
       - COUCHDB_PASSWORD=password
     # Montamos un volumen para que los datos de CouchDB persistan
     volumes:
-      - couchdb_data:/opt/couchdb/data
+      - /home/couchdb/data:/opt/couchdb/data
     restart: always
 
 volumes:
