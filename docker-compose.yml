@@ -13,6 +13,8 @@ services:
     environment:
       - NODE_ENV=development
       - MONGO_URI=mongodb://root:example@mongo:27017/?directConnection=true
+      - COUCHDB_URI=http://admin:password@couchdb:5984
+
     env_file:
       - .env.development
     depends_on:
