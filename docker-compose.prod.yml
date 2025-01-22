@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  backend:
+    image: atekos-img
+    ports:
+      - "3012:3012"
+    volumes:
+      - ./public:/app/public
+    environment:
+      - NODE_ENV=production
+
+    env_file:
+      - .env.production
+    depends_on:
+      - couchdb
+    restart: always
+
+  couchdb:
+    image: couchdb:3.3
+    container_name: couchdb
+    ports:
+      - "5984:5984"
+    environment:
+      - COUCHDB_USER=adminAtekos
+      - COUCHDB_PASSWORD=53sbW1883sRD
+    # Montamos un volumen para que los datos de CouchDB persistan
+    volumes:
+      - /home/couchdb/data:/opt/couchdb/data
+    restart: always
+
+volumes:
+  couchdb_data:
