@@ -7,14 +7,14 @@ services:
     ports:
       - "3012:3012"
     volumes:
-      - .:/app # Monta todo el proyecto para facilitar el desarrollo
-      - /app/node_modules # Evita conflictos con los node_modules locales
-      - ./public:/app/public # Monta la carpeta public como un volumen
+      - .:/app
+      - /app/node_modules
+      - ./public:/app/public
     environment:
       - NODE_ENV=development
       - MONGO_URI=mongodb://root:example@mongo:27017/?directConnection=true
     env_file:
-      - .env.development # Carga las variables desde este archivo
+      - .env.development
     depends_on:
       - couchdb
     tty: true
@@ -27,6 +27,11 @@ services:
     environment:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=password
+    # Montamos un volumen para que los datos de CouchDB persistan
+    volumes:
+      - couchdb_data:/opt/couchdb/data
     restart: always
+
 volumes:
-  mongodb_data:
+  # mongodb_data:
+  couchdb_data:
