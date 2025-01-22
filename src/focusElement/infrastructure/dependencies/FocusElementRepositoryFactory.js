@@ -1,28 +1,35 @@
 import ENV from '../../../config/dotEnv.js'
 
-import FocusElementFirebaseRepository from '../../../focusElement/infrastructure/repository/FocusElementFirebaseRepository.js'
-import FocusElementCouchRepository from '../repository/FocusElementCouchRepository.js'
-import FocusElementLocalMapRepository from '../repository/FocusElementLocalMapRepository.js'
-import FocusElementMongoRepository from '../repository/FocusElementMongoRepository.js'
-
+// Usar 'top-level await' (asegúrate de que Node y tu configuración lo soporten)
 let Repository
+
 console.log(`repository FocusElement: ${ENV.FOCUS_ELEMENT_REPOSITORY}`)
 switch (ENV.FOCUS_ELEMENT_REPOSITORY) {
-	case 'firebase':
-		Repository = FocusElementFirebaseRepository
+	case 'firebase': {
+		const module = await import('../../../focusElement/infrastructure/repository/FocusElementFirebaseRepository.js')
+		Repository = module.default
 		break
-	case 'local':
-		Repository = FocusElementLocalMapRepository
+	}
+	case 'local': {
+		const module = await import('../repository/FocusElementLocalMapRepository.js')
+		Repository = module.default
 		break
-	case 'mongo':
-		Repository = FocusElementMongoRepository
+	}
+	case 'mongo': {
+		const module = await import('../repository/FocusElementMongoRepository.js')
+		Repository = module.default
 		break
-	case 'couch':
-		Repository = FocusElementCouchRepository
+	}
+	case 'couch': {
+		const module = await import('../repository/FocusElementCouchRepository.js')
+		Repository = module.default
 		break
-	default:
-		Repository = FocusElementLocalMapRepository
+	}
+	default: {
+		const module = await import('../repository/FocusElementLocalMapRepository.js')
+		Repository = module.default
 		break
+	}
 }
 
 export default Repository

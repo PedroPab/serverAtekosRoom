@@ -1,26 +1,34 @@
 import ENV from '../../../config/dotEnv.js'
-import ImgCouchRepository from '../repository/ImgCouchRepository.js'
-import ImgFirebaseRepository from '../repository/ImgFirebaseRepository.js'
-import ImgLocalMapRepository from '../repository/ImgLocalMapRepository.js'
 
+// Usar 'top-level await' (asegúrate de que Node y tu configuración lo soporten)
 let Repository
 
 switch (ENV.IMG_REPOSITORY) {
-	case 'firebase':
-		Repository = ImgFirebaseRepository
+	case 'firebase': {
+		const module = await import('../repository/ImgFirebaseRepository.js')
+		Repository = module.default
 		break
-	case 'local':
-		Repository = ImgLocalMapRepository
+	}
+	case 'local': {
+		const module = await import('../repository/ImgLocalMapRepository.js')
+		Repository = module.default
 		break
-	case 'mongo':
-		Repository = ImgLocalMapRepository
+	}
+	case 'mongo': {
+		const module = await import('../repository/ImgLocalMapRepository.js')
+		Repository = module.default
 		break
-	case 'couch':
-		Repository = ImgCouchRepository
+	}
+	case 'couch': {
+		const module = await import('../repository/ImgCouchRepository.js')
+		Repository = module.default
 		break
-	default:
-		Repository = ImgFirebaseRepository
+	}
+	default: {
+		const module = await import('../repository/ImgFirebaseRepository.js')
+		Repository = module.default
 		break
+	}
 }
 
 export default Repository

@@ -1,9 +1,15 @@
 import FocusProjectRepository from '../../domain/repository/FocusProjectRepository.js'
 import MongoRepository from '../../../utilsShare/repositories/MongoRepository.js'
 
-const db = new MongoRepository('focusProjects') // Nombre de la colección en MongoDB
+// const db = new MongoRepository('focusProjects') // Nombre de la colección en MongoDB
+let db
 
 class FocusProjectMongoRepository extends FocusProjectRepository {
+	constructor() {
+		super()
+		this.db = new MongoRepository('focusProjects') // Nombre de la colección en MongoDB
+		db = this.db
+	}
 	async save(id, data) {
 		if (!id || !data) {
 			throw new Error('ID y datos son requeridos')

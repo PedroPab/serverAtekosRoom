@@ -18,7 +18,7 @@ class FocusElementCouchRepository extends FocusElementRepository {
 		return await db.getAll({ page, limit })
 	}
 
-	async getId(id) {
+	async getById(id) {
 		if (!id) {
 			throw new Error('ID es requerido')
 		}

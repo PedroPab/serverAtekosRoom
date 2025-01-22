@@ -9,7 +9,6 @@ let db
 
 try {
 	if (!client) {
-		console.log('Conectando a MongoDB...')
 		client = new MongoClient(uri)
 
 		// Conectar y obtener la base de datos

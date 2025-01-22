@@ -37,16 +37,16 @@ class CreateFocusElement {
 		console.log(`[ ~ CreateFocusElement ~ createElementPureByType ~ data]`, data)
 		//según el tipo de elemento crearemos un proceso diferente
 		switch (data.type) {
-		case this.typeMedia.img:
-			return await this.createImage.execute({ id: data.id, data })
-		case this.typeMedia.video:
-			return await this.createVideo(data)
-		case this.typeMedia.text:
-			return await this.createText(data)
-		case this.typeMedia.link:
-			return await this.createLink(data)
-		default:
-			throw new Error('Invalid type of media')
+			case this.typeMedia.img:
+				return await this.createImage.execute({ id: data.id, data })
+			case this.typeMedia.video:
+				return await this.createVideo(data)
+			case this.typeMedia.text:
+				return await this.createText(data)
+			case this.typeMedia.link:
+				return await this.createLink(data)
+			default:
+				throw new Error('Invalid type of media')
 		}
 	}
 	async getFocusElement(id) {

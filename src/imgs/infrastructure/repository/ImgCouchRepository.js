@@ -36,8 +36,16 @@ class ImgCouchRepository extends ImgRepository {
 			throw new Error('ID es requerido')
 		}
 
-		const result = await db.get(id)
-		return !!result
+		try {
+			const result = await db.get(id)
+			return !!result
+		}
+		catch (error) {
+			if (error.message === `Documento con ID ${id} no encontrado.`) {
+				return false
+			}
+			throw error
+		}
 	}
 
 	async update(id, data) {
