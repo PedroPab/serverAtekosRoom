@@ -3,6 +3,7 @@ import ENV from '../../../config/dotEnv.js'
 import FocusProjectLocalMapRepository from '../repository/FocusProjectLocalMapRepository.js'
 import FocusProjectFirebaseRepository from '../repository/FocusProjectFirebaseRepository.js'
 import FocusProjectMongoRepository from '../repository/FocusProjectMongoRepository.js'
+import FocusProjectCouchRepository from '../repository/FocusProjectCouchRepository .js'
 
 let Repository
 
@@ -17,6 +18,9 @@ switch (ENV.FOCUS_PROJECT_REPOSITORY) {
 		break
 	case 'mongo':
 		Repository = FocusProjectMongoRepository
+		break
+	case 'couch':
+		Repository = FocusProjectCouchRepository
 		break
 	default:
 		Repository = FocusProjectFirebaseRepository

@@ -1,4 +1,5 @@
 import ENV from '../../../config/dotEnv.js'
+import ImgCouchRepository from '../repository/ImgCouchRepository.js'
 import ImgFirebaseRepository from '../repository/ImgFirebaseRepository.js'
 import ImgLocalMapRepository from '../repository/ImgLocalMapRepository.js'
 
@@ -13,6 +14,9 @@ switch (ENV.IMG_REPOSITORY) {
 		break
 	case 'mongo':
 		Repository = ImgLocalMapRepository
+		break
+	case 'couch':
+		Repository = ImgCouchRepository
 		break
 	default:
 		Repository = ImgFirebaseRepository

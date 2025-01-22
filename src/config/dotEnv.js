@@ -33,6 +33,7 @@ const ENV = {
 	FOCUS_PROJECT_REPOSITORY: process.env.FOCUS_PROJECT_REPOSITORY || 'mongo',
 	LINKS_REPOSITORY: process.env.LINKS_REPOSITORY || 'local',
 	MONGO_URI: process.env.MONGO_URI || 'mongodb://localhost:27017',
+	COUCHDB_URI: process.env.COUCHDB_URI || 'http://admin:password@127.0.0.1:5984',
 }
 
 export default ENV
