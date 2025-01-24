@@ -1,15 +1,13 @@
-version: "3.9"
-
 services:
   backend:
-    image: atekos-img
+    image: atekos-img:latest
     ports:
       - "3012:3012"
     volumes:
       - ./public:/app/public
     environment:
       - NODE_ENV=production
-
+      - COUCHDB_URI=http://adminAtekos:53sbW1883sRD@couchdb:5984
     env_file:
       - .env.production
     depends_on:
@@ -17,7 +15,7 @@ services:
     restart: always
 
   couchdb:
-    image: couchdb:3.3
+    image: couchdb:latest
     container_name: couchdb
     ports:
       - "5984:5984"

@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   backend:
     build:
@@ -21,7 +19,7 @@ services:
     tty: true
 
   couchdb:
-    image: couchdb:3.3
+    image: couchdb:latest
     container_name: couchdb
     ports:
       - "5984:5984"
