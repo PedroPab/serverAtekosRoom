@@ -1,6 +1,6 @@
 // handlers/connectionHandlers.js
 import Logs from '../../utils/logColor/index.js'
-import { handleIdentify, handleSubscribe, handleMessage } from './messageHandlers.js'
+import { handleIdentify, handleSubscribe, handleMessage, handleAction } from './messageHandlers.js'
 import clients from '../clients.js'
 import subscriptions from '../subscriptions.js'
 
@@ -21,6 +21,9 @@ export function handleConnection(ws, req) {
 				break
 			case 'message':
 				handleMessage(msg)
+				break
+			case 'action':
+				handleAction(msg)
 				break
 			default:
 				Logs.logInfo(msg)

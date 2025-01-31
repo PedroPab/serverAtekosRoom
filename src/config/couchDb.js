@@ -12,6 +12,7 @@ try {
 		console.log('Conectando a CouchDB...')
 		// Crear el cliente
 		couch = nano(couchdbURL)
+		console.log(`[ ~ couchdbURL]`, couchdbURL)
 
 		// Verificar la conexión
 		await couch.db.list()

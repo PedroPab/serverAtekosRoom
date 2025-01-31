@@ -11,11 +11,11 @@ import generateId from '../../../utilsShare/generateIds.js'
  */
 export class Room {
 	/**
-   * @param {Object} param0
-   * @param {String} param0.id
-   * @param {String} param0.name
-   * @param {String} param0.description
-   */
+	 * @param {Object} param0
+	 * @param {String} param0.id
+	 * @param {String} param0.name
+	 * @param {String} param0.description
+	 */
 	constructor({
 		id,
 		name = '',

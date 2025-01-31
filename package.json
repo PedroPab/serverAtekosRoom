@@ -8,6 +8,7 @@
 		"start": "export NODE_ENV=production ; node src/server.js",
 		"start:docker": "docker-compose -f docker-compose.prod.yml up -d",
 		"dev": "export NODE_ENV=development ; nodemon src/server.js",
+		"dev:docker": "docker-compose -f docker-compose.yml up -d",
 		"emulator": "firebase emulators:start --only firestore",
 		"emulator:stop": "firebase emulators:exec -- echo 'Stopping emulators...'",
 		"deploy:engine": "gcloud beta app deploy --project=atekos-369512",
